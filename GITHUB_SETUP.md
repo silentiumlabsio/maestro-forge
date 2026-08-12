@@ -20,7 +20,7 @@ In **Settings → Rules → Rulesets**, create an active branch ruleset targetin
 - dismiss stale approvals when new commits are pushed;
 - require approval of the most recent reviewable push where the maintainer workflow supports it;
 - require all conversations to be resolved;
-- require the `policy` and `validate` status checks after each has run at least once;
+- require the `policy` status check for pull requests; keep the `validate` check as a post-merge/main-branch integrity check;
 - block force pushes and branch deletion;
 - do not give community roles bypass permission.
 

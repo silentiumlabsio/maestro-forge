@@ -37,7 +37,7 @@
 
 ## Launch decision
 
-- [ ] Confirm the real Pages URL and repository About links
+- [x] Confirm the real Pages URL and repository About links
 - [ ] Confirm no feature, profile, project, score, activity, verification, security statistic, or endorsement claim exceeds the repository evidence
 - [ ] Record the exact launch commit and release notes
 - [ ] Create checksums/SBOM where appropriate for any packaged release artifact
