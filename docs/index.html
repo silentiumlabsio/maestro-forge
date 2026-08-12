@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#090a0c">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Maestro Forge is an independent open-source community ecosystem for Maestro students, created and maintained by Silentium Labs.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://silentiumlabsio.github.io/maestro-forge/">
+  <meta property="og:title" content="Maestro Forge — Learn. Build. Contribute. Securely.">
+  <meta property="og:description" content="An independent open-source community ecosystem for Maestro students, created and maintained by Silentium Labs.">
+  <meta property="og:image" content="https://silentiumlabsio.github.io/maestro-forge/assets/images/social/maestro-forge-social-card.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Maestro Forge">
+  <meta name="twitter:description" content="Learn. Build. Contribute. Securely.">
+  <meta name="twitter:image" content="https://silentiumlabsio.github.io/maestro-forge/assets/images/social/maestro-forge-social-card.jpg">
+  <title>Maestro Forge — Learn. Build. Contribute. Securely.</title>
+  <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://silentiumlabsio.github.io/maestro-forge/">
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Maestro Forge home">
+      <img src="assets/brand/forge-mark.svg" alt="" width="38" height="38">
+      <span>MAESTRO <b>FORGE</b></span>
+    </a>
+    <button class="menu-button icon-button" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Open navigation"><svg><use href="assets/icons.svg#i-menu"></use></svg></button>
+    <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
+      <a href="#home" data-route="home">Home</a>
+      <a href="#challenges" data-route="challenges">Challenges</a>
+      <a href="#learn" data-route="learn">Learn</a>
+      <a href="#projects" data-route="projects">Projects</a>
+      <a href="#community" data-route="community">Community</a>
+      <a href="#builders" data-route="builders">Passport</a>
+      <a href="#security" data-route="security">Security</a>
+    </nav>
+    <div class="header-actions">
+      <button class="search-trigger" type="button" aria-haspopup="dialog"><svg><use href="assets/icons.svg#i-search"></use></svg><span>Search Forge</span><kbd>/</kbd></button>
+      <a class="button button-primary button-small" href="#contribute">Contribute <svg><use href="assets/icons.svg#i-arrow"></use></svg></a>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div id="route-view" aria-live="polite"></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-brand">
+      <img src="assets/brand/forge-mark.svg" alt="" width="42" height="42">
+      <div><strong>Maestro Forge</strong><span>Learn. Build. Contribute. Securely.</span></div>
+    </div>
+    <div class="footer-links" aria-label="Project policies">
+      <a href="../SECURITY.md">Security</a><a href="../PRIVACY.md">Privacy</a><a href="../GOVERNANCE.md">Governance</a><a href="../CODE_OF_CONDUCT.md">Code of Conduct</a><a href="../DISCLAIMER.md">Disclaimer</a>
+    </div>
+    <p><strong>Created and maintained by Silentium Labs.</strong><br>Independent community project for Maestro students. Not an official Maestro product or repository.</p>
+  </footer>
+
+  <dialog id="search-dialog" class="search-dialog" aria-labelledby="search-title">
+    <div class="search-dialog-head">
+      <div><span class="eyebrow">FORGE INDEX</span><h2 id="search-title">Search the ecosystem</h2></div>
+      <button class="icon-button close-search" type="button" aria-label="Close search"><svg><use href="assets/icons.svg#i-close"></use></svg></button>
+    </div>
+    <label class="search-field"><svg><use href="assets/icons.svg#i-search"></use></svg><span class="sr-only">Search</span><input id="global-search" type="search" autocomplete="off" placeholder="Try “security”, “Python”, or “first PR”"></label>
+    <div id="global-results" class="global-results"></div>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

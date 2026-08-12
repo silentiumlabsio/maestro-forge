@@ -1,0 +1,29 @@
+name: Help Center question
+description: Ask a public, non-sensitive question about using or contributing to Maestro Forge.
+title: "[Help] "
+labels: ["help-wanted"]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options: [Getting started, Challenge, Git or GitHub, Contribution, Project, Review, Forge Passport, Resource, Other]
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+    validations:
+      required: true
+  - type: textarea
+    id: attempted
+    attributes:
+      label: What have you already tried?
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Public-safe content
+      options:
+        - label: I removed credentials, personal information, private repository details, restricted course material, and sensitive vulnerability information.
+          required: true

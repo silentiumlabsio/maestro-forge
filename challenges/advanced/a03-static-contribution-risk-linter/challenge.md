@@ -1,0 +1,67 @@
+# A03 â€” Static Contribution Risk Linter
+
+**Difficulty:** Advanced
+**Version:** 1.0.0
+**Category:** Security
+**Created by:** Silentium Labs
+**Status:** Open
+
+## Mission
+
+Create a static linter that flags risky patterns in submitted source without executing it.
+
+## Skills
+
+- Static Analysis
+- Security
+- Python
+
+## Suggested languages
+
+- Python
+
+## Acceptance criteria
+
+- [ ] Scans a target tree as data
+- [ ] Flags blocked extensions and suspicious patterns
+- [ ] Produces human-readable findings
+- [ ] Supports allowlisted false-positive suppressions
+
+## Security requirements
+
+- [ ] Never execute scanned files
+- [ ] Do not import scanned Python modules
+- [ ] Do not follow symlinks outside target
+- [ ] Make clear findings are leads, not proof of malware
+
+## Deliverables
+
+- Source code.
+- README with setup and usage.
+- Short explanation of design decisions.
+- Tests where appropriate for the difficulty.
+- Completed pull-request security declaration.
+
+## Stretch goals
+
+Add one meaningful improvement beyond the acceptance criteria. Explain why it improves the project rather than adding complexity for its own sake.
+
+## Claim this challenge
+
+Open a **Claim a challenge** issue and reference `A03`. Multiple students may solve the same challenge; different approaches are welcome.
+
+## Review standard
+
+A working result is not enough by itself. Reviewers also consider readability, safety, documentation, input handling, and whether the solution matches its declared behavior.
+
+## Skill verification hooks
+
+- **Explain:** Walk through one reviewer-selected function, component, data flow, or security decision from the submitted implementation.
+- **Debug:** Diagnose and fix one reviewer-selected failing behavior or edge case in the exact submitted commit.
+- **Adapt:** Implement one small, challenge-relevant requirement change without replacing the whole solution.
+
+Verification uses rubric version 1.0.0 and must bind to the exact repository URL and 40-character commit SHA.
+
+## Changelog
+
+- 1.0.0 — Official launch version.

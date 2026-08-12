@@ -1,0 +1,19 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Maestro Forge exact-commit verification record",
+  "type":"object","additionalProperties":false,
+  "required":["id","challengeId","challengeVersion","rubricVersion","repositoryUrl","commitSha","reviewer","reviewDate","buildReview","skillVerification","status"],
+  "properties":{
+    "id":{"type":"string","pattern":"^VER-[0-9]{4}-[0-9]{4,}$"},
+    "challengeId":{"type":"string","pattern":"^[BIA][0-9]{2}$"},
+    "challengeVersion":{"type":"string","pattern":"^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "rubricVersion":{"type":"string","pattern":"^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "repositoryUrl":{"type":"string","pattern":"^https://github\\.com/"},
+    "commitSha":{"type":"string","pattern":"^[0-9a-f]{40}$"},
+    "reviewer":{"type":"string","pattern":"^@[A-Za-z0-9-]{1,39}$"},
+    "reviewDate":{"type":"string","format":"date"},
+    "buildReview":{"type":"object","additionalProperties":false,"required":["correctness","testing","security","quality","documentation","gitHygiene"],"properties":{"correctness":{"type":"integer","minimum":0,"maximum":25},"testing":{"type":"integer","minimum":0,"maximum":10},"security":{"type":"integer","minimum":0,"maximum":10},"quality":{"type":"integer","minimum":0,"maximum":10},"documentation":{"type":"integer","minimum":0,"maximum":10},"gitHygiene":{"type":"integer","minimum":0,"maximum":5}}},
+    "skillVerification":{"type":"object","additionalProperties":false,"required":["explain","debug","adapt"],"properties":{"explain":{"type":"integer","minimum":0,"maximum":10},"debug":{"type":"integer","minimum":0,"maximum":10},"adapt":{"type":"integer","minimum":0,"maximum":10}}},
+    "status":{"enum":["Build Reviewed","Skill Verified","Quarantined","Revoked","Archived"]}
+  }
+}

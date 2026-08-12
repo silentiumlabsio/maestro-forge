@@ -1,0 +1,15 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Forge Passport builder profile",
+  "type":"object","additionalProperties":false,
+  "required":["handle","skills","interests","roles","availability","profileStatus"],
+  "properties":{
+    "handle":{"type":"string","pattern":"^@[A-Za-z0-9-]{1,39}$"},
+    "summary":{"type":"string","maxLength":240},
+    "skills":{"type":"array","items":{"type":"string","maxLength":50},"uniqueItems":true,"maxItems":20},
+    "interests":{"type":"array","items":{"type":"string","maxLength":80},"uniqueItems":true,"maxItems":20},
+    "roles":{"type":"array","items":{"type":"string","maxLength":50},"uniqueItems":true,"maxItems":12},
+    "availability":{"enum":["available","limited","not-looking"]},
+    "profileStatus":{"enum":["submitted","reviewed","published","hidden","archived"]}
+  }
+}

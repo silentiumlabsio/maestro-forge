@@ -1,0 +1,32 @@
+name: Opt in to Builder directory
+description: Propose a public Forge builder profile using minimal information.
+title: "[Builder] "
+labels: ["builder-profile"]
+body:
+  - type: input
+    id: handle
+    attributes:
+      label: GitHub handle
+    validations:
+      required: true
+  - type: textarea
+    id: skills
+    attributes:
+      label: Skills and interests
+    validations:
+      required: true
+  - type: textarea
+    id: roles
+    attributes:
+      label: Roles you can help with
+  - type: textarea
+    id: looking_for
+    attributes:
+      label: What would you like to build or learn?
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy
+      options:
+        - label: I am only sharing information I am comfortable making public.
+          required: true

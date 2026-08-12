@@ -1,0 +1,59 @@
+name: PR Metadata Gate
+
+# SECURITY NOTE:
+# This privileged event NEVER checks out or executes contributor code.
+# It only asks the GitHub API for the changed-file list and enforces repository policy.
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  policy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enforce changed-file policy without checkout
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const files = await github.paginate(github.rest.pulls.listFiles, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              per_page: 100,
+            });
+
+            const blockedExtensions = [
+              '.exe','.dll','.msi','.scr','.apk','.ipa','.dmg','.pkg','.deb','.rpm',
+              '.jar','.class','.so','.dylib','.p12','.pfx','.pem','.key','.bat','.cmd','.ps1',
+              '.zip','.7z','.rar','.tar','.gz','.bz2','.xz','.iso','.img'
+            ];
+            const blockedPaths = [
+              '.github/workflows/',
+              '.github/CODEOWNERS',
+              'SECURITY.md',
+              'docs/SECURITY_MODEL.md',
+              'scripts/security_',
+              'scripts/validate_',
+              'schemas/',
+              '.github/rulesets/',
+              'GITHUB_SETUP.md'
+            ];
+
+            const violations = [];
+            for (const f of files) {
+              const name = f.filename.toLowerCase();
+              if (blockedExtensions.some(ext => name.endsWith(ext))) {
+                violations.push(`${f.filename}: blocked file type`);
+              }
+              if (blockedPaths.some(prefix => name.startsWith(prefix.toLowerCase()))) {
+                violations.push(`${f.filename}: maintainer-controlled path`);
+              }
+            }
+
+            if (violations.length) {
+              core.setFailed('Community PR policy violations:\n' + violations.join('\n'));
+            }

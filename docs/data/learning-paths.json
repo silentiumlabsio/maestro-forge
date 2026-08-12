@@ -1,0 +1,7 @@
+[
+  {"id":"python-builder","name":"Python Builder","description":"Move from a safe local CLI to search, testing, and architecture-aware tooling.","competencies":["Python","CLI","Data validation","Testing","Filesystem safety"],"challengeIds":["B01","B02","B05","B06","B07","B08","I01","I06","I07","A03","A05"]},
+  {"id":"web-builder","name":"Web Builder","description":"Build accessible, local-first browser experiences with careful state and API boundaries.","competencies":["HTML","CSS","JavaScript","Accessibility","PWA","API safety"],"challengeIds":["B03","B04","I03","I05","I08","A02"]},
+  {"id":"ai-builder","name":"AI Builder","description":"Develop provider-neutral AI systems that expose evidence, uncertainty, privacy, and failure modes.","competencies":["Prompt design","Evaluation","Retrieval","Provider boundaries","AI safety"],"challengeIds":["I02","A01","A04"]},
+  {"id":"security-builder","name":"Security Builder","description":"Practice safe configuration, validation, static analysis, privacy, and threat modeling.","competencies":["Secrets","Input validation","Static analysis","Threat modeling","Privacy"],"challengeIds":["B07","I07","A03","A06","A08"]},
+  {"id":"open-source-builder","name":"Open Source Builder","description":"Learn GitHub contribution flow, documentation, collaboration, schemas, and transparent scoring.","competencies":["GitHub","Documentation","Review","Schemas","Collaboration"],"challengeIds":["B08","I03","I08","A05","A07"]}
+]

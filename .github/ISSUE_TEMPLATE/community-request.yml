@@ -1,0 +1,32 @@
+name: Community request
+description: Request a public-safe tool, guide, improvement, or community resource.
+title: "[Community Request] "
+labels: ["community-request"]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: What do you need?
+      description: Describe the problem and who it would help without sharing private student information.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Useful outcome
+      description: What would make the request complete?
+    validations:
+      required: true
+  - type: dropdown
+    id: contribution
+    attributes:
+      label: Likely contribution track
+      options: [Code, Documentation, Design, Accessibility, Translation, Testing, Research, Unsure]
+    validations:
+      required: true
+  - type: textarea
+    id: safety
+    attributes:
+      label: Security, privacy, and academic-integrity considerations
+    validations:
+      required: true

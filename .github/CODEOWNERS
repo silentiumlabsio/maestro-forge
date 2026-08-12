@@ -1,0 +1,17 @@
+# Silentium Labs is the creator and launch code owner.
+* @silentiumlabsio
+
+# Security-critical areas always require maintainer review.
+/.github/ @silentiumlabsio
+/SECURITY.md @silentiumlabsio
+/UNTRUSTED_CODE_POLICY.md @silentiumlabsio
+/PRIVACY.md @silentiumlabsio
+/GOVERNANCE.md @silentiumlabsio
+/CODE_OF_CONDUCT.md @silentiumlabsio
+/docs/SECURITY_MODEL.md @silentiumlabsio
+/scripts/security_* @silentiumlabsio
+/scripts/validate_* @silentiumlabsio
+/schemas/ @silentiumlabsio
+/GITHUB_SETUP.md @silentiumlabsio
+/challenges/ @silentiumlabsio
+/templates/ @silentiumlabsio

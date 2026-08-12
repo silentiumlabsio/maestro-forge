@@ -1,0 +1,31 @@
+name: Request a review
+description: Ask the community for structured feedback.
+title: "[Review] "
+labels: ["review-request"]
+body:
+  - type: dropdown
+    id: review_type
+    attributes:
+      label: Review type
+      options: [Code, Documentation, UI/UX, Architecture, Accessibility, Testing, Security, Project README]
+    validations:
+      required: true
+  - type: input
+    id: repo
+    attributes:
+      label: Repository or public artifact URL
+    validations:
+      required: true
+  - type: textarea
+    id: focus
+    attributes:
+      label: What feedback do you want?
+    validations:
+      required: true
+  - type: checkboxes
+    id: acknowledgement
+    attributes:
+      label: Acknowledgement
+      options:
+        - label: I understand a community review is not automatically a formal security audit or professional certification.
+          required: true

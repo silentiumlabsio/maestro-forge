@@ -1,0 +1,10 @@
+[
+  {"id":"untrusted","label":"Untrusted","description":"Submitted or externally linked; no review conclusion."},
+  {"id":"metadata-reviewed","label":"Metadata Reviewed","description":"Required fields and declared behavior were reviewed as data."},
+  {"id":"scanned","label":"Scanned","description":"Configured static checks completed; not a safety guarantee."},
+  {"id":"human-reviewed","label":"Human Reviewed","description":"A reviewer inspected the scoped submission and recorded evidence."},
+  {"id":"verified","label":"Verified","description":"The exact referenced commit and record completed the required review process."},
+  {"id":"quarantined","label":"Quarantined","description":"Removed from normal discovery pending a safety review."},
+  {"id":"revoked","label":"Revoked","description":"Previous recognition withdrawn with a preserved audit record."},
+  {"id":"archived","label":"Archived","description":"Historical and no longer active; evidence remains readable."}
+]

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Maestro Forge mark</title>
+  <desc id="desc">Angular letter M inside a hexagonal shield.</desc>
+  <path d="M32 3 56 17v30L32 61 8 47V17Z" fill="#0c0d10" stroke="#e43b37" stroke-width="2"/>
+  <path d="M17 21v22l15 9 15-9V21L32 35Z" fill="none" stroke="#ff5048" stroke-width="3" stroke-linejoin="round"/>
+  <path d="m17 21 15 14 15-14" fill="none" stroke="#e43b37" stroke-width="3" stroke-linejoin="round"/>
+</svg>

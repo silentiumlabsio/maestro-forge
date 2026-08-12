@@ -1,0 +1,38 @@
+name: Propose a challenge
+description: Suggest a new safe, educational build challenge.
+title: "[Challenge Proposal] "
+labels: ["challenge-proposal"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Challenge title
+    validations:
+      required: true
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: Proposed difficulty
+      options: [Beginner, Intermediate, Advanced]
+    validations:
+      required: true
+  - type: textarea
+    id: goal
+    attributes:
+      label: Learning goal
+      description: What should a student learn by completing this?
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Suggested acceptance criteria
+    validations:
+      required: true
+  - type: textarea
+    id: security
+    attributes:
+      label: Security considerations
+      description: Network access, file access, secrets, third-party services, or other risks.
+    validations:
+      required: true

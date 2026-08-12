@@ -1,0 +1,483 @@
+[
+  {
+    "id": "B01",
+    "version": "1.0.0",
+    "difficulty": "Beginner",
+    "category": "Productivity",
+    "title": "Focus Timer CLI",
+    "summary": "Build a command-line focus timer with configurable work and break periods.",
+    "skills": [
+      "Python",
+      "CLI",
+      "time"
+    ],
+    "languages": [
+      "Python"
+    ],
+    "status": "Open",
+    "author": "Silentium Labs",
+    "path": "blob/main/challenges/beginner/b01-focus-timer-cli/challenge.md"
+  },
+  {
+    "id": "B02",
+    "version": "1.0.0",
+    "difficulty": "Beginner",
+    "category": "Study Tools",
+    "title": "Flashcard Deck CLI",
+    "summary": "Create a local flashcard tool that loads a small deck and quizzes the learner.",
+    "skills": [
+      "Python",
+      "JSON",
+      "CLI"
+    ],
+    "languages": [
+      "Python"
+    ],
+    "status": "Open",
+    "author": "Silentium Labs",
+    "path": "blob/main/challenges/beginner/b02-flashcard-deck-cli/challenge.md"
+  },
+  {
+    "id": "B03",
+    "version": "1.0.0",
+    "difficulty": "Beginner",
+    "category": "Web",
+    "title": "Pomodoro Web App",
+    "summary": "Build an accessible browser-based Pomodoro timer using plain web technologies.",
+    "skills": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Accessibility"
+    ],
+    "languages": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "status": "Open",
+    "author": "Silentium Labs",
+    "path": "blob/main/challenges/beginner/b03-pomodoro-web-app/challenge.md"
+  },
+  {
+    "id": "B04",
+    "version": "1.0.0",
+    "difficulty": "Beginner",
+    "category": "Study Tools",
+    "title": "Grade Scenario Calculator",
+    "summary": "Create a calculator that helps a student estimate course outcomes from weighted categories.",
+    "skills": [
+      "JavaScript",
+      "Forms",
+      "Math"
+    ],
+    "languages": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "status": "Open",
+    "author": "Silentium Labs",
+    "path": "blob/main/challenges/beginner/b04-grade-scenario-calculator/challenge.md"
+  },
+  {
+    "id": "B05",
+    "version": "1.0.0",
+    "difficulty": "Beginner",
+    "category": "Data",
+    "title": "Study Streak Tracker",
+    "summary": "Build a local study streak tracker that records completed study days.",
+    "skills": [
+      "Python",
+      "JSON",
+      "Dates"
+    ],
+    "languages": [
+      "Python"
+    ],
+    "status": "Open",
+    "author": "Silentium Labs",
+    "path": "blob/main/challenges/beginner/b05-study-streak-tracker/challenge.md"
+  },
+  {
+    "id": "B06",
+    "version": "1.0.0",
+    "difficulty": "Beginner",
+    "category": "Developer Tools",
+    "title": "Markdown Notes Indexer",
+    "summary": "Scan a notes folder and create a simple index of Markdown titles.",
+    "skills": [
+      "Python",
+      "Filesystem",
+      "Markdown"
+    ],
+    "languages": [
+      "Python"
+    ],
+    "status": "Open",
+    "author": "Silentium Labs",
+    "path": "blob/main/challenges/beginner/b06-markdown-notes-indexer/challenge.md"
+  },
+  {
+    "id": "B07",
+    "version": "1.0.0",
+    "difficulty": "Beginner",
+    "category": "Security",
+    "title": "Secret-Safe Config Demo",
+    "summary": "Build a tiny app that reads configuration from environment variables without hardcoded secrets.",
+    "skills": [
+      "Environment Variables",
+      "Security",
+      "Documentation"
+    ],
+    "languages": [
+      "Python",
+      "JavaScript"
+    ],
+    "status": "Open",
+    "author": "Silentium Labs",
+    "path": "blob/main/challenges/beginner/b07-secret-safe-config-demo/challenge.md"
+  },
+  {
+    "id": "B08",
+    "version": "1.0.0",
+    "difficulty": "Beginner",
+    "category": "GitHub",
+    "title": "Project README Builder",
+    "summary": "Create a small tool that asks project questions and generates a clean README draft.",
+    "skills": [
+      "Python",
+      "CLI",
+      "Documentation"
+    ],
+    "languages": [
+      "Python"
+    ],
+    "status": "Open",
+    "author": "Silentium Labs",
+    "path": "blob/main/challenges/beginner/b08-project-readme-builder/challenge.md"
+  },
+  {
+    "id": "I01",
+    "version": "1.0.0",
+    "difficulty": "Intermediate",
+    "category": "Study Tools",
+    "title": "Adaptive Quiz Engine",
+    "summary": "Build a quiz engine that changes question order or repetition based on previous answers.",
+    "skills": [
+      "Python",
+      "Algorithms",
+      "Persistence"
+    ],
+    "languages": [
+      "Python"
+    ],
+    "status": "Open",
+    "author": "Silentium Labs",
+    "path": "blob/main/challenges/intermediate/i01-adaptive-quiz-engine/challenge.md"
+  },
+  {
+    "id": "I02",
+    "version": "1.0.0",
+    "difficulty": "Intermediate",
+    "category": "AI",
+    "title": "AI Quiz Generator",
+    "summary": "Create an optional-LLM quiz generator with a clean provider boundary and a deterministic offline mode.",
+    "skills": [
+      "AI",
+      "APIs",
+      "Prompt Design",
+      "Testing"
+    ],
+    "languages": [
+      "Python",
+      "JavaScript"
+    ],
+    "status": "Open",
+    "author": "Silentium Labs",
+    "path": "blob/main/challenges/intermediate/i02-ai-quiz-generator/challenge.md"
+  },
+  {
+    "id": "I03",
+    "version": "1.0.0",
+    "difficulty": "Intermediate",
+    "category": "GitHub",
+    "title": "Repository Activity Dashboard",
+    "summary": "Build a dashboard using public GitHub API data for stars, issues, and recent activity.",
+    "skills": [
+      "REST API",
+      "JavaScript",
+      "Caching"
+    ],
+    "languages": [
+      "JavaScript"
+    ],
+    "status": "Open",
+    "author": "Silentium Labs",
+    "path": "blob/main/challenges/intermediate/i03-repository-activity-dashboard/challenge.md"
+  },
+  {
+    "id": "I04",
+    "version": "1.0.0",
+    "difficulty": "Intermediate",
+    "category": "Productivity",
+    "title": "Constraint Study Planner",
+    "summary": "Generate a weekly study plan from available time, priorities, and deadlines.",
+    "skills": [
+      "Algorithms",
+      "Scheduling",
+      "Data Modeling"
+    ],
+    "languages": [
+      "Python",
+      "JavaScript"
+    ],
+    "status": "Open",
+    "author": "Silentium Labs",
+    "path": "blob/main/challenges/intermediate/i04-constraint-study-planner/challenge.md"
+  },
+  {
+    "id": "I05",
+    "version": "1.0.0",
+    "difficulty": "Intermediate",
+    "category": "Web",
+    "title": "Offline Flashcard PWA",
+    "summary": "Create an installable flashcard web app that works offline.",
+    "skills": [
+      "PWA",
+      "Service Worker",
+      "IndexedDB",
+      "Accessibility"
+    ],
+    "languages": [
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "status": "Open",
+    "author": "Silentium Labs",
+    "path": "blob/main/challenges/intermediate/i05-offline-flashcard-pwa/challenge.md"
+  },
+  {
+    "id": "I06",
+    "version": "1.0.0",
+    "difficulty": "Intermediate",
+    "category": "Data",
+    "title": "Local Notes Search",
+    "summary": "Build local full-text or TF-IDF search over a notes directory.",
+    "skills": [
+      "Search",
+      "Text Processing",
+      "Python"
+    ],
+    "languages": [
+      "Python"
+    ],
+    "status": "Open",
+    "author": "Silentium Labs",
+    "path": "blob/main/challenges/intermediate/i06-local-notes-search/challenge.md"
+  },
+  {
+    "id": "I07",
+    "version": "1.0.0",
+    "difficulty": "Intermediate",
+    "category": "Testing",
+    "title": "Secure Starter App",
+    "summary": "Create a small web/API starter with input validation, tests, and documented security defaults.",
+    "skills": [
+      "Testing",
+      "Validation",
+      "Security",
+      "API"
+    ],
+    "languages": [
+      "Python",
+      "JavaScript"
+    ],
+    "status": "Open",
+    "author": "Silentium Labs",
+    "path": "blob/main/challenges/intermediate/i07-secure-starter-app/challenge.md"
+  },
+  {
+    "id": "I08",
+    "version": "1.0.0",
+    "difficulty": "Intermediate",
+    "category": "Collaboration",
+    "title": "Challenge Progress Board",
+    "summary": "Build a static dashboard that reads challenge metadata and shows status, owner, and completion progress.",
+    "skills": [
+      "JSON",
+      "UI",
+      "GitHub",
+      "Data Visualization"
+    ],
+    "languages": [
+      "JavaScript"
+    ],
+    "status": "Open",
+    "author": "Silentium Labs",
+    "path": "blob/main/challenges/intermediate/i08-challenge-progress-board/challenge.md"
+  },
+  {
+    "id": "A01",
+    "version": "1.0.0",
+    "difficulty": "Advanced",
+    "category": "AI",
+    "title": "Local RAG Study Assistant",
+    "summary": "Build a retrieval-augmented study assistant over user-provided notes with source citations.",
+    "skills": [
+      "RAG",
+      "Embeddings",
+      "Retrieval",
+      "AI"
+    ],
+    "languages": [
+      "Python"
+    ],
+    "status": "Open",
+    "author": "Silentium Labs",
+    "path": "blob/main/challenges/advanced/a01-local-rag-study-assistant/challenge.md"
+  },
+  {
+    "id": "A02",
+    "version": "1.0.0",
+    "difficulty": "Advanced",
+    "category": "Architecture",
+    "title": "Offline-First Course Dashboard",
+    "summary": "Design a modular course dashboard that remains useful offline and syncs only when explicitly configured.",
+    "skills": [
+      "Architecture",
+      "PWA",
+      "Persistence",
+      "Sync"
+    ],
+    "languages": [
+      "TypeScript",
+      "JavaScript"
+    ],
+    "status": "Open",
+    "author": "Silentium Labs",
+    "path": "blob/main/challenges/advanced/a02-offline-first-course-dashboard/challenge.md"
+  },
+  {
+    "id": "A03",
+    "version": "1.0.0",
+    "difficulty": "Advanced",
+    "category": "Security",
+    "title": "Static Contribution Risk Linter",
+    "summary": "Create a static linter that flags risky patterns in submitted source without executing it.",
+    "skills": [
+      "Static Analysis",
+      "Security",
+      "Python"
+    ],
+    "languages": [
+      "Python"
+    ],
+    "status": "Open",
+    "author": "Silentium Labs",
+    "path": "blob/main/challenges/advanced/a03-static-contribution-risk-linter/challenge.md"
+  },
+  {
+    "id": "A04",
+    "version": "1.0.0",
+    "difficulty": "Advanced",
+    "category": "AI",
+    "title": "Evidence-Aware Study Agent",
+    "summary": "Build an assistant that separates retrieved evidence, model inference, and uncertainty in its answers.",
+    "skills": [
+      "AI",
+      "RAG",
+      "Evaluation",
+      "UX"
+    ],
+    "languages": [
+      "Python",
+      "TypeScript"
+    ],
+    "status": "Open",
+    "author": "Silentium Labs",
+    "path": "blob/main/challenges/advanced/a04-evidence-aware-study-agent/challenge.md"
+  },
+  {
+    "id": "A05",
+    "version": "1.0.0",
+    "difficulty": "Advanced",
+    "category": "Developer Tools",
+    "title": "Challenge Catalog Compiler",
+    "summary": "Build a schema-driven compiler that validates challenge manifests and generates indexes/pages.",
+    "skills": [
+      "Schemas",
+      "Build Tools",
+      "Validation",
+      "GitHub"
+    ],
+    "languages": [
+      "Python",
+      "TypeScript"
+    ],
+    "status": "Open",
+    "author": "Silentium Labs",
+    "path": "blob/main/challenges/advanced/a05-challenge-catalog-compiler/challenge.md"
+  },
+  {
+    "id": "A06",
+    "version": "1.0.0",
+    "difficulty": "Advanced",
+    "category": "Observability",
+    "title": "Learning Telemetry Dashboard",
+    "summary": "Design privacy-conscious local telemetry for study sessions and visualize trends.",
+    "skills": [
+      "Observability",
+      "Privacy",
+      "Data Visualization"
+    ],
+    "languages": [
+      "Python",
+      "TypeScript"
+    ],
+    "status": "Open",
+    "author": "Silentium Labs",
+    "path": "blob/main/challenges/advanced/a06-learning-telemetry-dashboard/challenge.md"
+  },
+  {
+    "id": "A07",
+    "version": "1.0.0",
+    "difficulty": "Advanced",
+    "category": "Collaboration",
+    "title": "Contribution Reputation Engine",
+    "summary": "Create a transparent contribution scoring prototype using merged GitHub activity without turning it into a popularity contest.",
+    "skills": [
+      "GitHub API",
+      "Scoring",
+      "Data Ethics"
+    ],
+    "languages": [
+      "Python",
+      "TypeScript"
+    ],
+    "status": "Open",
+    "author": "Silentium Labs",
+    "path": "blob/main/challenges/advanced/a07-contribution-reputation-engine/challenge.md"
+  },
+  {
+    "id": "A08",
+    "version": "1.0.0",
+    "difficulty": "Advanced",
+    "category": "Security",
+    "title": "Sandbox Design Challenge",
+    "summary": "Design and prototype a safe evaluation architecture for untrusted student code without executing submissions on maintainer infrastructure.",
+    "skills": [
+      "Threat Modeling",
+      "Containers",
+      "Security Architecture"
+    ],
+    "languages": [
+      "Documentation",
+      "Optional Python"
+    ],
+    "status": "Open",
+    "author": "Silentium Labs",
+    "path": "blob/main/challenges/advanced/a08-sandbox-design-challenge/challenge.md"
+  }
+]

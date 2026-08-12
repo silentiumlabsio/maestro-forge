@@ -1,0 +1,41 @@
+name: Post an open project role
+description: Recruit a contributor for a scoped role in a contributor-owned community project.
+title: "[Open Role] "
+labels: ["open-role"]
+body:
+  - type: input
+    id: project
+    attributes:
+      label: Project name and public repository URL
+    validations:
+      required: true
+  - type: input
+    id: role
+    attributes:
+      label: Role
+      placeholder: Documentation writer, accessibility reviewer, Python builder
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope and expected outcome
+    validations:
+      required: true
+  - type: textarea
+    id: skills
+    attributes:
+      label: Useful skills and support available
+  - type: textarea
+    id: safety
+    attributes:
+      label: Security, privacy, access, and dependency considerations
+    validations:
+      required: true
+  - type: checkboxes
+    id: acknowledgement
+    attributes:
+      label: Acknowledgement
+      options:
+        - label: This role does not require sharing personal contact information, credentials, restricted course material, or unauthorized access.
+          required: true

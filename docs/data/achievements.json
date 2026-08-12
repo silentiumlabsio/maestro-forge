@@ -1,0 +1,10 @@
+[
+  {"id":"first-merge","name":"First Contribution","description":"First eligible contribution merged into Maestro Forge.","evidence":"Merged pull request","category":"Contribute","status":"available"},
+  {"id":"first-build-review","name":"Build Reviewed","description":"A challenge submission completed the 70-point Build Review.","evidence":"Review record bound to an exact commit","category":"Build","status":"available"},
+  {"id":"skill-verified","name":"Skill Verified","description":"Completed Explain, Debug, and Adapt verification on the builder's own submitted work.","evidence":"Verification record bound to an exact commit","category":"Grow","status":"available"},
+  {"id":"security-builder","name":"Security Builder","description":"Demonstrated secure defaults and threat-aware decisions in reviewed work.","evidence":"Maintainer review against published criteria","category":"Protect","status":"available"},
+  {"id":"forge-reviewer","name":"Forge Reviewer","description":"Provided an accepted, constructive review that materially improved a contribution.","evidence":"Linked review record","category":"Collaborate","status":"available"},
+  {"id":"documentation-helper","name":"Documentation Helper","description":"Improved original Forge documentation or learning material through review.","evidence":"Merged documentation contribution","category":"Learn","status":"available"},
+  {"id":"accessibility-advocate","name":"Accessibility Advocate","description":"Delivered an accepted accessibility improvement or review.","evidence":"Merged change or linked review","category":"Contribute","status":"available"},
+  {"id":"failure-lab-author","name":"Failure Lab Author","description":"Shared an accepted, reproducible lesson from a failed approach.","evidence":"Reviewed Failure Lab entry","category":"Experiment","status":"available"}
+]

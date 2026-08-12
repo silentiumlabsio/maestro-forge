@@ -1,0 +1,30 @@
+name: Propose an idea
+description: Share an idea that the community could build.
+title: "[Idea] "
+labels: ["idea"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What problem should this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Proposed idea
+    validations:
+      required: true
+  - type: textarea
+    id: contributors
+    attributes:
+      label: Help wanted
+      description: What roles or skills would help?
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety
+      options:
+        - label: This proposal does not require unauthorized access, malware, credential theft, or harmful behavior.
+          required: true

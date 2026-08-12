@@ -1,0 +1,40 @@
+name: Claim a challenge
+description: Tell the community which challenge you want to work on.
+title: "[Claim] "
+labels: ["challenge-claim"]
+body:
+  - type: input
+    id: challenge
+    attributes:
+      label: Challenge ID
+      placeholder: B01
+    validations:
+      required: true
+  - type: input
+    id: handle
+    attributes:
+      label: GitHub username
+      placeholder: "@username"
+    validations:
+      required: true
+  - type: dropdown
+    id: level
+    attributes:
+      label: Difficulty
+      options: [Beginner, Intermediate, Advanced]
+    validations:
+      required: true
+  - type: textarea
+    id: approach
+    attributes:
+      label: What are you planning to build?
+      description: A short description is enough.
+    validations:
+      required: true
+  - type: checkboxes
+    id: security
+    attributes:
+      label: Contribution rules
+      options:
+        - label: I will keep solution source in my own repository or fork, submit exact-commit evidence, and follow the Forge security policy.
+          required: true

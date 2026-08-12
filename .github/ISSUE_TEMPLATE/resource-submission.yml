@@ -1,0 +1,30 @@
+name: Submit a resource
+description: Suggest a public learning resource for review.
+title: "[Resource] "
+labels: ["resource"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Resource title
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Public URL
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why is it useful?
+    validations:
+      required: true
+  - type: checkboxes
+    id: integrity
+    attributes:
+      label: Content integrity
+      options:
+        - label: This is not a pirated resource, restricted course material, answer key, or stolen content.
+          required: true

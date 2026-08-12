@@ -1,0 +1,14 @@
+name: Example Project
+author: "@github-handle"
+status: submitted
+languages: [python]
+security:
+  network_access: false
+  filesystem_read: false
+  filesystem_write: false
+  shell_execution: false
+  external_api: false
+  authentication: false
+  stores_user_data: false
+  requires_secrets: false
+dependencies: []

@@ -1,0 +1,56 @@
+name: Submit a student project
+description: Propose a project for the community showcase or project catalog.
+title: "[Project] "
+labels: ["project-submission"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Project name
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does it solve?
+    validations:
+      required: true
+  - type: textarea
+    id: stack
+    attributes:
+      label: Tech stack
+    validations:
+      required: true
+  - type: textarea
+    id: security
+    attributes:
+      label: Security and data behavior
+      description: Explain network use, data storage, credentials, uploads, and dependencies.
+    validations:
+      required: true
+  - type: input
+    id: repository
+    attributes:
+      label: Contributor-owned GitHub repository URL
+    validations:
+      required: true
+  - type: input
+    id: commit
+    attributes:
+      label: Exact 40-character commit SHA
+      description: Review and any later verification apply only to this exact commit.
+    validations:
+      required: true
+  - type: input
+    id: demo
+    attributes:
+      label: Public demo URL (optional)
+  - type: checkboxes
+    id: acknowledgements
+    attributes:
+      label: Publication acknowledgements
+      options:
+        - label: I reviewed screenshots and links for secrets, personal data, private repository names, local paths, and unrelated browser tabs.
+          required: true
+        - label: I understand review is not a guarantee that the project is free of vulnerabilities or malicious behavior.
+          required: true

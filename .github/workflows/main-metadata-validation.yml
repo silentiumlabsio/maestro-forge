@@ -1,0 +1,23 @@
+name: Main Metadata Validation
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate catalog metadata
+        run: python scripts/validate_public_repo.py
+
+# This workflow runs only after content has reached main. It validates metadata;
+# it does not execute student project code.
