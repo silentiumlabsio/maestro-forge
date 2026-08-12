@@ -1,4 +1,4 @@
-# A01 â€” Local RAG Study Assistant
+# A01 — Local RAG Study Assistant
 
 **Difficulty:** Advanced
 **Version:** 1.0.0

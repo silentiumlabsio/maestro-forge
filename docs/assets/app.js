@@ -162,7 +162,19 @@ function currentRoute() {
 
 function renderRoute() {
   const route = currentRoute();
-  view.innerHTML = routes[route]();
+  let markup;
+  switch (route) {
+    case 'challenges': markup = challengesView(); break;
+    case 'learn': markup = learnView(); break;
+    case 'resources': markup = resourcesView(); break;
+    case 'projects': markup = projectsView(); break;
+    case 'community': markup = communityView(); break;
+    case 'builders': markup = buildersView(); break;
+    case 'security': markup = securityView(); break;
+    case 'contribute': markup = contributeView(); break;
+    default: markup = homeView();
+  }
+  view.innerHTML = markup;
   $$('[data-route]').forEach(link => link.setAttribute('aria-current', link.dataset.route === route ? 'page' : 'false'));
   document.title = route === 'home' ? 'Maestro Forge — Learn. Build. Contribute. Securely.' : `${route[0].toUpperCase()+route.slice(1)} — Maestro Forge`;
   attachRouteEvents(route);

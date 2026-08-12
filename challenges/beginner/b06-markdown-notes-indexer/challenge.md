@@ -1,4 +1,4 @@
-# B06 â€” Markdown Notes Indexer
+# B06 — Markdown Notes Indexer
 
 **Difficulty:** Beginner
 **Version:** 1.0.0

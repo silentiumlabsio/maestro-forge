@@ -1,4 +1,4 @@
-# A06 â€” Learning Telemetry Dashboard
+# A06 — Learning Telemetry Dashboard
 
 **Difficulty:** Advanced
 **Version:** 1.0.0

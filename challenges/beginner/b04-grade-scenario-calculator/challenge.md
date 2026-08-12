@@ -1,4 +1,4 @@
-# B04 â€” Grade Scenario Calculator
+# B04 — Grade Scenario Calculator
 
 **Difficulty:** Beginner
 **Version:** 1.0.0

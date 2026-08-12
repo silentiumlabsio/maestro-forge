@@ -1,4 +1,4 @@
-# B05 â€” Study Streak Tracker
+# B05 — Study Streak Tracker
 
 **Difficulty:** Beginner
 **Version:** 1.0.0

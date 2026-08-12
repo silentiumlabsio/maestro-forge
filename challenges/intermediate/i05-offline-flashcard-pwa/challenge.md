@@ -1,4 +1,4 @@
-# I05 â€” Offline Flashcard PWA
+# I05 — Offline Flashcard PWA
 
 **Difficulty:** Intermediate
 **Version:** 1.0.0

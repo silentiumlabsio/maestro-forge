@@ -1,4 +1,4 @@
-# B01 â€” Focus Timer CLI
+# B01 — Focus Timer CLI
 
 **Difficulty:** Beginner
 **Version:** 1.0.0

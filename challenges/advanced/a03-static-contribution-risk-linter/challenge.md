@@ -1,4 +1,4 @@
-# A03 â€” Static Contribution Risk Linter
+# A03 — Static Contribution Risk Linter
 
 **Difficulty:** Advanced
 **Version:** 1.0.0

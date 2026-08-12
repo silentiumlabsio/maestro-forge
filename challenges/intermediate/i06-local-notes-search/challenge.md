@@ -1,4 +1,4 @@
-# I06 â€” Local Notes Search
+# I06 — Local Notes Search
 
 **Difficulty:** Intermediate
 **Version:** 1.0.0

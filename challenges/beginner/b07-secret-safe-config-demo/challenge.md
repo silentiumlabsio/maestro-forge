@@ -1,4 +1,4 @@
-# B07 â€” Secret-Safe Config Demo
+# B07 — Secret-Safe Config Demo
 
 **Difficulty:** Beginner
 **Version:** 1.0.0

@@ -1,4 +1,4 @@
-# I07 â€” Secure Starter App
+# I07 — Secure Starter App
 
 **Difficulty:** Intermediate
 **Version:** 1.0.0

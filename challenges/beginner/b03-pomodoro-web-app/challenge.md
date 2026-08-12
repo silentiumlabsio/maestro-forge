@@ -1,4 +1,4 @@
-# B03 â€” Pomodoro Web App
+# B03 — Pomodoro Web App
 
 **Difficulty:** Beginner
 **Version:** 1.0.0

@@ -1,4 +1,4 @@
-# I02 â€” AI Quiz Generator
+# I02 — AI Quiz Generator
 
 **Difficulty:** Intermediate
 **Version:** 1.0.0
