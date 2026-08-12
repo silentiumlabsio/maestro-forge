@@ -1,4 +1,4 @@
-# A04 â€” Evidence-Aware Study Agent
+# A04 — Evidence-Aware Study Agent
 
 **Difficulty:** Advanced
 **Version:** 1.0.0

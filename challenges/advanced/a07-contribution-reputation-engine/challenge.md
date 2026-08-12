@@ -1,4 +1,4 @@
-# A07 â€” Contribution Reputation Engine
+# A07 — Contribution Reputation Engine
 
 **Difficulty:** Advanced
 **Version:** 1.0.0

@@ -1,4 +1,4 @@
-# I04 â€” Constraint Study Planner
+# I04 — Constraint Study Planner
 
 **Difficulty:** Intermediate
 **Version:** 1.0.0

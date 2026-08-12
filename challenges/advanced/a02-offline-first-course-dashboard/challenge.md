@@ -1,4 +1,4 @@
-# A02 â€” Offline-First Course Dashboard
+# A02 — Offline-First Course Dashboard
 
 **Difficulty:** Advanced
 **Version:** 1.0.0

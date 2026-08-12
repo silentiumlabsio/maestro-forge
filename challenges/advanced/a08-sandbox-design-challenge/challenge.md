@@ -1,4 +1,4 @@
-# A08 â€” Sandbox Design Challenge
+# A08 — Sandbox Design Challenge
 
 **Difficulty:** Advanced
 **Version:** 1.0.0

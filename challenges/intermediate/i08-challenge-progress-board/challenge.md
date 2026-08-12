@@ -1,4 +1,4 @@
-# I08 â€” Challenge Progress Board
+# I08 — Challenge Progress Board
 
 **Difficulty:** Intermediate
 **Version:** 1.0.0

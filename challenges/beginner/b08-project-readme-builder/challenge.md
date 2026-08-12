@@ -1,4 +1,4 @@
-# B08 â€” Project README Builder
+# B08 — Project README Builder
 
 **Difficulty:** Beginner
 **Version:** 1.0.0

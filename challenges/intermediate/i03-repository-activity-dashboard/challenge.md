@@ -1,4 +1,4 @@
-# I03 â€” Repository Activity Dashboard
+# I03 — Repository Activity Dashboard
 
 **Difficulty:** Intermediate
 **Version:** 1.0.0

@@ -1,4 +1,4 @@
-# A05 â€” Challenge Catalog Compiler
+# A05 — Challenge Catalog Compiler
 
 **Difficulty:** Advanced
 **Version:** 1.0.0

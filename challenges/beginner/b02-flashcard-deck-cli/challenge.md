@@ -1,4 +1,4 @@
-# B02 â€” Flashcard Deck CLI
+# B02 — Flashcard Deck CLI
 
 **Difficulty:** Beginner
 **Version:** 1.0.0

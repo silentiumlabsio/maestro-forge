@@ -1,4 +1,4 @@
-# I01 â€” Adaptive Quiz Engine
+# I01 — Adaptive Quiz Engine
 
 **Difficulty:** Intermediate
 **Version:** 1.0.0
