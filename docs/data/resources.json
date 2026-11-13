@@ -1,8 +1,142 @@
 [
-  {"id":"forge-handbook","title":"Forge Handbook","kind":"Guide","area":"Getting Started","description":"The starting point for navigating challenges, contributions, verification, and community safety.","href":"../handbook/","source":"Maestro Forge","trust":"Verified repository content"},
-  {"id":"github-learning","title":"Git & GitHub Learning Center","kind":"Learning Center","area":"Git & GitHub","description":"Original guides to forks, branches, commits, pull requests, reviews, merge conflicts, releases, CODEOWNERS, and contribution etiquette.","href":"../resources/github-learning-center.md","source":"Silentium Labs","trust":"Verified repository content"},
-  {"id":"secure-cookbook","title":"Secure Coding Cookbook","kind":"Cookbook","area":"Security","description":"Defensive recipes for secrets, validation, file handling, database queries, logging, dependencies, rate limits, and safe defaults.","href":"../resources/secure-coding-cookbook.md","source":"Silentium Labs","trust":"Verified repository content"},
-  {"id":"cheat-sheets","title":"Forge Cheat Sheets","kind":"Cheat Sheet","area":"Reference","description":"Compact original references for Git, Markdown, command-line safety, debugging, and pull-request hygiene.","href":"../resources/cheat-sheets.md","source":"Silentium Labs","trust":"Verified repository content"},
-  {"id":"code-patterns","title":"Code Patterns Library","kind":"Pattern Library","area":"Engineering","description":"Small, reviewed patterns for validation, retries, errors, configuration, pagination, testing, and safe file access.","href":"../patterns/","source":"Maestro Forge","trust":"Verified repository content"},
-  {"id":"planning-templates","title":"Project Planning Templates","kind":"Templates","area":"Project Planning","description":"Project plan, architecture, test plan, security checklist, ADR, and retrospective templates.","href":"../templates/project-planning/","source":"Maestro Forge","trust":"Verified repository content"}
+  {
+    "id": "forge-handbook",
+    "title": "Forge Handbook",
+    "kind": "Guide",
+    "area": "Getting Started",
+    "description": "The starting point for navigating challenges, contributions, verification, and community safety.",
+    "href": "../handbook/",
+    "source": "Maestro Forge",
+    "trust": "Repository learning material"
+  },
+  {
+    "id": "github-learning",
+    "title": "Git & GitHub Learning Center",
+    "kind": "Learning Center",
+    "area": "Git & GitHub",
+    "description": "Original guides to forks, branches, commits, pull requests, reviews, merge conflicts, releases, CODEOWNERS, and contribution etiquette.",
+    "href": "../resources/github-learning-center.md",
+    "source": "Silentium Labs",
+    "trust": "Repository learning material"
+  },
+  {
+    "id": "secure-cookbook",
+    "title": "Secure Coding Cookbook",
+    "kind": "Cookbook",
+    "area": "Security",
+    "description": "Defensive recipes for secrets, validation, file handling, database queries, logging, dependencies, rate limits, and safe defaults.",
+    "href": "../resources/secure-coding-cookbook.md",
+    "source": "Silentium Labs",
+    "trust": "Repository learning material"
+  },
+  {
+    "id": "cheat-sheets",
+    "title": "Forge Cheat Sheets",
+    "kind": "Cheat Sheet",
+    "area": "Reference",
+    "description": "Compact original references for Git, Markdown, command-line safety, debugging, and pull-request hygiene.",
+    "href": "../resources/cheat-sheets.md",
+    "source": "Silentium Labs",
+    "trust": "Repository learning material"
+  },
+  {
+    "id": "code-patterns",
+    "title": "Code Patterns Library",
+    "kind": "Pattern Library",
+    "area": "Engineering",
+    "description": "Small, reviewed patterns for validation, retries, errors, configuration, pagination, testing, and safe file access.",
+    "href": "../patterns/",
+    "source": "Maestro Forge",
+    "trust": "Repository learning material"
+  },
+  {
+    "id": "planning-templates",
+    "title": "Project Planning Templates",
+    "kind": "Templates",
+    "area": "Project Planning",
+    "description": "Project plan, architecture, test plan, security checklist, ADR, and retrospective templates.",
+    "href": "../templates/project-planning/",
+    "source": "Maestro Forge",
+    "trust": "Repository learning material"
+  },
+  {
+    "id": "validation",
+    "title": "Validation and Testing",
+    "kind": "Guide",
+    "area": "Testing",
+    "href": "../resources/validation-and-testing.md",
+    "description": "Turn acceptance criteria into synthetic examples, boundary checks and truthful evidence.",
+    "source": "Silentium Labs",
+    "trust": "Repository learning material"
+  },
+  {
+    "id": "sandbox",
+    "title": "First PR Sandbox",
+    "kind": "Walkthrough",
+    "area": "Git & GitHub",
+    "href": "../first-pr-sandbox/README.md",
+    "description": "Practice the full browser contribution loop in your own fork, then propose a useful documentation change.",
+    "source": "Silentium Labs",
+    "trust": "Repository learning material"
+  },
+  {
+    "id": "submission",
+    "title": "Build and Submit",
+    "kind": "Guide",
+    "area": "Review",
+    "href": "../handbook/SUBMITTING.md",
+    "description": "Keep solutions in your repository and prepare an exact-commit review request.",
+    "source": "Silentium Labs",
+    "trust": "Repository learning material"
+  },
+  {
+    "id": "prompt-exercise",
+    "title": "Evidence Prompt Exercise",
+    "kind": "Exercise",
+    "area": "AI",
+    "href": "../prompt-lab/evidence-check.md",
+    "description": "Provider-neutral prompt with synthetic evaluation targets; no provider results claimed.",
+    "source": "Silentium Labs",
+    "trust": "Repository learning material"
+  },
+  {
+    "id": "experiment",
+    "title": "Experiment Worksheet",
+    "kind": "Template",
+    "area": "Evaluation",
+    "href": "../experiments/WORKSHEET.md",
+    "description": "Predefine a comparison and distinguish observations from expected results.",
+    "source": "Silentium Labs",
+    "trust": "Repository learning material"
+  },
+  {
+    "id": "failure",
+    "title": "Failure Writeup",
+    "kind": "Template",
+    "area": "Debugging",
+    "href": "../failure-lab/WRITEUP.md",
+    "description": "Record real, reproducible failures without blame or sensitive details.",
+    "source": "Silentium Labs",
+    "trust": "Repository learning material"
+  },
+  {
+    "id": "architecture",
+    "title": "Architecture and Journals",
+    "kind": "Guide",
+    "area": "Architecture",
+    "href": "../resources/architecture-gallery.md",
+    "description": "Explain components, boundaries, decisions and the evidence behind changes.",
+    "source": "Silentium Labs",
+    "trust": "Repository learning material"
+  },
+  {
+    "id": "kits",
+    "title": "Starter Kits",
+    "kind": "Scaffolding",
+    "area": "Getting Started",
+    "href": "../starter-kits/README.md",
+    "description": "Choose Python, JavaScript or accessible web scaffolding without packages or paid APIs.",
+    "source": "Silentium Labs",
+    "trust": "Repository learning material"
+  }
 ]

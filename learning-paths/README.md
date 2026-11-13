@@ -11,3 +11,14 @@ Learning paths are suggested journeys through stable challenge IDs. They do not 
 | Open Source Builder | B08 → I03 → I08 → A05 → A07 |
 
 The source of truth is [`docs/data/learning-paths.json`](../docs/data/learning-paths.json). A future Forge Passport skill graph may only derive nodes from verified challenge competencies and accepted contribution evidence—not page views, self-claims, popularity, or repository activity volume.
+
+
+## Open a guided path
+
+- [Python Builder](python-builder.md) — Move from a safe local CLI to search, testing, and architecture-aware tooling.
+- [Web Builder](web-builder.md) — Build accessible, local-first browser experiences with careful state and API boundaries.
+- [AI Builder](ai-builder.md) — Develop provider-neutral AI systems that expose evidence, uncertainty, privacy, and failure modes.
+- [Security Builder](security-builder.md) — Practice safe configuration, validation, static analysis, privacy, and threat modeling.
+- [Open Source Builder](open-source-builder.md) — Learn GitHub contribution flow, documentation, collaboration, schemas, and transparent scoring.
+
+Each path includes preparation, direct challenge links and evidence checkpoints. There is no automatic completion tracking or credential award.

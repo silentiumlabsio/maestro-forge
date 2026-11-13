@@ -3,6 +3,20 @@ description: Ask the community for structured feedback.
 title: "[Review] "
 labels: ["review-request"]
 body:
+  - type: input
+    id: commit
+    attributes:
+      label: Exact commit SHA or immutable artifact revision
+      description: Code review requests need the full 40-character commit SHA. Documentation requests may identify an immutable revision.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Checks performed, known limits and declared behavior
+      description: Include actual results and network, storage, subprocess, credential and dependency behavior. Do not paste secrets.
+    validations:
+      required: true
   - type: dropdown
     id: review_type
     attributes:

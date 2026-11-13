@@ -3,6 +3,13 @@ description: Propose a public Forge builder profile using minimal information.
 title: "[Builder] "
 labels: ["builder-profile"]
 body:
+  - type: dropdown
+    id: availability
+    attributes:
+      label: Availability
+      options: [available, limited, not-looking]
+    validations:
+      required: true
   - type: input
     id: handle
     attributes:
