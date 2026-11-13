@@ -141,7 +141,7 @@
     "description": "A non-executable practice area for learning fork, branch, PR, review, and merge.",
     "state": "available",
     "action": "Make a first PR",
-    "href": "../first-pr-sandbox/"
+    "route": "sandbox"
   },
   {
     "id": "passport",

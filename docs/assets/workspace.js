@@ -1,11 +1,11 @@
 /* Local learning tools. User text is data only; no code evaluation or uploads. */
 function mountWorkspace(route, catalog, view) {
   const key = 'forge-workspace-v1';
-  let saved = {};
-  try { saved = JSON.parse(localStorage.getItem(key) || '{}'); if (!saved || typeof saved !== 'object' || Array.isArray(saved)) saved = {}; } catch { saved = {}; }
+  let saved = {}, readFailed=false, baseline;
+  try { saved = JSON.parse(localStorage.getItem(key) || '{}'); if (!saved || typeof saved !== 'object' || Array.isArray(saved)) throw new Error('Invalid saved notes'); } catch { saved = {};readFailed=true; }
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const panel = document.createElement('section'); panel.className = 'section shell workspace';
-  const save = () => { try { localStorage.setItem(key, JSON.stringify(saved)); panel.querySelector('[role=status]').textContent = 'Saved in this browser. Self-reported practice, not verification.'; } catch { panel.querySelector('[role=status]').textContent = 'Browser storage unavailable. Export your notes before leaving.'; } };
+  const save = () => { try { if(readFailed)throw new Error('Unreadable storage');const latest=JSON.parse(localStorage.getItem(key)||'{}');if(!latest||typeof latest!=='object'||Array.isArray(latest))throw new Error('Invalid storage');if(JSON.stringify(latest[recordKey]??null)!==baseline)throw new Error('Another tab changed this workspace');if(Object.hasOwn(saved,recordKey))latest[recordKey]=saved[recordKey];else delete latest[recordKey];localStorage.setItem(key, JSON.stringify(latest));baseline=JSON.stringify(latest[recordKey]??null); panel.querySelector('[role=status]').textContent = 'Saved in this browser. Self-reported practice, not verification.'; } catch { panel.querySelector('[role=status]').textContent = 'Saving is unavailable or this workspace changed in another tab. Export your notes before reloading; saved data has not been replaced.'; } };
   const download = (name, text) => { const url = URL.createObjectURL(new Blob([text], {type:'text/plain;charset=utf-8'})); const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000); };
   const id = new URLSearchParams(location.hash.split('?')[1] || '').get('id');
   const challenge = catalog.challenges.find(c=>c.id===id);
@@ -31,12 +31,37 @@ function mountWorkspace(route, catalog, view) {
     panel.insertAdjacentHTML('afterbegin',`<label>Choose a workshop<select id="workshop-choice">${Object.entries(workshops).map(([k,v])=>`<option value="${k}" ${k===choice?'selected':''}>${v[0]}</option>`).join('')}</select></label>`);
   }
   const existing = saved[recordKey];
+  baseline=JSON.stringify(existing??null);
   const record = existing && typeof existing === 'object' && !Array.isArray(existing) ? existing : {};
   saved[recordKey]=record;
   if (!Array.isArray(record.checks)) record.checks=[];
   if (!record.notes || typeof record.notes !== 'object' || Array.isArray(record.notes)) record.notes={};
   panel.innerHTML += `<h3>Checklist</h3><div class="practice-checks">${checks.map((c,i)=>`<label><input type="checkbox" data-check="${i}" ${record.checks[i]?'checked':''}> ${esc(c)}</label>`).join('')}</div><p id="practice-count"></p>${fields.map((f,i)=>`<label>${esc(f)}<textarea data-note="${i}" maxlength="10000" rows="3">${esc(record.notes[f])}</textarea></label>`).join('')}<div class="card-actions"><button class="button button-primary" id="export-evidence">Export evidence</button><button class="button" id="clear-work">Clear this workspace</button></div><p role="status">Local notes stay in this browser. Do not enter secrets or private course material.</p>`;
+  panel.insertAdjacentHTML('beforeend','<details><summary>Back up and restore learning notes</summary><p>Backups contain your notes and self-checks, not verification. Keep them somewhere you control. Restoring replaces the saved learning notes in this browser.</p><button class="button" id="backup-work">Download notes backup</button><label>Restore a Forge notes backup<input type="file" id="restore-work" accept="application/json,.json"></label></details>');
   view.querySelector('.route').append(panel);
+  if(readFailed)panel.querySelector('[role=status]').textContent='Saved data could not be read. Export this session before leaving, or restore a valid backup.';
+  panel.querySelector('#backup-work').onclick=()=>{let all=saved;try{const latest=JSON.parse(localStorage.getItem(key)||'{}');if(latest&&typeof latest==='object'&&!Array.isArray(latest))all={...latest,[recordKey]:saved[recordKey]};}catch{}download('forge-notes-backup.json',JSON.stringify({version:1,records:all},null,2));};
+  panel.querySelector('#restore-work').onchange=async event=>{
+    const file=event.target.files[0];if(!file)return;
+    const status=panel.querySelector('[role=status]');
+    try {
+      if(file.size>2000000)throw new Error('Backup exceeds 2 MB.');
+      const incoming=JSON.parse(await file.text());
+      if(incoming.version!==1||!incoming.records||typeof incoming.records!=='object'||Array.isArray(incoming.records))throw new Error('Not a version 1 Forge notes backup.');
+      const allowed=new Set([...catalog.challenges.map(c=>c.id),'sandbox','notebook','prompt','experiment','failure','incubator']);
+      const clean={};
+      for(const [id,value] of Object.entries(incoming.records)){
+        if(!allowed.has(id)||!value||typeof value!=='object'||Array.isArray(value))throw new Error('Unknown workspace or invalid record.');
+        if(!Array.isArray(value.checks)||value.checks.length>100||!value.checks.every(v=>typeof v==='boolean'||v===null))throw new Error('Invalid checklist.');
+        if(!value.notes||typeof value.notes!=='object'||Array.isArray(value.notes)||Object.keys(value.notes).length>30)throw new Error('Invalid notes.');
+        const notes={};for(const [name,text] of Object.entries(value.notes)){if(['__proto__','constructor','prototype'].includes(name)||name.length>100||typeof text!=='string'||text.length>10000)throw new Error('Invalid note field.');notes[name]=text;}
+        if(value.input!==undefined&&(typeof value.input!=='string'||value.input.length>30000))throw new Error('Invalid practice input.');
+        clean[id]={checks:value.checks.map(Boolean),notes,...(value.input!==undefined?{input:value.input}:{})};
+      }
+      if(!confirm('Replace saved learning notes with this backup? Download a backup first if needed.'))return;
+      localStorage.setItem(key,JSON.stringify(clean));panel.remove();mountWorkspace(route,catalog,view);
+    }catch(error){status.textContent='Restore failed: '+error.message+' Existing notes were kept.';}finally{event.target.value='';}
+  };
   const chooser=panel.querySelector('#workshop-choice');if(chooser)chooser.onchange=()=>{location.hash='community?workspace='+chooser.value;};
   const count=()=>{panel.querySelector('#practice-count').textContent=`${checks.filter((_,i)=>record.checks[i]).length} of ${checks.length} criteria self-checked`;};count();
   panel.querySelectorAll('[data-check]').forEach(el=>el.addEventListener('change',()=>{record.checks[Number(el.dataset.check)]=el.checked;count();save();}));

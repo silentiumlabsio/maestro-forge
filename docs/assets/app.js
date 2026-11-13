@@ -117,7 +117,7 @@ function learnView() {
   return `<div class="route">${pageHero('STRUCTURED JOURNEYS','Learning','Paths','Five suggested journeys connect stable challenge IDs into practical skill development. Paths are guidance, not prerequisites or certification.')}
     <section class="section shell"><div class="path-grid">${state.paths.map((path,i)=>`<article class="path-card"><span class="path-number">0${i+1}</span><h3>${escapeHTML(path.name)}</h3><p>${escapeHTML(path.description)}</p><p><a href="${repoLink(path.path)}">Preparation and checkpoints →</a></p><div class="challenge-sequence">${path.challengeIds.map(id=>`<a href="#challenge?id=${encodeURIComponent(id)}" title="Start ${id}">${escapeHTML(id)}</a>`).join('')}</div><div class="pills">${path.competencies.slice(0,3).map(c=>`<span class="pill">${escapeHTML(c)}</span>`).join('')}</div></article>`).join('')}</div>
       <div class="skill-map"><div class="section-head"><div><span class="eyebrow">EVIDENCE-BASED SKILL GRAPH</span><h2>Skills emerge from reviewed evidence.</h2><p>Forge does not infer mastery from page views or course progress. A skill graph can only grow from challenge requirements and exact-commit review records.</p></div></div><div class="skill-stages"><div class="skill-stage"><h3>Foundation</h3><div class="skill-nodes"><span class="skill-node">Git basics</span><span class="skill-node">Input validation</span><span class="skill-node">Documentation</span><span class="skill-node">Testing</span></div></div><div class="skill-stage"><h3>Applied</h3><div class="skill-nodes"><span class="skill-node">APIs</span><span class="skill-node">Persistence</span><span class="skill-node">Accessibility</span><span class="skill-node">Security review</span></div></div><div class="skill-stage"><h3>Synthesis</h3><div class="skill-nodes"><span class="skill-node">Architecture</span><span class="skill-node">Threat modeling</span><span class="skill-node">Evaluation</span><span class="skill-node">Adaptation</span></div></div></div></div>
-    </section><section class="section shell"><div class="cta-band"><div><h2>New to open source?</h2><p>Practice the entire contribution loop without adding executable code.</p></div><a class="button button-primary" href="../first-pr-sandbox/">Open First PR Sandbox ${icon('arrow')}</a></div></section></div>`;
+    </section><section class="section shell"><div class="cta-band"><div><h2>New to open source?</h2><p>Practice the entire contribution loop without adding executable code.</p></div><a class="button button-primary" href="#sandbox">Open First PR Sandbox ${icon('arrow')}</a></div></section></div>`;
 }
 
 function emptyState(iconName, title, copy, action, href) {
@@ -183,7 +183,7 @@ function contributeView() {
     <section class="section shell"><div class="cta-band"><div><h2>Major platform changes start with an RFC.</h2><p>Use numbered proposals for architecture and governance decisions. Security controls cannot be weakened by popularity vote.</p></div><a class="button" href="../rfcs/">Read the RFC process ${icon('arrow')}</a></div></section></div>`;
 }
 
-const routes = {home:homeView,challenges:challengesView,challenge:challengeDetailView,learn:learnView,resources:resourcesView,projects:projectsView,community:communityView,builders:buildersView,security:securityView,contribute:contributeView};
+const routes = {sandbox:sandboxView,home:homeView,challenges:challengesView,challenge:challengeDetailView,learn:learnView,resources:resourcesView,projects:projectsView,community:communityView,builders:buildersView,security:securityView,contribute:contributeView};
 
 function currentRoute() {
   const raw = location.hash.slice(1).split('?')[0].toLowerCase();
@@ -194,6 +194,7 @@ function renderRoute() {
   const route = currentRoute();
   let markup;
   switch (route) {
+    case 'sandbox': markup = sandboxView(); break;
     case 'challenge': markup = challengeDetailView(); break;
     case 'challenges': markup = challengesView(); break;
     case 'learn': markup = learnView(); break;
@@ -211,6 +212,7 @@ function renderRoute() {
   document.title = route === 'home' ? 'Maestro Forge — Learn. Build. Contribute. Securely.' : `${route[0].toUpperCase()+route.slice(1)} — Maestro Forge`;
   attachRouteEvents(route);
   mountWorkspace(route, state, view);
+  mountSandbox();
   $('.primary-nav')?.classList.remove('open');
   $('.menu-button')?.setAttribute('aria-expanded','false');
   window.scrollTo(0,0);

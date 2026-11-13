@@ -39,7 +39,7 @@ const sizes = [
   {name:'tablet',width:820,height:1180},
   {name:'mobile',width:390,height:844}
 ];
-const routes = ['home','challenges','learn','projects','community','resources','builders','security','contribute'];
+const routes = ['home','challenges','learn','projects','community','resources','builders','security','contribute','sandbox'];
 const challenges = JSON.parse(await readFile(new URL('../docs/data/challenges.json', import.meta.url), 'utf8'));
 const results = [];
 
@@ -77,6 +77,30 @@ try {
   }
 
   const page = await browser.newPage({viewport:{width:1280,height:900}});
+  await page.goto(`http://127.0.0.1:${port}/#sandbox`,{waitUntil:'networkidle'});
+  await page.locator('#sandbox-next').click();
+  await page.locator('#sandbox-branch').fill('main');
+  await page.locator('#sandbox-next').click();
+  assert((await page.locator('#sandbox-status').textContent()).includes('Do not use main'),'sandbox accepts main as practice branch');
+  await page.locator('#sandbox-branch').fill('practice/clear-steps');
+  await page.locator('#sandbox-next').click();
+  await page.locator('#sandbox-editor').fill('1. Check the practice branch.\n2. Preview the Markdown edit.\n3. Confirm the base is my fork main.');
+  await page.reload({waitUntil:'networkidle'});
+  assert((await page.locator('#sandbox-editor').inputValue()).includes('practice branch'),'sandbox draft lost on reload');
+  await page.locator('#sandbox-next').click();
+  await page.locator('#sandbox-message').fill('Clarify contribution instructions');
+  await page.locator('#sandbox-next').click();
+  await page.locator('#sandbox-base').selectOption('upstream');
+  await page.locator('#sandbox-next').click();
+  assert((await page.locator('#sandbox-status').textContent()).includes('own fork'),'sandbox allowed wrong PR base');
+  await page.locator('#sandbox-base').selectOption('fork');
+  await page.locator('#sandbox-next').click();
+  await page.locator('#sandbox-review').check();
+  await page.locator('#sandbox-next').click();
+  await page.locator('#sandbox-next').click();
+  assert((await page.locator('#sandbox-app').textContent()).includes('Practice merge complete'),'sandbox merge did not complete');
+  await page.reload({waitUntil:'networkidle'});
+  assert((await page.locator('#sandbox-app').textContent()).includes('Practice merge complete'),'sandbox completion did not persist');
   await page.goto(`http://127.0.0.1:${port}/#challenges`, {waitUntil:'networkidle'});
   assert(await page.locator('.catalog-card').count() === 24, 'challenge catalog did not render 24 cards');
   await page.locator('#challenge-search').fill('security');
@@ -109,6 +133,11 @@ try {
   const downloadEvent=page.waitForEvent('download');
   await page.locator('#export-evidence').click();
   assert((await downloadEvent).suggestedFilename()==='forge-B01-evidence.md', 'evidence export failed');
+  await page.locator('#restore-work').setInputFiles({name:'invalid.json',mimeType:'application/json',buffer:Buffer.from('{"version":1,"records":{"__proto__":{}}}')});
+  assert((await page.locator('.workspace [role=status]').textContent()).includes('Restore failed'),'unsafe backup accepted');
+  assert((await page.locator('[data-note="0"]').inputValue()).includes('fake clock'),'bad restore erased notes');
+  await page.locator('.workspace summary').click();
+  const backupEvent=page.waitForEvent('download');await page.locator('#backup-work').click();assert((await backupEvent).suggestedFilename()==='forge-notes-backup.json','backup download failed');
   await page.locator('.search-trigger').click();
   await page.locator('#global-search').fill('B04');
   await page.locator('.global-result').first().click();

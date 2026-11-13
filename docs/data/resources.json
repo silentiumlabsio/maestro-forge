@@ -74,7 +74,7 @@
     "title": "First PR Sandbox",
     "kind": "Walkthrough",
     "area": "Git & GitHub",
-    "href": "../first-pr-sandbox/README.md",
+    "href": "#sandbox",
     "description": "Practice the full browser contribution loop in your own fork, then propose a useful documentation change.",
     "source": "Silentium Labs",
     "trust": "Repository learning material"

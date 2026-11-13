@@ -24,3 +24,5 @@ Executable challenge solutions and community applications remain in contributor-
 | Prepare a review record | [Evidence template](../templates/SUBMISSION_EVIDENCE.md) |
 
 Choose one small milestone, work locally with synthetic data, record actual checks and ask for specific feedback. Community issue forms coordinate people; they are not live matching, automatic scoring or verification services.
+
+For browser workspaces, backups and the local PR rehearsal, see [Interactive learning](INTERACTIVE_LEARNING.md).
