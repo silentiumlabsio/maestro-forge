@@ -210,6 +210,7 @@ function renderRoute() {
   $$('[data-route]').forEach(link => link.setAttribute('aria-current', link.dataset.route === route ? 'page' : 'false'));
   document.title = route === 'home' ? 'Maestro Forge — Learn. Build. Contribute. Securely.' : `${route[0].toUpperCase()+route.slice(1)} — Maestro Forge`;
   attachRouteEvents(route);
+  mountWorkspace(route, state, view);
   $('.primary-nav')?.classList.remove('open');
   $('.menu-button')?.setAttribute('aria-expanded','false');
   window.scrollTo(0,0);

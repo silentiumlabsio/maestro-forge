@@ -29,7 +29,13 @@
     "edgeCases": "Reject zero, negative, fractional, non-numeric and excessive durations. Test cancellation and clock advancement without sleeping.",
     "firstStep": "Separate duration validation, transition planning and display. Start with a fake clock, then connect real time.",
     "starterContract": "Return ordered work/break transitions; inject a clock into the CLI so tests never wait.",
-    "runtime": "Python 3.12+ and its standard library"
+    "runtime": "Python 3.12+ and its standard library",
+    "criteria": [
+      "Starts a focus session from a user-supplied duration\r",
+      "Prints clear session transitions\r",
+      "Handles invalid input without crashing\r",
+      "Uses no network access\r"
+    ]
   },
   {
     "id": "B02",
@@ -67,7 +73,13 @@
     "edgeCases": "Empty deck, invalid JSON, missing answer, duplicate cards, whitespace and a wrong answer must not crash or reuse a previous score.",
     "firstStep": "Validate the deck first, cycle in a fixed order, then add optional seeded shuffling.",
     "starterContract": "Return validated question/answer cards; scoring and interaction belong in separate functions.",
-    "runtime": "Python 3.12+ and its standard library"
+    "runtime": "Python 3.12+ and its standard library",
+    "criteria": [
+      "Loads cards from a documented local format\r",
+      "Shuffles or cycles through cards\r",
+      "Tracks score for the current session\r",
+      "Handles malformed card data safely\r"
+    ]
   },
   {
     "id": "B03",
@@ -103,7 +115,13 @@
     "edgeCases": "Repeated start must not create extra intervals. Test reset while paused, tab backgrounding, keyboard-only operation and screen-reader state announcements.",
     "firstStep": "Draw idle/work/break/paused states on paper. Implement pure transitions before adding browser events.",
     "starterContract": "Return timer state for start, pause, reset and tick actions without touching the DOM.",
-    "runtime": "A current browser; Node.js 22+ for pure-function tests"
+    "runtime": "A current browser; Node.js 22+ for pure-function tests",
+    "criteria": [
+      "Start, pause, reset\r",
+      "Keyboard usable controls\r",
+      "Visible timer state\r",
+      "No framework required\r"
+    ]
   },
   {
     "id": "B04",
@@ -145,7 +163,13 @@
     "edgeCases": "Reject weights totaling 90 or 110, negative weights, scores outside 0–100, empty input, NaN and infinity. Explain rounding.",
     "firstStep": "Use synthetic category names and percentages. Keep parsing, calculation and form rendering separate.",
     "starterContract": "Return a weighted percentage only after validating weights and scores.",
-    "runtime": "A current browser; Node.js 22+ for pure-function tests"
+    "runtime": "A current browser; Node.js 22+ for pure-function tests",
+    "criteria": [
+      "Supports weighted categories\r",
+      "Validates totals and numeric ranges\r",
+      "Shows at least one what-if scenario\r",
+      "Explains calculation assumptions\r"
+    ]
   },
   {
     "id": "B05",
@@ -181,7 +205,13 @@
     "edgeCases": "Test today present, gap, leap day, out-of-order dates, future dates and corrupted store. Document timezone and stale-streak rules.",
     "firstStep": "Define a calendar-day policy before coding; deduplicate dates and keep storage separate from counting.",
     "starterContract": "Return the consecutive-day count using an explicit reference date.",
-    "runtime": "Python 3.12+ and its standard library"
+    "runtime": "Python 3.12+ and its standard library",
+    "criteria": [
+      "Records a completed day\r",
+      "Calculates current streak\r",
+      "Shows recent history\r",
+      "Prevents duplicate day entries\r"
+    ]
   },
   {
     "id": "B06",
@@ -215,7 +245,13 @@
     "edgeCases": "Test empty tree, uppercase extension policy, unreadable file, UTF-8 text, traversal and an escaping symlink. Verify original files are unchanged.",
     "firstStep": "Create the fixture files in a temporary directory. Resolve the allowed root and inventory files before extracting headings.",
     "starterContract": "Return title/path records for Markdown files under the selected root; never write to the notes.",
-    "runtime": "Python 3.12+ and its standard library"
+    "runtime": "Python 3.12+ and its standard library",
+    "criteria": [
+      "Recursively finds `.md` files\r",
+      "Extracts first heading or filename\r",
+      "Outputs a readable index\r",
+      "Handles unreadable files gracefully\r"
+    ]
   },
   {
     "id": "B07",
@@ -247,7 +283,13 @@
     "edgeCases": "Test missing, empty and whitespace-only values. Capture logs and errors; assert the fake key never appears. No actual API call is needed.",
     "firstStep": "Pass a dictionary to the config function for tests; only the entry point reads environment variables.",
     "starterContract": "Return a validated config without exposing the fake secret in messages.",
-    "runtime": "Python 3.12+ and its standard library"
+    "runtime": "Python 3.12+ and its standard library",
+    "criteria": [
+      "Uses an environment variable for a fake API key\r",
+      "Includes `.env.example` without a real secret\r",
+      "Fails safely when config is missing\r",
+      "Documents why secrets should not be committed\r"
+    ]
   },
   {
     "id": "B08",
@@ -281,7 +323,13 @@
     "edgeCases": "Test backticks, angle brackets, newlines, missing fields and an existing output file. Confirm input text cannot run a command.",
     "firstStep": "Generate text in memory first. Add an explicitly selected output location and a separate overwrite decision.",
     "starterContract": "Return Markdown from bounded project fields without executing any field.",
-    "runtime": "Python 3.12+ and its standard library"
+    "runtime": "Python 3.12+ and its standard library",
+    "criteria": [
+      "Collects project name, purpose, setup, usage\r",
+      "Escapes or safely handles unusual text input\r",
+      "Generates Markdown\r",
+      "Does not overwrite an existing file without confirmation\r"
+    ]
   },
   {
     "id": "I01",
@@ -331,7 +379,13 @@
     "edgeCases": "Test unseen questions, ties, repeated misses, corrupt history and removed question IDs. Compare against fixed order on the same synthetic attempts.",
     "firstStep": "Define priority rules, test selection in memory, then add validated JSON persistence.",
     "starterContract": "Choose a valid question ID with a documented priority and deterministic tie breaker.",
-    "runtime": "Python 3.12+ and its standard library"
+    "runtime": "Python 3.12+ and its standard library",
+    "criteria": [
+      "Supports a question bank\r",
+      "Tracks correct/incorrect history\r",
+      "Reprioritizes missed concepts\r",
+      "Persists progress locally\r"
+    ]
   },
   {
     "id": "I02",
@@ -371,7 +425,13 @@
     "edgeCases": "Test invalid JSON, missing answer, invented facts, empty source and document instructions masquerading as commands. Record mock tests separately from any provider run.",
     "firstStep": "Start with a deterministic mock provider. Make network use an explicit opt-in with a data disclosure and bounded requests.",
     "starterContract": "Validate a provider result against a documented question contract before rendering.",
-    "runtime": "Python 3.12+ and its standard library"
+    "runtime": "Python 3.12+ and its standard library",
+    "criteria": [
+      "Accepts study text\r",
+      "Generates structured questions\r",
+      "Has a no-API fallback/demo mode\r",
+      "Validates model output before displaying it\r"
+    ]
   },
   {
     "id": "I03",
@@ -405,7 +465,13 @@
     "edgeCases": "Test 404, 403/429, offline, stale cache and hostile display text. Never embed tokens in client code or fetch arbitrary user-supplied URLs.",
     "firstStep": "Render fixtures first. Accept owner/repo identifiers, constrain the API host, then add bounded caching and retry-after handling.",
     "starterContract": "Validate a public repository API response into display-only fields.",
-    "runtime": "A current browser; Node.js 22+ for pure-function tests"
+    "runtime": "A current browser; Node.js 22+ for pure-function tests",
+    "criteria": [
+      "User can enter an owner/repo\r",
+      "Shows public repository metrics\r",
+      "Handles rate limits and errors\r",
+      "Sanitizes rendered text\r"
+    ]
   },
   {
     "id": "I04",
@@ -450,7 +516,13 @@
     "edgeCases": "Test impossible load, zero availability, tied deadlines, invalid dates and a task longer than a slot. Verify summed blocks never exceed each day.",
     "firstStep": "Choose whether tasks may split. State that policy, implement one-day capacity checks, then extend to a week.",
     "starterContract": "Return scheduled blocks plus unscheduled work and an explanation per decision.",
-    "runtime": "Python 3.12+ and its standard library"
+    "runtime": "Python 3.12+ and its standard library",
+    "criteria": [
+      "Accepts courses/tasks/deadlines\r",
+      "Respects daily availability\r",
+      "Prioritizes near deadlines\r",
+      "Explains why tasks were scheduled\r"
+    ]
   },
   {
     "id": "I05",
@@ -490,7 +562,13 @@
     "edgeCases": "Test first visit offline, unavailable storage, invalid import, delete/export, keyboard navigation and upgrading cache versions. Network inspection must show only app-owned cache entries.",
     "firstStep": "Build local CRUD first; add a manifest and scoped service worker after storage works. Use localhost or HTTPS for service-worker testing.",
     "starterContract": "Validate local card data before it reaches storage or the view.",
-    "runtime": "A current browser; Node.js 22+ for pure-function tests"
+    "runtime": "A current browser; Node.js 22+ for pure-function tests",
+    "criteria": [
+      "Installable manifest\r",
+      "Offline deck access\r",
+      "Local add/edit/delete\r",
+      "Accessible keyboard flow\r"
+    ]
   },
   {
     "id": "I06",
@@ -531,7 +609,13 @@
     "edgeCases": "Test casing, punctuation, empty query, ties, deleted files, rebuild and escaping symlink. Report index limitations and keep all note content local.",
     "firstStep": "Start with token overlap as a baseline. Measure ranking on fixed queries before considering TF-IDF.",
     "starterContract": "Return ranked source references with a deterministic tie breaker.",
-    "runtime": "Python 3.12+ and its standard library"
+    "runtime": "Python 3.12+ and its standard library",
+    "criteria": [
+      "Indexes local text/Markdown\r",
+      "Returns ranked results\r",
+      "Supports rebuild/update\r",
+      "Shows source file for each hit\r"
+    ]
   },
   {
     "id": "I07",
@@ -565,7 +649,13 @@
     "edgeCases": "Write at least five automated tests: success, missing title, wrong type, overlong body and unexpected fields. Also test malformed JSON and safe internal-error handling.",
     "firstStep": "Specify the request and response contract, implement validation tests, then choose a minimal local API adapter. Document any listener and dependency.",
     "starterContract": "Validate a tiny create-note request without needing a live server.",
-    "runtime": "Python 3.12+ and its standard library"
+    "runtime": "Python 3.12+ and its standard library",
+    "criteria": [
+      "At least 5 automated tests\r",
+      "Input schema validation\r",
+      "Safe error responses\r",
+      "Security notes in README\r"
+    ]
   },
   {
     "id": "I08",
@@ -604,7 +694,13 @@
     "edgeCases": "Test missing fields, empty catalog, duplicate IDs, all filters with no matches and markup in titles. No fabricated owners or completion counts.",
     "firstStep": "Use this synthetic fixture locally; only use published metadata when showing real activity. Separate unknown, open and completed.",
     "starterContract": "Validate and normalize challenge records into display state; completion requires evidence.",
-    "runtime": "A current browser; Node.js 22+ for pure-function tests"
+    "runtime": "A current browser; Node.js 22+ for pure-function tests",
+    "criteria": [
+      "Loads catalog data\r",
+      "Filters by track/status\r",
+      "Links to challenge briefs\r",
+      "Handles missing fields gracefully\r"
+    ]
   },
   {
     "id": "A01",
@@ -646,7 +742,13 @@
     "edgeCases": "Measure retrieval on at least five queries including no-match and conflicting passages. Test document prompt injection, invalid citations, deletion and explicit provider consent.",
     "firstStep": "Implement local token retrieval as a baseline. Preserve passage IDs through chunking; a mock answerer is sufficient for the free route.",
     "starterContract": "Return bounded passages with stable source IDs for a separate answer component.",
-    "runtime": "Python 3.12+ and its standard library"
+    "runtime": "Python 3.12+ and its standard library",
+    "criteria": [
+      "Indexes user-selected documents\r",
+      "Retrieves relevant passages\r",
+      "Answers with source references\r",
+      "Provides a local/mock mode or clearly documented provider mode\r"
+    ]
   },
   {
     "id": "A02",
@@ -688,7 +790,13 @@
     "edgeCases": "Test offline reload of courses/tasks/notes, corrupted import, schema migration, export round-trip and conflicting edits. Demonstrate sync disabled by default.",
     "firstStep": "Define module and storage boundaries first. Use two local fixture snapshots to simulate sync; a hosted service is unnecessary.",
     "starterContract": "Describe or implement an explicit conflict outcome without silently losing edits.",
-    "runtime": "A current browser; Node.js 22+ for pure-function tests"
+    "runtime": "A current browser; Node.js 22+ for pure-function tests",
+    "criteria": [
+      "Courses/tasks/notes modules\r",
+      "Offline operation\r",
+      "Conflict strategy documented\r",
+      "Export/import user data\r"
+    ]
   },
   {
     "id": "A03",
@@ -728,7 +836,13 @@
     "edgeCases": "Test traversal, symlink escape, size cap, unreadable files, false positives and narrowly scoped suppressions with reasons. A clean scan must not claim safety.",
     "firstStep": "Start with metadata-only extension checks, then add explained patterns. Bound file sizes and ensure the scanner reads data only.",
     "starterContract": "Return static finding records without importing, evaluating or running scanned text.",
-    "runtime": "Python 3.12+ and its standard library"
+    "runtime": "Python 3.12+ and its standard library",
+    "criteria": [
+      "Scans a target tree as data\r",
+      "Flags blocked extensions and suspicious patterns\r",
+      "Produces human-readable findings\r",
+      "Supports allowlisted false-positive suppressions\r"
+    ]
   },
   {
     "id": "A04",
@@ -767,7 +881,13 @@
     "edgeCases": "Create an evaluation set with supported, inferred, contradictory, absent and injection-bearing cases. Report observed category errors separately from interpretation.",
     "firstStep": "Write the output schema and hand-label synthetic evaluation cases before building the answer workflow. Mock inference is acceptable.",
     "starterContract": "Return evidence, inference or unsupported with source IDs and a reason.",
-    "runtime": "Python 3.12+ and its standard library"
+    "runtime": "Python 3.12+ and its standard library",
+    "criteria": [
+      "Labels sourced facts vs inference\r",
+      "Shows citations to provided material\r",
+      "Refuses unsupported certainty\r",
+      "Includes an evaluation set\r"
+    ]
   },
   {
     "id": "A05",
@@ -803,7 +923,13 @@
     "edgeCases": "Test missing field, unknown difficulty, duplicate IDs, traversal, hostile HTML and input ordering. Two identical builds must be byte-for-byte equal.",
     "firstStep": "Write a schema and invalid fixtures first. Sort by stable IDs; use a text serializer without evaluating templates.",
     "starterContract": "Validate a manifest before deterministic catalog rendering; collect file-scoped errors.",
-    "runtime": "Python 3.12+ and its standard library"
+    "runtime": "Python 3.12+ and its standard library",
+    "criteria": [
+      "Schema validation\r",
+      "Duplicate ID detection\r",
+      "Generates deterministic catalog output\r",
+      "Clear errors with file paths\r"
+    ]
   },
   {
     "id": "A06",
@@ -844,7 +970,13 @@
     "edgeCases": "Test duplicate-event policy, negative durations, timezone boundary, empty store, retention cutoff, export and deletion. Verify no third-party requests.",
     "firstStep": "Define a minimal versioned event schema and retention policy. Aggregate local synthetic events before building charts.",
     "starterContract": "Return local duration summaries without note content or identity fields.",
-    "runtime": "Python 3.12+ and its standard library"
+    "runtime": "Python 3.12+ and its standard library",
+    "criteria": [
+      "Event schema\r",
+      "Local event store\r",
+      "Trend visualizations\r",
+      "Data deletion/export\r"
+    ]
   },
   {
     "id": "A07",
@@ -893,7 +1025,13 @@
     "edgeCases": "Test duplicates, reverted contributions, missing review evidence and changed weights. Document gaming, bias and appeals; exclude stars, followers and commit volume.",
     "firstStep": "Keep the first prototype offline. Show raw inputs and a per-record explanation; this challenge does not ship a Forge leaderboard.",
     "starterContract": "Return explainable contribution scores with provenance; no production ranking.",
-    "runtime": "Python 3.12+ and its standard library"
+    "runtime": "Python 3.12+ and its standard library",
+    "criteria": [
+      "Uses merged/reviewed activity\r",
+      "Documents scoring weights\r",
+      "Allows raw-data inspection\r",
+      "Explains limitations and gaming risks\r"
+    ]
   },
   {
     "id": "A08",
@@ -928,6 +1066,13 @@
     "edgeCases": "Walk through a secret request, fork bomb scenario, oversized upload, dependency download, symlink escape and cleanup failure as text only. Do not deploy an evaluator.",
     "firstStep": "Copy the local threat-model template. Compare metadata-only review with a hypothetical disposable evaluator; justify whether execution should exist at all.",
     "starterContract": "Write a decision record and non-executing lifecycle diagram; code is optional.",
-    "runtime": "A Markdown editor; no runtime or container required"
+    "runtime": "A Markdown editor; no runtime or container required",
+    "criteria": [
+      "Threat model\r",
+      "Isolation boundaries\r",
+      "Proposed execution lifecycle\r",
+      "Abuse and resource-exhaustion controls\r",
+      "Decision on whether execution should be offered at all\r"
+    ]
   }
 ]
