@@ -16,3 +16,5 @@ Copy a template into your own repository and fill it with truthful project-speci
 | Prepare a personal evidence record | [Forge Passport](FORGE_PASSPORT.md) |
 
 Keep future work labeled planned. Publish only original, public-safe content. See [academic integrity](../ACADEMIC_INTEGRITY.md).
+
+For feedback use [Review feedback](REVIEW_FEEDBACK.md). For real, consented observations use [Usability session](USABILITY_SESSION.md); never fill it with fictional participants.

@@ -25,3 +25,7 @@ Practice fork → branch → edit → commit → pull request → review → mer
 Only original Markdown practice cards belong here. No executable code, scripts, HTML, remote embeds, archives, hidden payloads, personal details or restricted course content. Screenshots are unnecessary. The exercise is complete when you can explain the branch comparison, review feedback and merge result—not when a badge is awarded.
 
 Stuck? See [troubleshooting](TROUBLESHOOTING.md) and the [Git guide](../resources/github-learning-center.md). Read [Contributing](../CONTRIBUTING.md) before an upstream PR.
+
+## Practice review decisions
+
+The website sandbox includes synthetic exercises for responding to feedback, updating the same PR branch, selecting your fork as the base, and combining documentation edits without conflict markers. These local checks do not change GitHub. Use the walkthrough above for real practice and request review of each new snapshot.

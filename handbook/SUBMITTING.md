@@ -19,3 +19,7 @@ Create a separate repository for the challenge implementation. Copy the relevant
 Maintainers triage metadata and external links as untrusted; review is neither immediate nor guaranteed. Approved metadata may enter the catalog through a focused PR using [the project schema](../schemas/project.schema.json). Do not self-assign Verified status. Build Review and Explain/Debug/Adapt are separate under [the rubric](../SKILL_VERIFICATION.md). Later commits need their own review.
 
 If you change the solution after submission, provide the new SHA and describe the delta. A disagreement belongs in a respectful evidence-based review discussion, not a fabricated score or accusation. Private security issues follow [SECURITY.md](../SECURITY.md).
+
+## Prepare a draft in the website
+
+Open Review through search or the challenge link. Complete the self-check, record the exact commit and actual results, then export a Markdown draft. The form does not verify links or submit anything. Copy reviewed, public-safe information into the GitHub form. Read [the review rubric](REVIEW_RUBRIC.md).

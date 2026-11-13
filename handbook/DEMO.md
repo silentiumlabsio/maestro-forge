@@ -1,15 +1,13 @@
 # A 3–4 minute Forge walkthrough
 
-**0:00–0:25 — Home.** Introduce Maestro Forge as an independent Silentium Labs community project for Maestro students, not an official Maestro product. Show the security-conscious contribution model.
+**0:00–0:35 — Home and Start.** Introduce the independent Silentium Labs community project for Maestro students, not an official Maestro product. Choose beginner and Python; open the recommended build.
 
-**0:25–1:25 — Challenges.** Filter Beginner and open B01. Show the detail page, unfinished starter, synthetic input, expected transition and boundary checks. Explain that students build solutions in their own repositories. Briefly show an advanced design exercise such as A08. Do not present a starter as a finished app.
+**0:35–1:30 — B01 challenge.** Show the brief, unfinished starter and synthetic example. Reveal one hint, describe the common mistake, check a criterion and record an honest observation. Export evidence. Explain that code runs in the learner's own repository, not inside Forge.
 
-**1:25–2:05 — Learn and Resources.** Open a learning path and a specific challenge from its sequence. Search for validation and show the guide, patterns and evidence template.
+**1:30–2:30 — Sandbox.** Show the local fork-to-merge rehearsal and a review decision. Combine the two synthetic conflict instructions. Explain that no actual GitHub PR was created; the real walkthrough targets the learner's fork.
 
-**2:05–2:50 — First PR Sandbox.** Show the fork-only rehearsal route, exercise, practice-card template and review checklist. Explain the full browser flow through merge and that upstream merging requires maintainers.
+**2:30–3:15 — Review.** Open the readiness form, show missing evidence feedback and the exportable review draft. Explain that a human reviews an exact commit and self-checks do not confer verification.
 
-**2:50–3:35 — Contribute and Security.** Show project/review forms, contributor-owned source boundary and exact-commit evidence. Show truthful empty states for projects and builders.
+**3:15–3:50 — Learn, Resources and community.** Show a learning sequence, the review rubric and truthful empty states. Distinguish working learning tools from planned Passport services and real community records that require participation.
 
-**3:35–4:00 — Roadmap.** Distinguish available content and GitHub-native workflows from planned Passport generation, future recognition records and any separately reviewed execution infrastructure. End with an invitation to choose one challenge or practice one PR.
-
-Before recording: verify published Pages has the intended revision, check visible links, hide private tabs and personal details, and avoid implying a community review or student outcome that has not occurred.
+Before recording, verify the published revision and visible links, hide private details, and avoid implying any student outcome or review that has not happened. A teaching demonstration is not evidence that the product has passed student usability sessions.

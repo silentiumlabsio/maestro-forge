@@ -40,3 +40,13 @@ Firefox, Safari, physical touch devices, assistive-technology sessions and real 
 Community submissions, builder verification, measured outcomes and future roadmap services still require real participation and implementation. No fabricated community records or solution execution service were added.
 
 See [maintenance](MAINTENANCE.md) for repeatable checks and [the demo path](DEMO.md) for the walkthrough.
+
+## Guided learning follow-up — 2026-10-29
+
+Added experience/interest recommendations, three progressive hints and a practice guide for every challenge, an exportable submission readiness draft, and synthetic review/revision/base/conflict scenarios. Review guidance, feedback/session templates and a release checklist are searchable resources. Optional B02 learner contract tests intentionally target the unfinished starter; no passing solution is claimed.
+
+The expanded Chromium suite covers 144 responsive page checks and the new recommendation combinations, hint boundaries, readiness/export flow, review scenarios, conflict checks, reduced-motion behavior, narrow reflow and form labels, alongside existing recovery checks. DOM and viewport checks are not a screen-reader session or a claim of WCAG conformance.
+
+Firefox and WebKit browser packages were downloaded, but launch checks failed due to missing or unloadable Windows DLL dependencies (Firefox reported gkcodecs.dll; WebKit reported ICU, JPEG XL, network, XML and database libraries). Neither engine completed QA. No system-wide runtime repair was attempted. Real Safari, touch-device, screen-reader and consenting student sessions remain unperformed; use STUDENT_TESTING.md and record actual observations.
+
+The latest changes remain local until integrated and deployed. A local screen recording may show these features if clearly described as the current local build. Verify the deployed revision before presenting the public website as containing them.

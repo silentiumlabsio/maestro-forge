@@ -138,5 +138,45 @@
     "description": "Choose Python, JavaScript or accessible web scaffolding without packages or paid APIs.",
     "source": "Silentium Labs",
     "trust": "Repository learning material"
+  },
+  {
+    "id": "review-rubric",
+    "title": "Review rubric",
+    "kind": "Guide",
+    "area": "Contributing",
+    "description": "Evidence-based feedback, review scope and human approval boundaries.",
+    "href": "../handbook/REVIEW_RUBRIC.md",
+    "source": "Silentium Labs",
+    "trust": "Repository learning material"
+  },
+  {
+    "id": "student-testing",
+    "title": "Accessibility and student testing",
+    "kind": "Guide",
+    "area": "Contributing",
+    "description": "Keyboard, screen reader, zoom, touch and consenting student session protocol.",
+    "href": "../handbook/STUDENT_TESTING.md",
+    "source": "Silentium Labs",
+    "trust": "Repository learning material"
+  },
+  {
+    "id": "release-checklist",
+    "title": "Forge release checklist",
+    "kind": "Guide",
+    "area": "Contributing",
+    "description": "Repeatable checks for content, workflows, deployment and live rehearsal.",
+    "href": "../handbook/RELEASE_CHECKLIST.md",
+    "source": "Silentium Labs",
+    "trust": "Repository learning material"
+  },
+  {
+    "id": "review-feedback",
+    "title": "Review feedback template",
+    "kind": "Guide",
+    "area": "Contributing",
+    "description": "A reusable structure for actionable feedback without giving away a solution.",
+    "href": "../templates/REVIEW_FEEDBACK.md",
+    "source": "Silentium Labs",
+    "trust": "Repository learning material"
   }
 ]

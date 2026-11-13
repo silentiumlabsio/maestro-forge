@@ -17,3 +17,9 @@ Notes save in your browser. Download an evidence document for a single workspace
 If saving is blocked, storage is unreadable, or another tab has changed the same workspace, export current notes before reloading. Unsaved learning-workspace drafts remain available when navigating within the site, and the browser warns before leaving while they remain unsaved. A notes backup includes these drafts. Export before reloading; draft recovery does not survive a closed tab. Closing a private browsing window or clearing site data may remove progress. Avoid editing the same workspace in multiple tabs. On a shared computer, export what you need and clear your workspace/site storage when finished.
 
 Never enter real credentials, private student records or restricted course content. Read [Privacy](../PRIVACY.md) and [the submission guide](SUBMITTING.md) before sharing exported evidence.
+
+## Guided starting points and feedback
+
+Home links to an experience-and-interest selector using the existing paths. Recommendations are suggestions, not an assessment. Every challenge provides three hints and a practice worksheet. Optional learner tests belong in a reviewed copy in your own repository and deliberately fail on unfinished starters.
+
+Review builds an exportable readiness draft with evidence, attribution and an exact commit. It does not inspect remote repositories, run code or grant approval. Its fields and the additional sandbox review/conflict exercises are transient: export your review draft before leaving. The original sandbox rehearsal continues to save separately.

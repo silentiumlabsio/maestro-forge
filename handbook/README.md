@@ -2,7 +2,7 @@
 
 The single starting point for new community members:
 
-1. Browse the [24 official challenges](../challenges/) or [five learning paths](../learning-paths/).
+1. Browse the [24 community challenges](../challenges/) or [five learning paths](../learning-paths/).
 2. Learn the contribution loop in the [Git & GitHub Learning Center](../resources/github-learning-center.md).
 3. Read [Contributing](../CONTRIBUTING.md), [Security](../SECURITY.md), and the [AI Assistance Policy](../AI_ASSISTANCE_POLICY.md).
 4. Practice a documentation-only contribution in the [First PR Sandbox](../first-pr-sandbox/).
@@ -26,3 +26,11 @@ Executable challenge solutions and community applications remain in contributor-
 Choose one small milestone, work locally with synthetic data, record actual checks and ask for specific feedback. Community issue forms coordinate people; they are not live matching, automatic scoring or verification services.
 
 For browser workspaces, backups and the local PR rehearsal, see [Interactive learning](INTERACTIVE_LEARNING.md).
+
+## Review and maintain Forge
+
+- [Review rubric](REVIEW_RUBRIC.md) and [feedback template](../templates/REVIEW_FEEDBACK.md)
+- [Accessibility and student testing](STUDENT_TESTING.md)
+- [Release checklist](RELEASE_CHECKLIST.md)
+
+On the website, choose Find a starting point on Home or search for Start. Search for Review to prepare a review draft. Each challenge includes progressive hints and practice cases.
