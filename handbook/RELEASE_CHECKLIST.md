@@ -3,7 +3,7 @@
 Record the commit, date, reviewer and evidence for each step. Leave unperformed checks unchecked.
 
 - [ ] Read the diff; preserve independent-project disclaimers, academic integrity and contributor-owned solutions.
-- [ ] Run catalog, public repository and experience validators plus static triage as described in [maintenance](MAINTENANCE.md).
+- [ ] Run the available catalog and public repository validators plus static triage as described in [maintenance](MAINTENANCE.md).
 - [ ] Run generic kit tests. Do not execute student solutions or expect unfinished challenge tests to pass.
 - [ ] Run browser QA in Chromium, Firefox and WebKit where available. Record versions and failures. WebKit automation is not Safari testing on Apple hardware.
 - [ ] Follow the [accessibility and student session protocol](STUDENT_TESTING.md); record actual results separately from automated checks.

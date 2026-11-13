@@ -41,3 +41,7 @@ Real submitted projects, opted-in builders, measured experiments and verificatio
 Use [the demo path](DEMO.md) after the reviewed revision is merged and confirmed on Pages. See [maintenance](MAINTENANCE.md) for repeatable checks and [the roadmap](../ROADMAP.md) for scope boundaries.
 
 See [the follow-up QA report](QA_REPORT.md) for interactive recovery fixes and remaining release checks.
+
+## Integration status — 2026-11-13
+
+The student-facing update is published for review in PR #5. The two protected validator changes have been separated for maintainer review and are not part of that release. Earlier validation results describe the complete candidate; they do not imply the extra validator is installed on main. Existing workflow and branch protections remain unchanged.

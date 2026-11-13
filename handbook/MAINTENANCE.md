@@ -5,7 +5,6 @@ Run these read-only checks from the repository root with Python 3.12+:
 ```text
 python scripts/validate_catalog.py
 python scripts/validate_public_repo.py
-python scripts/validate_experience.py
 python scripts/security_scan_tree.py .
 ```
 
@@ -20,3 +19,7 @@ When updating a challenge, keep its brief, start package, fixture and site metad
 The privileged PR gate remains metadata-only with no checkout or contributor-code execution. It blocks maintainer-controlled paths, including validator scripts, even in a maintainer-authored PR. Changes to those paths require explicit owner review and the repository's approved maintainer integration process; do not weaken the gate just to obtain a green check. Main metadata validation runs only after content reaches main. Hosting, rulesets and security settings must be inspected separately; documentation is not proof they are enabled.
 
 Select a QA engine with `FORGE_QA_ENGINE=chromium`, `firefox` or `webkit` in your environment. Firefox and WebKit require their Playwright browser packages. `FORGE_BROWSER_PATH` overrides the Chromium executable only. WebKit checks do not establish Safari support on actual Apple devices. Follow [the release checklist](RELEASE_CHECKLIST.md) and [student testing protocol](STUDENT_TESTING.md).
+
+## Pending validation enhancement
+
+The additional experience validator and its integration are held in a separate maintainer review. Until that change is merged, the commands above run the existing checks; package/fixture/link checks from the earlier QA report were performed on the complete candidate, not installed in this release. Browser QA remains available.

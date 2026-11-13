@@ -50,3 +50,7 @@ The expanded Chromium suite covers 144 responsive page checks and the new recomm
 Firefox and WebKit browser packages were downloaded, but launch checks failed due to missing or unloadable Windows DLL dependencies (Firefox reported gkcodecs.dll; WebKit reported ICU, JPEG XL, network, XML and database libraries). Neither engine completed QA. No system-wide runtime repair was attempted. Real Safari, touch-device, screen-reader and consenting student sessions remain unperformed; use STUDENT_TESTING.md and record actual observations.
 
 The latest changes remain local until integrated and deployed. A local screen recording may show these features if clearly described as the current local build. Verify the deployed revision before presenting the public website as containing them.
+
+## Publication and split review — 2026-11-13
+
+GitHub access was restored and PR #5 published. Protected validator changes are separated into a follow-up review so the student-facing changes can be evaluated under the existing policy. The content and browser tools remain in PR #5; the additional experience validator is not yet shipped. Historical results above were obtained before this split. Independent review, merge and deployment verification remain required.

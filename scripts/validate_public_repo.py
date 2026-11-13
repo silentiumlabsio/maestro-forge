@@ -107,9 +107,6 @@ def validate_public_hygiene():
 
 
 def main():
-    # Maintainer-controlled validation only; this workflow runs on reviewed main.
-    import validate_experience
-    require(validate_experience.main() == 0, "student experience validation failed")
     challenges = validate_challenges()
     validate_paths(challenges)
     validate_trust_and_verifications()
