@@ -22,7 +22,7 @@ Audit date: 2026-10-22. Scope: repository content, static site, catalog/navigati
 - Public metadata and publication-hygiene validator passed.
 - Experience checks passed: JSON parsing, package links, fixture/site agreement, Python starter syntax, kit links, Markdown links and Markdown-only sandbox.
 - Generic Python and JavaScript kits: four automated tests each passed; the JavaScript CLI printed the expected normalized text on Windows.
-- Browser QA: 132 responsive route/detail checks across desktop, Chromebook, tablet and mobile, plus filtering, reset, global search, exact challenge navigation, unknown-ID recovery and menu/semantic checks. Desktop/mobile detail screenshots were visually inspected.
+- Browser QA: 136 responsive route/detail checks across desktop, Chromebook, tablet and mobile, plus filtering, reset, global search, exact challenge navigation, unknown-ID recovery and menu/semantic checks. Desktop/mobile detail screenshots were visually inspected.
 - Static tree triage found no configured flags. No student solutions were executed. Optional B04 learner tests intentionally target an unfinished starter and are not a passing implementation claim.
 - Git whitespace check passed. JSON and issue-form data are reviewed as text, not executable content.
 
@@ -39,3 +39,5 @@ A read of repository rulesets returned no rulesets at audit time. This does not 
 Real submitted projects, opted-in builders, measured experiments and verification records require real participants and review. Automated Passport exports/skill graphs, recurring community projects, larger Trials operations and any untrusted-code execution platform remain planned or framework-only as described in the roadmap. No fake records, credentials, telemetry, custom login system or execution service were added.
 
 Use [the demo path](DEMO.md) after the reviewed revision is merged and confirmed on Pages. See [maintenance](MAINTENANCE.md) for repeatable checks and [the roadmap](../ROADMAP.md) for scope boundaries.
+
+See [the follow-up QA report](QA_REPORT.md) for interactive recovery fixes and remaining release checks.

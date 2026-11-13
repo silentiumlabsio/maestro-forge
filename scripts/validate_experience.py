@@ -32,6 +32,7 @@ def local_target(source, link):
 
 
 def main():
+    ERRORS.clear()
     for path in ROOT.rglob("*.json"):
         if ".git" not in path.parts:
             try:
@@ -42,6 +43,10 @@ def main():
     for item in challenges:
         cid = item["id"]
         folder = (ROOT / item["path"].removeprefix("blob/main/")).parent
+        brief = (folder / "challenge.md").read_text(encoding="utf-8")
+        acceptance = brief.split("## Acceptance criteria", 1)[1].split("## Security requirements", 1)[0]
+        criteria = [line[6:].strip() for line in acceptance.splitlines() if line.startswith("- [ ] ")]
+        require(item.get("criteria") == criteria, f"{cid}: interactive checklist differs from brief")
         for field in ("startPath", "starterPath", "validationPath"):
             target = ROOT / item.get(field, "").removeprefix("blob/main/")
             require(target.is_file() and target.is_relative_to(folder), f"{cid}: missing local {field}")

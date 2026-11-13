@@ -14,6 +14,6 @@ This is a local simulation. For real GitHub practice, follow the linked browser 
 
 Notes save in your browser. Download an evidence document for a single workspace or use **Back up and restore learning notes** for a JSON backup across workspaces. A restore validates the file and asks before replacing existing notes. Rehearsal records export separately as Markdown.
 
-If saving is blocked, storage is unreadable, or another tab has changed the same workspace, export current notes before reloading. Closing a private browsing window or clearing site data may remove progress. Avoid editing the same workspace in multiple tabs. On a shared computer, export what you need and clear your workspace/site storage when finished.
+If saving is blocked, storage is unreadable, or another tab has changed the same workspace, export current notes before reloading. Unsaved learning-workspace drafts remain available when navigating within the site, and the browser warns before leaving while they remain unsaved. A notes backup includes these drafts. Export before reloading; draft recovery does not survive a closed tab. Closing a private browsing window or clearing site data may remove progress. Avoid editing the same workspace in multiple tabs. On a shared computer, export what you need and clear your workspace/site storage when finished.
 
 Never enter real credentials, private student records or restricted course content. Read [Privacy](../PRIVACY.md) and [the submission guide](SUBMITTING.md) before sharing exported evidence.

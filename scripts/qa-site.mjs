@@ -76,7 +76,8 @@ try {
     await page.close();
   }
 
-  const page = await browser.newPage({viewport:{width:1280,height:900}});
+  const context = await browser.newContext({viewport:{width:1280,height:900}});
+  const page = await context.newPage();
   await page.goto(`http://127.0.0.1:${port}/#sandbox`,{waitUntil:'networkidle'});
   await page.locator('#sandbox-next').click();
   await page.locator('#sandbox-branch').fill('main');
@@ -89,6 +90,8 @@ try {
   assert((await page.locator('#sandbox-editor').inputValue()).includes('practice branch'),'sandbox draft lost on reload');
   await page.locator('#sandbox-next').click();
   await page.locator('#sandbox-message').fill('Clarify contribution instructions');
+  await page.reload({waitUntil:'networkidle'});
+  assert((await page.locator('#sandbox-message').inputValue())==='Clarify contribution instructions','sandbox commit message lost on reload');
   await page.locator('#sandbox-next').click();
   await page.locator('#sandbox-base').selectOption('upstream');
   await page.locator('#sandbox-next').click();
@@ -103,6 +106,13 @@ try {
   assert((await page.locator('#sandbox-app').textContent()).includes('Practice merge complete'),'sandbox completion did not persist');
   await page.goto(`http://127.0.0.1:${port}/#challenges`, {waitUntil:'networkidle'});
   assert(await page.locator('.catalog-card').count() === 24, 'challenge catalog did not render 24 cards');
+  await page.locator('.skip-link').focus();
+  await page.keyboard.press('Enter');
+  assert(page.url().endsWith('#challenges'),'skip link changed route');
+  assert(await page.locator('#main').evaluate(el=>document.activeElement===el),'skip link did not focus main');
+  await page.locator('#challenge-search').fill('no-result-xyz');
+  await page.locator('.empty a').click();
+  assert(await page.locator('.catalog-card').count()===24,'empty-state reset failed');
   await page.locator('#challenge-search').fill('security');
   assert(await page.locator('.catalog-card').count() > 0 && await page.locator('.catalog-card').count() < 24, 'challenge search did not filter');
   await page.locator('#challenge-reset').click();
@@ -138,6 +148,26 @@ try {
   assert((await page.locator('[data-note="0"]').inputValue()).includes('fake clock'),'bad restore erased notes');
   await page.locator('.workspace summary').click();
   const backupEvent=page.waitForEvent('download');await page.locator('#backup-work').click();assert((await backupEvent).suggestedFilename()==='forge-notes-backup.json','backup download failed');
+  // A valid restore round trip must preserve text as text, with no HTML execution.
+  page.once('dialog',dialog=>dialog.accept());
+  await page.locator('#restore-work').setInputFiles({name:'valid.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify({version:1,records:{B01:{checks:[true],notes:{Plan:'<img src=x onerror=alert(1)> restored text'}}}}))});
+  assert((await page.locator('[data-note="0"]').inputValue()).includes('restored text'),'valid backup restore failed');
+  assert(await page.locator('.workspace img').count()===0,'restored text became HTML');
+  // A stale tab must not overwrite new work or silently discard its own draft.
+  const second=await page.context().newPage();
+  await second.goto(`http://127.0.0.1:${port}/#challenge?id=B01`,{waitUntil:'networkidle'});
+  await page.locator('[data-note="0"]').fill('Newest saved plan');
+  await second.locator('[data-note="0"]').fill('Conflicting unsaved plan');
+  assert((await second.locator('.workspace [role=status]').textContent()).includes('another tab'),'stale tab overwrote newer data');
+  second.once('dialog',dialog=>dialog.accept());await second.locator('#clear-work').click();
+  assert((await second.locator('[data-note="0"]').inputValue())==='Conflicting unsaved plan','failed clear discarded unsaved draft');
+  await second.goto(`http://127.0.0.1:${port}/#resources`,{waitUntil:'networkidle'});
+  await second.goto(`http://127.0.0.1:${port}/#challenge?id=B01`,{waitUntil:'networkidle'});
+  assert((await second.locator('[data-note="0"]').inputValue())==='Conflicting unsaved plan','route navigation lost unsaved draft');
+  await second.locator('[data-note="0"]').fill('Still conflicting after navigation');
+  assert((await second.locator('.workspace [role=status]').textContent()).includes('another tab'),'navigation bypassed conflict protection');
+  assert(await page.evaluate(()=>JSON.parse(localStorage.getItem('forge-workspace-v1')).B01.notes.Plan)==='Newest saved plan','conflicting draft replaced saved plan');
+  await second.close();
   await page.locator('.search-trigger').click();
   await page.locator('#global-search').fill('B04');
   await page.locator('.global-result').first().click();
@@ -149,10 +179,34 @@ try {
   await page.goto(`http://127.0.0.1:${port}/#home`, {waitUntil:'networkidle'});
   await page.locator('.menu-button').click();
   assert(await page.locator('.primary-nav').evaluate(element => element.classList.contains('open')), 'mobile menu did not open');
+  await page.locator('.mobile-search').click();
+  assert(await page.locator('#search-dialog').evaluate(el=>el.open),'mobile search unavailable');
+  await page.locator('.close-search').click();
   assert(await page.locator('meta[name="description"]').getAttribute('content'), 'missing meta description');
   assert(await page.locator('.skip-link').count() === 1, 'missing skip link');
   assert(await page.locator('a[href="#home"][aria-current="page"]').count() === 1, 'current route is not announced');
-  await page.close();
+  await context.close();
+  const recoveryContext=await browser.newContext();
+  const recovery=await recoveryContext.newPage();
+  await recovery.goto(`http://127.0.0.1:${port}/#home`,{waitUntil:'networkidle'});
+  await recovery.evaluate(()=>{localStorage.setItem('forge-workspace-v1','{broken');localStorage.setItem('forge-sandbox-v1',JSON.stringify({stage:7}));});
+  await recovery.goto(`http://127.0.0.1:${port}/#challenge?id=B01`,{waitUntil:'networkidle'});
+  await recovery.locator('[data-note="0"]').fill('Recoverable session notes');
+  assert((await recovery.locator('.workspace [role=status]').textContent()).includes('Saving is unavailable'),'corrupt storage warning absent');
+  assert(await recovery.evaluate(()=>localStorage.getItem('forge-workspace-v1'))==='{broken','corrupt data silently replaced');
+  await recovery.goto(`http://127.0.0.1:${port}/#sandbox`,{waitUntil:'networkidle'});
+  assert((await recovery.locator('#sandbox-status').textContent()).includes('could not be read'),'inconsistent sandbox state accepted');
+  await recoveryContext.close();
+  const failureContext=await browser.newContext();
+  const failure=await failureContext.newPage();
+  await failure.route('**/data/challenges.json',r=>r.fulfill({status:503,body:'Unavailable'}));
+  await failure.goto(`http://127.0.0.1:${port}/`,{waitUntil:'networkidle'});
+  assert(await failure.locator('#retry-catalog').count()===1,'load failure has no retry');
+  assert(await failure.locator('.error-state a').count()===1,'load failure has no accessible catalog alternative');
+  await failure.unroute('**/data/challenges.json');
+  await failure.locator('#retry-catalog').click();
+  await failure.waitForSelector('.route');
+  await failureContext.close();
   console.log(`Site QA OK: ${results.length} responsive route checks + filters, search, keyboard shortcut, mobile navigation, and semantic checks`);
 } finally {
   await browser.close();

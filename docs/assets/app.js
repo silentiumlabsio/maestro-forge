@@ -215,14 +215,17 @@ function renderRoute() {
   mountSandbox();
   $('.primary-nav')?.classList.remove('open');
   $('.menu-button')?.setAttribute('aria-expanded','false');
+  $('.menu-button')?.setAttribute('aria-label','Open navigation');
+  if ($('.menu-button')) $('.menu-button').innerHTML=icon('menu');
   window.scrollTo(0,0);
+  $('#main').focus({preventScroll:true});
 }
 
 function attachRouteEvents(route) {
   if (route === 'challenges') {
     const search=$('#challenge-search'), difficulty=$('#challenge-difficulty'), category=$('#challenge-category'), grid=$('#challenge-grid'), count=$('#challenge-count');
     const render=()=>{const q=search.value.trim().toLowerCase();const items=state.challenges.filter(x=>(difficulty.value==='all'||x.difficulty===difficulty.value)&&(category.value==='all'||x.category===category.value)&&(!q||[x.id,x.title,x.summary,x.category,...x.skills,...x.languages].join(' ').toLowerCase().includes(q)));grid.innerHTML=items.length?items.map(challengeCard).join(''):emptyState('search','No challenge matches','Try a broader search or reset the filters.','Reset filters','#challenges');count.textContent=`${items.length} OF ${state.challenges.length} BUILDS`;resolveContentLinks(grid);};
-    [search,difficulty,category].forEach(el=>el.addEventListener('input',render));$('#challenge-reset').addEventListener('click',()=>{search.value='';difficulty.value='all';category.value='all';render();search.focus();});render();
+    [search,difficulty,category].forEach(el=>el.addEventListener('input',render));const reset=()=>{search.value='';difficulty.value='all';category.value='all';render();search.focus();};$('#challenge-reset').addEventListener('click',reset);grid.addEventListener('click',event=>{if(event.target.closest('.empty a')){event.preventDefault();reset();}});render();
   }
   if (route === 'community') {
     $$('.tab').forEach(tab=>tab.addEventListener('click',()=>{$$('.tab').forEach(x=>x.setAttribute('aria-selected','false'));tab.setAttribute('aria-selected','true');$$('.ecosystem-card').forEach(card=>card.hidden=tab.dataset.pillar!=='all'&&card.dataset.pillar!==tab.dataset.pillar);tab.focus();}));
@@ -244,6 +247,7 @@ function initGlobalSearch() {
   const render=()=>{const q=input.value.trim().toLowerCase();const matches=(q?index.filter(x=>`${x.title} ${x.type} ${x.text}`.toLowerCase().includes(q)):index.slice(0,8)).slice(0,12);results.innerHTML=matches.map(x=>`<a class="global-result" href="${safeLink(x.href)}"><strong>${escapeHTML(x.title)}</strong><span>${escapeHTML(x.type)}</span></a>`).join('')||'<p class="page-deck">No result. Try a broader term.</p>';resolveContentLinks(results);};
   const open=()=>{index=buildSearchIndex();dialog.showModal();input.value='';render();setTimeout(()=>input.focus(),0);};
   $('.search-trigger').addEventListener('click',open);$('.close-search').addEventListener('click',()=>dialog.close());input.addEventListener('input',render);results.addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
+  $('.mobile-search')?.addEventListener('click',open);
   document.addEventListener('keydown',e=>{if(e.key==='/'&&!/input|textarea|select/i.test(document.activeElement.tagName)){e.preventDefault();open();}});
 }
 
@@ -252,12 +256,13 @@ function initMenu() {
 }
 
 async function init() {
+  $('.skip-link').addEventListener('click',event=>{event.preventDefault();$('#main').focus();$('#main').scrollIntoView();});
   try {
     const values=await Promise.all(dataFiles.map(([file])=>fetch(`data/${file}.json`).then(response=>{if(!response.ok)throw new Error(`${file}: ${response.status}`);return response.json();})));
     dataFiles.forEach(([,key],i)=>{state[key]=values[i];});
     initMenu();initGlobalSearch();window.addEventListener('hashchange',renderRoute);renderRoute();
   } catch (error) {
-    view.innerHTML=`<div class="error-state"><h1>Catalog unavailable</h1><p>The structured data could not be loaded. Serve the docs folder through GitHub Pages or a local web server.</p></div>`;console.error(error);
+    view.innerHTML=`<div class="error-state"><h1>Catalog unavailable</h1><p>We could not load the learning catalog. Your saved browser notes have not been deleted.</p><button class="button" id="retry-catalog">Try again</button><p><a href="https://github.com/silentiumlabsio/maestro-forge/blob/main/challenges/README.md">Open the GitHub challenge catalog</a></p></div>`;$('#retry-catalog').onclick=()=>location.reload();console.error(error);
   }
 }
 

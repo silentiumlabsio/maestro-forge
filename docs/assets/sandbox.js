@@ -9,13 +9,14 @@ function mountSandbox() {
   const key='forge-sandbox-v1';
   const original='# Clear contribution instructions\n\nChange the thing, save it, then submit it.\n';
   const fresh=()=>({stage:0,branch:'',draft:original,committed:'',message:'',base:'',feedback:false,reviewed:false,merged:false});
-  let model=fresh(), storageError='';
+  let model=fresh(), storageError='', baseline=null;
   try {
     const raw=localStorage.getItem(key);
-    if(raw){const parsed=JSON.parse(raw);if(!parsed || !Number.isInteger(parsed.stage) || parsed.stage<0 || parsed.stage>7)throw new Error('Invalid saved practice');model={...fresh(),...parsed};for(const field of ['branch','draft','committed','message','base'])if(typeof model[field]!=='string'||model[field].length>15000)throw new Error('Invalid saved practice');}
+    baseline=raw;
+    if(raw){const parsed=JSON.parse(raw);if(!parsed || !Number.isInteger(parsed.stage) || parsed.stage<0 || parsed.stage>7)throw new Error('Invalid saved practice');model={...fresh(),...parsed};for(const field of ['branch','draft','committed','message','base'])if(typeof model[field]!=='string'||model[field].length>15000)throw new Error('Invalid saved practice');for(const field of ['reviewed','merged'])if(typeof model[field]!=='boolean')throw new Error('Invalid saved practice');if(model.stage>=2&&!model.branch)throw new Error('Missing branch');if(model.stage>=4&&(!model.committed||!model.message))throw new Error('Missing snapshot');if(model.stage>=6&&(!model.reviewed||model.base!=='fork'||model.committed!==model.draft))throw new Error('Missing review');if(model.stage===7&&!model.merged)throw new Error('Missing merge');}
   } catch { model=fresh();storageError='Saved practice could not be read. You can rehearse in this tab; export your work before leaving.'; }
   const escape=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const persist=()=>{if(storageError)return;try{localStorage.setItem(key,JSON.stringify(model));}catch{storageError='Storage is unavailable. Your rehearsal stays in this tab; export it before leaving.';}};
+  const persist=()=>{if(!storageError){try{if(localStorage.getItem(key)!==baseline)throw new Error('Changed in another tab');const next=JSON.stringify(model);localStorage.setItem(key,next);baseline=next;}catch{storageError='Saving is unavailable or another tab changed this rehearsal. Export your work before reloading.';}}if(storageError&&host.querySelector('#sandbox-status'))host.querySelector('#sandbox-status').textContent=storageError;};
   const message=text=>{host.querySelector('#sandbox-status').textContent=text;};
   const steps=['Fork','Branch','Edit','Commit','Pull request','Review','Merge'];
   function render(){
@@ -32,6 +33,7 @@ function mountSandbox() {
     if(stage===6)content.innerHTML='<p>Your practice review is recorded for this snapshot. Merging brings the committed text into your fork’s main branch. Real upstream merges require an authorized maintainer and repository checks.</p>'+button('sandbox-next','Merge into practice main');
     if(stage===7)content.innerHTML='<p>You completed a local rehearsal. Your practice main now contains:</p><pre>'+escape(model.committed)+'</pre><p>Next: repeat the process in your GitHub fork, or <a href="#challenges">start a challenge</a>. This rehearsal has not created a real GitHub PR.</p>';
     const editor=host.querySelector('#sandbox-editor');if(editor){host.querySelector('#sandbox-preview').textContent=model.draft;editor.oninput=()=>{model.draft=editor.value;host.querySelector('#sandbox-preview').textContent=model.draft;persist();};}
+    for(const [selector,field] of [['#sandbox-branch','branch'],['#sandbox-message','message']]){const input=host.querySelector(selector);if(input)input.oninput=()=>{model[field]=input.value;persist();};}
     host.querySelector('#sandbox-revise')?.addEventListener('click',()=>{model.stage=2;model.reviewed=false;persist();render();});
     host.querySelector('#sandbox-next')?.addEventListener('click',()=>{
       if(stage===1){const name=host.querySelector('#sandbox-branch').value.trim();if(!/^[a-zA-Z0-9][a-zA-Z0-9/_-]{2,79}$/.test(name)||name==='main'||name.includes('//')||name.endsWith('/'))return message('Choose a descriptive practice branch using letters, numbers, /, - or _. Do not use main.');model.branch=name;}
@@ -42,7 +44,7 @@ function mountSandbox() {
       if(stage===6){if(!model.reviewed||model.committed!==model.draft)return message('The current snapshot needs review before merging.');model.merged=true;}
       model.stage++;persist();render();host.querySelector('article h2').tabIndex=-1;host.querySelector('article h2').focus();
     });
-    host.querySelector('#sandbox-reset').onclick=()=>{if(confirm('Start a new rehearsal? Export first if you want to keep this record.')){model=fresh();storageError='';persist();render();}};
+    host.querySelector('#sandbox-reset').onclick=()=>{if(confirm('Start a new rehearsal? Export first if you want to keep this record.')){model=fresh();storageError='';try{baseline=localStorage.getItem(key);}catch{}persist();render();}};
     host.querySelector('#sandbox-export').onclick=()=>{const text=`# First PR local rehearsal\n\nThis is a simulation, not a GitHub contribution or verification.\nStage: ${model.stage}/7\nBranch: ${model.branch}\nCommit message: ${model.message}\n\n## Draft\n${model.draft}\n\n## Committed snapshot\n${model.committed}\n`;const url=URL.createObjectURL(new Blob([text],{type:'text/plain'}));const a=document.createElement('a');a.href=url;a.download='forge-pr-rehearsal.md';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
   }
   render();

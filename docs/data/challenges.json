@@ -31,10 +31,10 @@
     "starterContract": "Return ordered work/break transitions; inject a clock into the CLI so tests never wait.",
     "runtime": "Python 3.12+ and its standard library",
     "criteria": [
-      "Starts a focus session from a user-supplied duration\r",
-      "Prints clear session transitions\r",
-      "Handles invalid input without crashing\r",
-      "Uses no network access\r"
+      "Starts a focus session from a user-supplied duration",
+      "Prints clear session transitions",
+      "Handles invalid input without crashing",
+      "Uses no network access"
     ]
   },
   {
@@ -75,10 +75,10 @@
     "starterContract": "Return validated question/answer cards; scoring and interaction belong in separate functions.",
     "runtime": "Python 3.12+ and its standard library",
     "criteria": [
-      "Loads cards from a documented local format\r",
-      "Shuffles or cycles through cards\r",
-      "Tracks score for the current session\r",
-      "Handles malformed card data safely\r"
+      "Loads cards from a documented local format",
+      "Shuffles or cycles through cards",
+      "Tracks score for the current session",
+      "Handles malformed card data safely"
     ]
   },
   {
@@ -117,10 +117,10 @@
     "starterContract": "Return timer state for start, pause, reset and tick actions without touching the DOM.",
     "runtime": "A current browser; Node.js 22+ for pure-function tests",
     "criteria": [
-      "Start, pause, reset\r",
-      "Keyboard usable controls\r",
-      "Visible timer state\r",
-      "No framework required\r"
+      "Start, pause, reset",
+      "Keyboard usable controls",
+      "Visible timer state",
+      "No framework required"
     ]
   },
   {
@@ -165,10 +165,10 @@
     "starterContract": "Return a weighted percentage only after validating weights and scores.",
     "runtime": "A current browser; Node.js 22+ for pure-function tests",
     "criteria": [
-      "Supports weighted categories\r",
-      "Validates totals and numeric ranges\r",
-      "Shows at least one what-if scenario\r",
-      "Explains calculation assumptions\r"
+      "Supports weighted categories",
+      "Validates totals and numeric ranges",
+      "Shows at least one what-if scenario",
+      "Explains calculation assumptions"
     ]
   },
   {
@@ -207,10 +207,10 @@
     "starterContract": "Return the consecutive-day count using an explicit reference date.",
     "runtime": "Python 3.12+ and its standard library",
     "criteria": [
-      "Records a completed day\r",
-      "Calculates current streak\r",
-      "Shows recent history\r",
-      "Prevents duplicate day entries\r"
+      "Records a completed day",
+      "Calculates current streak",
+      "Shows recent history",
+      "Prevents duplicate day entries"
     ]
   },
   {
@@ -247,10 +247,10 @@
     "starterContract": "Return title/path records for Markdown files under the selected root; never write to the notes.",
     "runtime": "Python 3.12+ and its standard library",
     "criteria": [
-      "Recursively finds `.md` files\r",
-      "Extracts first heading or filename\r",
-      "Outputs a readable index\r",
-      "Handles unreadable files gracefully\r"
+      "Recursively finds `.md` files",
+      "Extracts first heading or filename",
+      "Outputs a readable index",
+      "Handles unreadable files gracefully"
     ]
   },
   {
@@ -285,10 +285,10 @@
     "starterContract": "Return a validated config without exposing the fake secret in messages.",
     "runtime": "Python 3.12+ and its standard library",
     "criteria": [
-      "Uses an environment variable for a fake API key\r",
-      "Includes `.env.example` without a real secret\r",
-      "Fails safely when config is missing\r",
-      "Documents why secrets should not be committed\r"
+      "Uses an environment variable for a fake API key",
+      "Includes `.env.example` without a real secret",
+      "Fails safely when config is missing",
+      "Documents why secrets should not be committed"
     ]
   },
   {
@@ -325,10 +325,10 @@
     "starterContract": "Return Markdown from bounded project fields without executing any field.",
     "runtime": "Python 3.12+ and its standard library",
     "criteria": [
-      "Collects project name, purpose, setup, usage\r",
-      "Escapes or safely handles unusual text input\r",
-      "Generates Markdown\r",
-      "Does not overwrite an existing file without confirmation\r"
+      "Collects project name, purpose, setup, usage",
+      "Escapes or safely handles unusual text input",
+      "Generates Markdown",
+      "Does not overwrite an existing file without confirmation"
     ]
   },
   {
@@ -381,10 +381,10 @@
     "starterContract": "Choose a valid question ID with a documented priority and deterministic tie breaker.",
     "runtime": "Python 3.12+ and its standard library",
     "criteria": [
-      "Supports a question bank\r",
-      "Tracks correct/incorrect history\r",
-      "Reprioritizes missed concepts\r",
-      "Persists progress locally\r"
+      "Supports a question bank",
+      "Tracks correct/incorrect history",
+      "Reprioritizes missed concepts",
+      "Persists progress locally"
     ]
   },
   {
@@ -427,10 +427,10 @@
     "starterContract": "Validate a provider result against a documented question contract before rendering.",
     "runtime": "Python 3.12+ and its standard library",
     "criteria": [
-      "Accepts study text\r",
-      "Generates structured questions\r",
-      "Has a no-API fallback/demo mode\r",
-      "Validates model output before displaying it\r"
+      "Accepts study text",
+      "Generates structured questions",
+      "Has a no-API fallback/demo mode",
+      "Validates model output before displaying it"
     ]
   },
   {
@@ -467,10 +467,10 @@
     "starterContract": "Validate a public repository API response into display-only fields.",
     "runtime": "A current browser; Node.js 22+ for pure-function tests",
     "criteria": [
-      "User can enter an owner/repo\r",
-      "Shows public repository metrics\r",
-      "Handles rate limits and errors\r",
-      "Sanitizes rendered text\r"
+      "User can enter an owner/repo",
+      "Shows public repository metrics",
+      "Handles rate limits and errors",
+      "Sanitizes rendered text"
     ]
   },
   {
@@ -518,10 +518,10 @@
     "starterContract": "Return scheduled blocks plus unscheduled work and an explanation per decision.",
     "runtime": "Python 3.12+ and its standard library",
     "criteria": [
-      "Accepts courses/tasks/deadlines\r",
-      "Respects daily availability\r",
-      "Prioritizes near deadlines\r",
-      "Explains why tasks were scheduled\r"
+      "Accepts courses/tasks/deadlines",
+      "Respects daily availability",
+      "Prioritizes near deadlines",
+      "Explains why tasks were scheduled"
     ]
   },
   {
@@ -564,10 +564,10 @@
     "starterContract": "Validate local card data before it reaches storage or the view.",
     "runtime": "A current browser; Node.js 22+ for pure-function tests",
     "criteria": [
-      "Installable manifest\r",
-      "Offline deck access\r",
-      "Local add/edit/delete\r",
-      "Accessible keyboard flow\r"
+      "Installable manifest",
+      "Offline deck access",
+      "Local add/edit/delete",
+      "Accessible keyboard flow"
     ]
   },
   {
@@ -611,10 +611,10 @@
     "starterContract": "Return ranked source references with a deterministic tie breaker.",
     "runtime": "Python 3.12+ and its standard library",
     "criteria": [
-      "Indexes local text/Markdown\r",
-      "Returns ranked results\r",
-      "Supports rebuild/update\r",
-      "Shows source file for each hit\r"
+      "Indexes local text/Markdown",
+      "Returns ranked results",
+      "Supports rebuild/update",
+      "Shows source file for each hit"
     ]
   },
   {
@@ -651,10 +651,10 @@
     "starterContract": "Validate a tiny create-note request without needing a live server.",
     "runtime": "Python 3.12+ and its standard library",
     "criteria": [
-      "At least 5 automated tests\r",
-      "Input schema validation\r",
-      "Safe error responses\r",
-      "Security notes in README\r"
+      "At least 5 automated tests",
+      "Input schema validation",
+      "Safe error responses",
+      "Security notes in README"
     ]
   },
   {
@@ -696,10 +696,10 @@
     "starterContract": "Validate and normalize challenge records into display state; completion requires evidence.",
     "runtime": "A current browser; Node.js 22+ for pure-function tests",
     "criteria": [
-      "Loads catalog data\r",
-      "Filters by track/status\r",
-      "Links to challenge briefs\r",
-      "Handles missing fields gracefully\r"
+      "Loads catalog data",
+      "Filters by track/status",
+      "Links to challenge briefs",
+      "Handles missing fields gracefully"
     ]
   },
   {
@@ -744,10 +744,10 @@
     "starterContract": "Return bounded passages with stable source IDs for a separate answer component.",
     "runtime": "Python 3.12+ and its standard library",
     "criteria": [
-      "Indexes user-selected documents\r",
-      "Retrieves relevant passages\r",
-      "Answers with source references\r",
-      "Provides a local/mock mode or clearly documented provider mode\r"
+      "Indexes user-selected documents",
+      "Retrieves relevant passages",
+      "Answers with source references",
+      "Provides a local/mock mode or clearly documented provider mode"
     ]
   },
   {
@@ -792,10 +792,10 @@
     "starterContract": "Describe or implement an explicit conflict outcome without silently losing edits.",
     "runtime": "A current browser; Node.js 22+ for pure-function tests",
     "criteria": [
-      "Courses/tasks/notes modules\r",
-      "Offline operation\r",
-      "Conflict strategy documented\r",
-      "Export/import user data\r"
+      "Courses/tasks/notes modules",
+      "Offline operation",
+      "Conflict strategy documented",
+      "Export/import user data"
     ]
   },
   {
@@ -838,10 +838,10 @@
     "starterContract": "Return static finding records without importing, evaluating or running scanned text.",
     "runtime": "Python 3.12+ and its standard library",
     "criteria": [
-      "Scans a target tree as data\r",
-      "Flags blocked extensions and suspicious patterns\r",
-      "Produces human-readable findings\r",
-      "Supports allowlisted false-positive suppressions\r"
+      "Scans a target tree as data",
+      "Flags blocked extensions and suspicious patterns",
+      "Produces human-readable findings",
+      "Supports allowlisted false-positive suppressions"
     ]
   },
   {
@@ -883,10 +883,10 @@
     "starterContract": "Return evidence, inference or unsupported with source IDs and a reason.",
     "runtime": "Python 3.12+ and its standard library",
     "criteria": [
-      "Labels sourced facts vs inference\r",
-      "Shows citations to provided material\r",
-      "Refuses unsupported certainty\r",
-      "Includes an evaluation set\r"
+      "Labels sourced facts vs inference",
+      "Shows citations to provided material",
+      "Refuses unsupported certainty",
+      "Includes an evaluation set"
     ]
   },
   {
@@ -925,10 +925,10 @@
     "starterContract": "Validate a manifest before deterministic catalog rendering; collect file-scoped errors.",
     "runtime": "Python 3.12+ and its standard library",
     "criteria": [
-      "Schema validation\r",
-      "Duplicate ID detection\r",
-      "Generates deterministic catalog output\r",
-      "Clear errors with file paths\r"
+      "Schema validation",
+      "Duplicate ID detection",
+      "Generates deterministic catalog output",
+      "Clear errors with file paths"
     ]
   },
   {
@@ -972,10 +972,10 @@
     "starterContract": "Return local duration summaries without note content or identity fields.",
     "runtime": "Python 3.12+ and its standard library",
     "criteria": [
-      "Event schema\r",
-      "Local event store\r",
-      "Trend visualizations\r",
-      "Data deletion/export\r"
+      "Event schema",
+      "Local event store",
+      "Trend visualizations",
+      "Data deletion/export"
     ]
   },
   {
@@ -1027,10 +1027,10 @@
     "starterContract": "Return explainable contribution scores with provenance; no production ranking.",
     "runtime": "Python 3.12+ and its standard library",
     "criteria": [
-      "Uses merged/reviewed activity\r",
-      "Documents scoring weights\r",
-      "Allows raw-data inspection\r",
-      "Explains limitations and gaming risks\r"
+      "Uses merged/reviewed activity",
+      "Documents scoring weights",
+      "Allows raw-data inspection",
+      "Explains limitations and gaming risks"
     ]
   },
   {
@@ -1068,11 +1068,11 @@
     "starterContract": "Write a decision record and non-executing lifecycle diagram; code is optional.",
     "runtime": "A Markdown editor; no runtime or container required",
     "criteria": [
-      "Threat model\r",
-      "Isolation boundaries\r",
-      "Proposed execution lifecycle\r",
-      "Abuse and resource-exhaustion controls\r",
-      "Decision on whether execution should be offered at all\r"
+      "Threat model",
+      "Isolation boundaries",
+      "Proposed execution lifecycle",
+      "Abuse and resource-exhaustion controls",
+      "Decision on whether execution should be offered at all"
     ]
   }
 ]
