@@ -1,0 +1,20 @@
+{
+  "records": [
+    {
+      "id": "demo-pr-1",
+      "merged": true,
+      "reviewed": true,
+      "kind": "documentation"
+    },
+    {
+      "id": "demo-pr-2",
+      "merged": false,
+      "reviewed": false,
+      "kind": "code"
+    }
+  ],
+  "weights": {
+    "documentation": 2,
+    "code": 2
+  }
+}

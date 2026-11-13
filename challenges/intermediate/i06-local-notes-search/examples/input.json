@@ -1,0 +1,13 @@
+{
+  "query": "loops",
+  "documents": [
+    {
+      "path": "a.md",
+      "text": "Loops repeat tasks."
+    },
+    {
+      "path": "b.md",
+      "text": "Variables store values."
+    }
+  ]
+}

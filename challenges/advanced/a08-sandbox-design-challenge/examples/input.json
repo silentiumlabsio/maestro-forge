@@ -1,0 +1,6 @@
+{
+  "request": "evaluate an unknown repository",
+  "default_action": "do not execute",
+  "secrets": [],
+  "network": "denied"
+}

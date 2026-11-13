@@ -1,0 +1,6 @@
+{
+  "files": {
+    "alpha.md": "# Alpha\nOriginal demo note.",
+    "nested/beta.md": "No heading here."
+  }
+}

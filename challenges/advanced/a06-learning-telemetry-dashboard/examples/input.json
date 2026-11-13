@@ -1,0 +1,12 @@
+[
+  {
+    "type": "session_completed",
+    "day": "2026-01-01",
+    "minutes": 20
+  },
+  {
+    "type": "session_completed",
+    "day": "2026-01-01",
+    "minutes": 10
+  }
+]

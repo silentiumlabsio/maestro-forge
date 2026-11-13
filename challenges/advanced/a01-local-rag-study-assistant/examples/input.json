@@ -1,0 +1,13 @@
+{
+  "query": "What repeats tasks?",
+  "documents": [
+    {
+      "id": "demo-a",
+      "text": "Loops repeat tasks."
+    },
+    {
+      "id": "demo-b",
+      "text": "Variables store named values."
+    }
+  ]
+}

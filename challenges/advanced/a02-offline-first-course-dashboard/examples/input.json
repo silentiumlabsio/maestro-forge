@@ -1,0 +1,12 @@
+{
+  "local": {
+    "id": "task-1",
+    "revision": 2,
+    "title": "Local edit"
+  },
+  "incoming": {
+    "id": "task-1",
+    "revision": 2,
+    "title": "Other edit"
+  }
+}

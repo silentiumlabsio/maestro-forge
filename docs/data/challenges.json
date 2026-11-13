@@ -16,7 +16,20 @@
     ],
     "status": "Open",
     "author": "Silentium Labs",
-    "path": "blob/main/challenges/beginner/b01-focus-timer-cli/challenge.md"
+    "path": "blob/main/challenges/beginner/b01-focus-timer-cli/challenge.md",
+    "startPath": "blob/main/challenges/beginner/b01-focus-timer-cli/README.md",
+    "starterPath": "blob/main/challenges/beginner/b01-focus-timer-cli/starter/main.py",
+    "validationPath": "blob/main/challenges/beginner/b01-focus-timer-cli/VALIDATION.md",
+    "kit": "blob/main/starter-kits/python/README.md",
+    "example": {
+      "work_seconds": 2,
+      "break_seconds": 1
+    },
+    "expected": "A 2-second work period precedes a 1-second break; transitions appear once in order.",
+    "edgeCases": "Reject zero, negative, fractional, non-numeric and excessive durations. Test cancellation and clock advancement without sleeping.",
+    "firstStep": "Separate duration validation, transition planning and display. Start with a fake clock, then connect real time.",
+    "starterContract": "Return ordered work/break transitions; inject a clock into the CLI so tests never wait.",
+    "runtime": "Python 3.12+ and its standard library"
   },
   {
     "id": "B02",
@@ -35,7 +48,26 @@
     ],
     "status": "Open",
     "author": "Silentium Labs",
-    "path": "blob/main/challenges/beginner/b02-flashcard-deck-cli/challenge.md"
+    "path": "blob/main/challenges/beginner/b02-flashcard-deck-cli/challenge.md",
+    "startPath": "blob/main/challenges/beginner/b02-flashcard-deck-cli/README.md",
+    "starterPath": "blob/main/challenges/beginner/b02-flashcard-deck-cli/starter/main.py",
+    "validationPath": "blob/main/challenges/beginner/b02-flashcard-deck-cli/VALIDATION.md",
+    "kit": "blob/main/starter-kits/python/README.md",
+    "example": [
+      {
+        "question": "What stores a named value?",
+        "answer": "variable"
+      },
+      {
+        "question": "What repeats a task?",
+        "answer": "loop"
+      }
+    ],
+    "expected": "Both cards can be visited; one correct answer in two attempts produces 1/2 for that session.",
+    "edgeCases": "Empty deck, invalid JSON, missing answer, duplicate cards, whitespace and a wrong answer must not crash or reuse a previous score.",
+    "firstStep": "Validate the deck first, cycle in a fixed order, then add optional seeded shuffling.",
+    "starterContract": "Return validated question/answer cards; scoring and interaction belong in separate functions.",
+    "runtime": "Python 3.12+ and its standard library"
   },
   {
     "id": "B03",
@@ -57,7 +89,21 @@
     ],
     "status": "Open",
     "author": "Silentium Labs",
-    "path": "blob/main/challenges/beginner/b03-pomodoro-web-app/challenge.md"
+    "path": "blob/main/challenges/beginner/b03-pomodoro-web-app/challenge.md",
+    "startPath": "blob/main/challenges/beginner/b03-pomodoro-web-app/README.md",
+    "starterPath": "blob/main/challenges/beginner/b03-pomodoro-web-app/starter/core.mjs",
+    "validationPath": "blob/main/challenges/beginner/b03-pomodoro-web-app/VALIDATION.md",
+    "kit": "blob/main/starter-kits/web/README.md",
+    "example": {
+      "state": "idle",
+      "work_seconds": 2,
+      "break_seconds": 1
+    },
+    "expected": "Start → work; pause freezes remaining time; reset returns to the initial duration.",
+    "edgeCases": "Repeated start must not create extra intervals. Test reset while paused, tab backgrounding, keyboard-only operation and screen-reader state announcements.",
+    "firstStep": "Draw idle/work/break/paused states on paper. Implement pure transitions before adding browser events.",
+    "starterContract": "Return timer state for start, pause, reset and tick actions without touching the DOM.",
+    "runtime": "A current browser; Node.js 22+ for pure-function tests"
   },
   {
     "id": "B04",
@@ -78,7 +124,28 @@
     ],
     "status": "Open",
     "author": "Silentium Labs",
-    "path": "blob/main/challenges/beginner/b04-grade-scenario-calculator/challenge.md"
+    "path": "blob/main/challenges/beginner/b04-grade-scenario-calculator/challenge.md",
+    "startPath": "blob/main/challenges/beginner/b04-grade-scenario-calculator/README.md",
+    "starterPath": "blob/main/challenges/beginner/b04-grade-scenario-calculator/starter/core.mjs",
+    "validationPath": "blob/main/challenges/beginner/b04-grade-scenario-calculator/VALIDATION.md",
+    "kit": "blob/main/starter-kits/web/README.md",
+    "example": [
+      {
+        "name": "Practice",
+        "weight": 40,
+        "score": 80
+      },
+      {
+        "name": "Project",
+        "weight": 60,
+        "score": 90
+      }
+    ],
+    "expected": "The weighted result is 86%; changing the project score to 100 produces 92%.",
+    "edgeCases": "Reject weights totaling 90 or 110, negative weights, scores outside 0–100, empty input, NaN and infinity. Explain rounding.",
+    "firstStep": "Use synthetic category names and percentages. Keep parsing, calculation and form rendering separate.",
+    "starterContract": "Return a weighted percentage only after validating weights and scores.",
+    "runtime": "A current browser; Node.js 22+ for pure-function tests"
   },
   {
     "id": "B05",
@@ -97,7 +164,24 @@
     ],
     "status": "Open",
     "author": "Silentium Labs",
-    "path": "blob/main/challenges/beginner/b05-study-streak-tracker/challenge.md"
+    "path": "blob/main/challenges/beginner/b05-study-streak-tracker/challenge.md",
+    "startPath": "blob/main/challenges/beginner/b05-study-streak-tracker/README.md",
+    "starterPath": "blob/main/challenges/beginner/b05-study-streak-tracker/starter/main.py",
+    "validationPath": "blob/main/challenges/beginner/b05-study-streak-tracker/VALIDATION.md",
+    "kit": "blob/main/starter-kits/python/README.md",
+    "example": {
+      "days": [
+        "2026-01-01",
+        "2026-01-02",
+        "2026-01-02"
+      ],
+      "today": "2026-01-03"
+    },
+    "expected": "Under a documented yesterday-grace rule the streak is 2 and duplicate dates count once.",
+    "edgeCases": "Test today present, gap, leap day, out-of-order dates, future dates and corrupted store. Document timezone and stale-streak rules.",
+    "firstStep": "Define a calendar-day policy before coding; deduplicate dates and keep storage separate from counting.",
+    "starterContract": "Return the consecutive-day count using an explicit reference date.",
+    "runtime": "Python 3.12+ and its standard library"
   },
   {
     "id": "B06",
@@ -116,7 +200,22 @@
     ],
     "status": "Open",
     "author": "Silentium Labs",
-    "path": "blob/main/challenges/beginner/b06-markdown-notes-indexer/challenge.md"
+    "path": "blob/main/challenges/beginner/b06-markdown-notes-indexer/challenge.md",
+    "startPath": "blob/main/challenges/beginner/b06-markdown-notes-indexer/README.md",
+    "starterPath": "blob/main/challenges/beginner/b06-markdown-notes-indexer/starter/main.py",
+    "validationPath": "blob/main/challenges/beginner/b06-markdown-notes-indexer/VALIDATION.md",
+    "kit": "blob/main/starter-kits/python/README.md",
+    "example": {
+      "files": {
+        "alpha.md": "# Alpha\nOriginal demo note.",
+        "nested/beta.md": "No heading here."
+      }
+    },
+    "expected": "The index includes Alpha and a filename fallback for nested/beta.md in deterministic order.",
+    "edgeCases": "Test empty tree, uppercase extension policy, unreadable file, UTF-8 text, traversal and an escaping symlink. Verify original files are unchanged.",
+    "firstStep": "Create the fixture files in a temporary directory. Resolve the allowed root and inventory files before extracting headings.",
+    "starterContract": "Return title/path records for Markdown files under the selected root; never write to the notes.",
+    "runtime": "Python 3.12+ and its standard library"
   },
   {
     "id": "B07",
@@ -136,7 +235,19 @@
     ],
     "status": "Open",
     "author": "Silentium Labs",
-    "path": "blob/main/challenges/beginner/b07-secret-safe-config-demo/challenge.md"
+    "path": "blob/main/challenges/beginner/b07-secret-safe-config-demo/challenge.md",
+    "startPath": "blob/main/challenges/beginner/b07-secret-safe-config-demo/README.md",
+    "starterPath": "blob/main/challenges/beginner/b07-secret-safe-config-demo/starter/main.py",
+    "validationPath": "blob/main/challenges/beginner/b07-secret-safe-config-demo/VALIDATION.md",
+    "kit": "blob/main/starter-kits/python/README.md",
+    "example": {
+      "FORGE_DEMO_KEY": "demo-only-not-a-credential"
+    },
+    "expected": "The dummy key permits startup; no output contains its value. Missing configuration produces a clear redacted error.",
+    "edgeCases": "Test missing, empty and whitespace-only values. Capture logs and errors; assert the fake key never appears. No actual API call is needed.",
+    "firstStep": "Pass a dictionary to the config function for tests; only the entry point reads environment variables.",
+    "starterContract": "Return a validated config without exposing the fake secret in messages.",
+    "runtime": "Python 3.12+ and its standard library"
   },
   {
     "id": "B08",
@@ -155,7 +266,22 @@
     ],
     "status": "Open",
     "author": "Silentium Labs",
-    "path": "blob/main/challenges/beginner/b08-project-readme-builder/challenge.md"
+    "path": "blob/main/challenges/beginner/b08-project-readme-builder/challenge.md",
+    "startPath": "blob/main/challenges/beginner/b08-project-readme-builder/README.md",
+    "starterPath": "blob/main/challenges/beginner/b08-project-readme-builder/starter/main.py",
+    "validationPath": "blob/main/challenges/beginner/b08-project-readme-builder/VALIDATION.md",
+    "kit": "blob/main/starter-kits/python/README.md",
+    "example": {
+      "name": "Demo Garden",
+      "purpose": "Track imaginary plants",
+      "setup": "No installation required",
+      "usage": "Add a fictional plant"
+    },
+    "expected": "The draft contains name, purpose, setup and usage; writing it refuses to overwrite an existing file without explicit confirmation.",
+    "edgeCases": "Test backticks, angle brackets, newlines, missing fields and an existing output file. Confirm input text cannot run a command.",
+    "firstStep": "Generate text in memory first. Add an explicitly selected output location and a separate overwrite decision.",
+    "starterContract": "Return Markdown from bounded project fields without executing any field.",
+    "runtime": "Python 3.12+ and its standard library"
   },
   {
     "id": "I01",
@@ -174,7 +300,38 @@
     ],
     "status": "Open",
     "author": "Silentium Labs",
-    "path": "blob/main/challenges/intermediate/i01-adaptive-quiz-engine/challenge.md"
+    "path": "blob/main/challenges/intermediate/i01-adaptive-quiz-engine/challenge.md",
+    "startPath": "blob/main/challenges/intermediate/i01-adaptive-quiz-engine/README.md",
+    "starterPath": "blob/main/challenges/intermediate/i01-adaptive-quiz-engine/starter/main.py",
+    "validationPath": "blob/main/challenges/intermediate/i01-adaptive-quiz-engine/VALIDATION.md",
+    "kit": "blob/main/starter-kits/python/README.md",
+    "example": {
+      "bank": [
+        {
+          "id": "q1",
+          "concept": "loops"
+        },
+        {
+          "id": "q2",
+          "concept": "values"
+        }
+      ],
+      "history": [
+        {
+          "id": "q1",
+          "correct": false
+        },
+        {
+          "id": "q2",
+          "correct": true
+        }
+      ]
+    },
+    "expected": "q1 is selected before q2 under a missed-first rule; saving and reloading history preserves that decision.",
+    "edgeCases": "Test unseen questions, ties, repeated misses, corrupt history and removed question IDs. Compare against fixed order on the same synthetic attempts.",
+    "firstStep": "Define priority rules, test selection in memory, then add validated JSON persistence.",
+    "starterContract": "Choose a valid question ID with a documented priority and deterministic tie breaker.",
+    "runtime": "Python 3.12+ and its standard library"
   },
   {
     "id": "I02",
@@ -195,7 +352,26 @@
     ],
     "status": "Open",
     "author": "Silentium Labs",
-    "path": "blob/main/challenges/intermediate/i02-ai-quiz-generator/challenge.md"
+    "path": "blob/main/challenges/intermediate/i02-ai-quiz-generator/challenge.md",
+    "startPath": "blob/main/challenges/intermediate/i02-ai-quiz-generator/README.md",
+    "starterPath": "blob/main/challenges/intermediate/i02-ai-quiz-generator/starter/main.py",
+    "validationPath": "blob/main/challenges/intermediate/i02-ai-quiz-generator/VALIDATION.md",
+    "kit": "blob/main/starter-kits/python/README.md",
+    "example": {
+      "source": "A variable stores a named value.",
+      "mock_output": [
+        {
+          "question": "What stores a named value?",
+          "answer": "A variable",
+          "source": "A variable stores a named value."
+        }
+      ]
+    },
+    "expected": "Offline mode returns reproducible structured questions supported by the supplied text; malformed output is rejected.",
+    "edgeCases": "Test invalid JSON, missing answer, invented facts, empty source and document instructions masquerading as commands. Record mock tests separately from any provider run.",
+    "firstStep": "Start with a deterministic mock provider. Make network use an explicit opt-in with a data disclosure and bounded requests.",
+    "starterContract": "Validate a provider result against a documented question contract before rendering.",
+    "runtime": "Python 3.12+ and its standard library"
   },
   {
     "id": "I03",
@@ -214,7 +390,22 @@
     ],
     "status": "Open",
     "author": "Silentium Labs",
-    "path": "blob/main/challenges/intermediate/i03-repository-activity-dashboard/challenge.md"
+    "path": "blob/main/challenges/intermediate/i03-repository-activity-dashboard/challenge.md",
+    "startPath": "blob/main/challenges/intermediate/i03-repository-activity-dashboard/README.md",
+    "starterPath": "blob/main/challenges/intermediate/i03-repository-activity-dashboard/starter/core.mjs",
+    "validationPath": "blob/main/challenges/intermediate/i03-repository-activity-dashboard/VALIDATION.md",
+    "kit": "blob/main/starter-kits/web/README.md",
+    "example": {
+      "full_name": "demo/garden",
+      "stargazers_count": 3,
+      "open_issues_count": 1,
+      "pushed_at": "2026-01-01T00:00:00Z"
+    },
+    "expected": "Fixture mode displays 3 stars and 1 open issue, labeled as synthetic demo data; live mode labels fetch time.",
+    "edgeCases": "Test 404, 403/429, offline, stale cache and hostile display text. Never embed tokens in client code or fetch arbitrary user-supplied URLs.",
+    "firstStep": "Render fixtures first. Accept owner/repo identifiers, constrain the API host, then add bounded caching and retry-after handling.",
+    "starterContract": "Validate a public repository API response into display-only fields.",
+    "runtime": "A current browser; Node.js 22+ for pure-function tests"
   },
   {
     "id": "I04",
@@ -234,7 +425,32 @@
     ],
     "status": "Open",
     "author": "Silentium Labs",
-    "path": "blob/main/challenges/intermediate/i04-constraint-study-planner/challenge.md"
+    "path": "blob/main/challenges/intermediate/i04-constraint-study-planner/challenge.md",
+    "startPath": "blob/main/challenges/intermediate/i04-constraint-study-planner/README.md",
+    "starterPath": "blob/main/challenges/intermediate/i04-constraint-study-planner/starter/main.py",
+    "validationPath": "blob/main/challenges/intermediate/i04-constraint-study-planner/VALIDATION.md",
+    "kit": "blob/main/starter-kits/python/README.md",
+    "example": {
+      "tasks": [
+        {
+          "id": "t1",
+          "minutes": 60,
+          "due": "2026-01-02",
+          "priority": 1
+        }
+      ],
+      "availability": [
+        {
+          "day": "2026-01-01",
+          "minutes": 30
+        }
+      ]
+    },
+    "expected": "Only 30 minutes fit; the other 30 are explicitly unscheduled. Never invent availability to satisfy a deadline.",
+    "edgeCases": "Test impossible load, zero availability, tied deadlines, invalid dates and a task longer than a slot. Verify summed blocks never exceed each day.",
+    "firstStep": "Choose whether tasks may split. State that policy, implement one-day capacity checks, then extend to a week.",
+    "starterContract": "Return scheduled blocks plus unscheduled work and an explanation per decision.",
+    "runtime": "Python 3.12+ and its standard library"
   },
   {
     "id": "I05",
@@ -256,7 +472,25 @@
     ],
     "status": "Open",
     "author": "Silentium Labs",
-    "path": "blob/main/challenges/intermediate/i05-offline-flashcard-pwa/challenge.md"
+    "path": "blob/main/challenges/intermediate/i05-offline-flashcard-pwa/challenge.md",
+    "startPath": "blob/main/challenges/intermediate/i05-offline-flashcard-pwa/README.md",
+    "starterPath": "blob/main/challenges/intermediate/i05-offline-flashcard-pwa/starter/core.mjs",
+    "validationPath": "blob/main/challenges/intermediate/i05-offline-flashcard-pwa/VALIDATION.md",
+    "kit": "blob/main/starter-kits/web/README.md",
+    "example": {
+      "cards": [
+        {
+          "id": "demo-1",
+          "front": "What repeats?",
+          "back": "A loop"
+        }
+      ]
+    },
+    "expected": "After the first local load, reload offline and edit the card; the edit survives another reload.",
+    "edgeCases": "Test first visit offline, unavailable storage, invalid import, delete/export, keyboard navigation and upgrading cache versions. Network inspection must show only app-owned cache entries.",
+    "firstStep": "Build local CRUD first; add a manifest and scoped service worker after storage works. Use localhost or HTTPS for service-worker testing.",
+    "starterContract": "Validate local card data before it reaches storage or the view.",
+    "runtime": "A current browser; Node.js 22+ for pure-function tests"
   },
   {
     "id": "I06",
@@ -275,7 +509,29 @@
     ],
     "status": "Open",
     "author": "Silentium Labs",
-    "path": "blob/main/challenges/intermediate/i06-local-notes-search/challenge.md"
+    "path": "blob/main/challenges/intermediate/i06-local-notes-search/challenge.md",
+    "startPath": "blob/main/challenges/intermediate/i06-local-notes-search/README.md",
+    "starterPath": "blob/main/challenges/intermediate/i06-local-notes-search/starter/main.py",
+    "validationPath": "blob/main/challenges/intermediate/i06-local-notes-search/VALIDATION.md",
+    "kit": "blob/main/starter-kits/python/README.md",
+    "example": {
+      "query": "loops",
+      "documents": [
+        {
+          "path": "a.md",
+          "text": "Loops repeat tasks."
+        },
+        {
+          "path": "b.md",
+          "text": "Variables store values."
+        }
+      ]
+    },
+    "expected": "a.md ranks before b.md; an absent term produces a clear empty result instead of an unrelated answer.",
+    "edgeCases": "Test casing, punctuation, empty query, ties, deleted files, rebuild and escaping symlink. Report index limitations and keep all note content local.",
+    "firstStep": "Start with token overlap as a baseline. Measure ranking on fixed queries before considering TF-IDF.",
+    "starterContract": "Return ranked source references with a deterministic tie breaker.",
+    "runtime": "Python 3.12+ and its standard library"
   },
   {
     "id": "I07",
@@ -296,7 +552,20 @@
     ],
     "status": "Open",
     "author": "Silentium Labs",
-    "path": "blob/main/challenges/intermediate/i07-secure-starter-app/challenge.md"
+    "path": "blob/main/challenges/intermediate/i07-secure-starter-app/challenge.md",
+    "startPath": "blob/main/challenges/intermediate/i07-secure-starter-app/README.md",
+    "starterPath": "blob/main/challenges/intermediate/i07-secure-starter-app/starter/main.py",
+    "validationPath": "blob/main/challenges/intermediate/i07-secure-starter-app/VALIDATION.md",
+    "kit": "blob/main/starter-kits/python/README.md",
+    "example": {
+      "title": "Demo note",
+      "body": "Synthetic content"
+    },
+    "expected": "Valid input reaches the handler; invalid input yields a bounded public error without stack traces or environment values.",
+    "edgeCases": "Write at least five automated tests: success, missing title, wrong type, overlong body and unexpected fields. Also test malformed JSON and safe internal-error handling.",
+    "firstStep": "Specify the request and response contract, implement validation tests, then choose a minimal local API adapter. Document any listener and dependency.",
+    "starterContract": "Validate a tiny create-note request without needing a live server.",
+    "runtime": "Python 3.12+ and its standard library"
   },
   {
     "id": "I08",
@@ -316,7 +585,26 @@
     ],
     "status": "Open",
     "author": "Silentium Labs",
-    "path": "blob/main/challenges/intermediate/i08-challenge-progress-board/challenge.md"
+    "path": "blob/main/challenges/intermediate/i08-challenge-progress-board/challenge.md",
+    "startPath": "blob/main/challenges/intermediate/i08-challenge-progress-board/README.md",
+    "starterPath": "blob/main/challenges/intermediate/i08-challenge-progress-board/starter/core.mjs",
+    "validationPath": "blob/main/challenges/intermediate/i08-challenge-progress-board/VALIDATION.md",
+    "kit": "blob/main/starter-kits/web/README.md",
+    "example": [
+      {
+        "id": "DEMO-1",
+        "title": "Synthetic card",
+        "difficulty": "Beginner",
+        "status": "Open",
+        "owner": null,
+        "completion": null
+      }
+    ],
+    "expected": "The synthetic card shows unclaimed and no completion evidence. Unknown status never becomes completed.",
+    "edgeCases": "Test missing fields, empty catalog, duplicate IDs, all filters with no matches and markup in titles. No fabricated owners or completion counts.",
+    "firstStep": "Use this synthetic fixture locally; only use published metadata when showing real activity. Separate unknown, open and completed.",
+    "starterContract": "Validate and normalize challenge records into display state; completion requires evidence.",
+    "runtime": "A current browser; Node.js 22+ for pure-function tests"
   },
   {
     "id": "A01",
@@ -336,7 +624,29 @@
     ],
     "status": "Open",
     "author": "Silentium Labs",
-    "path": "blob/main/challenges/advanced/a01-local-rag-study-assistant/challenge.md"
+    "path": "blob/main/challenges/advanced/a01-local-rag-study-assistant/challenge.md",
+    "startPath": "blob/main/challenges/advanced/a01-local-rag-study-assistant/README.md",
+    "starterPath": "blob/main/challenges/advanced/a01-local-rag-study-assistant/starter/main.py",
+    "validationPath": "blob/main/challenges/advanced/a01-local-rag-study-assistant/VALIDATION.md",
+    "kit": "blob/main/starter-kits/python/README.md",
+    "example": {
+      "query": "What repeats tasks?",
+      "documents": [
+        {
+          "id": "demo-a",
+          "text": "Loops repeat tasks."
+        },
+        {
+          "id": "demo-b",
+          "text": "Variables store named values."
+        }
+      ]
+    },
+    "expected": "A supported response cites demo-a; a question about an absent topic reports insufficient evidence.",
+    "edgeCases": "Measure retrieval on at least five queries including no-match and conflicting passages. Test document prompt injection, invalid citations, deletion and explicit provider consent.",
+    "firstStep": "Implement local token retrieval as a baseline. Preserve passage IDs through chunking; a mock answerer is sufficient for the free route.",
+    "starterContract": "Return bounded passages with stable source IDs for a separate answer component.",
+    "runtime": "Python 3.12+ and its standard library"
   },
   {
     "id": "A02",
@@ -357,7 +667,28 @@
     ],
     "status": "Open",
     "author": "Silentium Labs",
-    "path": "blob/main/challenges/advanced/a02-offline-first-course-dashboard/challenge.md"
+    "path": "blob/main/challenges/advanced/a02-offline-first-course-dashboard/challenge.md",
+    "startPath": "blob/main/challenges/advanced/a02-offline-first-course-dashboard/README.md",
+    "starterPath": "blob/main/challenges/advanced/a02-offline-first-course-dashboard/starter/core.mjs",
+    "validationPath": "blob/main/challenges/advanced/a02-offline-first-course-dashboard/VALIDATION.md",
+    "kit": "blob/main/starter-kits/web/README.md",
+    "example": {
+      "local": {
+        "id": "task-1",
+        "revision": 2,
+        "title": "Local edit"
+      },
+      "incoming": {
+        "id": "task-1",
+        "revision": 2,
+        "title": "Other edit"
+      }
+    },
+    "expected": "Conflicting edits are surfaced for a user decision or retained under a documented deterministic policy; no silent upload occurs.",
+    "edgeCases": "Test offline reload of courses/tasks/notes, corrupted import, schema migration, export round-trip and conflicting edits. Demonstrate sync disabled by default.",
+    "firstStep": "Define module and storage boundaries first. Use two local fixture snapshots to simulate sync; a hosted service is unnecessary.",
+    "starterContract": "Describe or implement an explicit conflict outcome without silently losing edits.",
+    "runtime": "A current browser; Node.js 22+ for pure-function tests"
   },
   {
     "id": "A03",
@@ -376,7 +707,28 @@
     ],
     "status": "Open",
     "author": "Silentium Labs",
-    "path": "blob/main/challenges/advanced/a03-static-contribution-risk-linter/challenge.md"
+    "path": "blob/main/challenges/advanced/a03-static-contribution-risk-linter/challenge.md",
+    "startPath": "blob/main/challenges/advanced/a03-static-contribution-risk-linter/README.md",
+    "starterPath": "blob/main/challenges/advanced/a03-static-contribution-risk-linter/starter/main.py",
+    "validationPath": "blob/main/challenges/advanced/a03-static-contribution-risk-linter/VALIDATION.md",
+    "kit": "blob/main/starter-kits/python/README.md",
+    "example": {
+      "files": [
+        {
+          "path": "notes.md",
+          "text": "Original harmless note."
+        },
+        {
+          "path": "sample.exe",
+          "text": "INERT TEXT ONLY: extension test"
+        }
+      ]
+    },
+    "expected": "sample.exe produces an extension finding; notes.md does not. Fixtures remain JSON text, never actual executable files.",
+    "edgeCases": "Test traversal, symlink escape, size cap, unreadable files, false positives and narrowly scoped suppressions with reasons. A clean scan must not claim safety.",
+    "firstStep": "Start with metadata-only extension checks, then add explained patterns. Bound file sizes and ensure the scanner reads data only.",
+    "starterContract": "Return static finding records without importing, evaluating or running scanned text.",
+    "runtime": "Python 3.12+ and its standard library"
   },
   {
     "id": "A04",
@@ -397,7 +749,25 @@
     ],
     "status": "Open",
     "author": "Silentium Labs",
-    "path": "blob/main/challenges/advanced/a04-evidence-aware-study-agent/challenge.md"
+    "path": "blob/main/challenges/advanced/a04-evidence-aware-study-agent/challenge.md",
+    "startPath": "blob/main/challenges/advanced/a04-evidence-aware-study-agent/README.md",
+    "starterPath": "blob/main/challenges/advanced/a04-evidence-aware-study-agent/starter/main.py",
+    "validationPath": "blob/main/challenges/advanced/a04-evidence-aware-study-agent/VALIDATION.md",
+    "kit": "blob/main/starter-kits/python/README.md",
+    "example": {
+      "claim": "Loops repeat tasks.",
+      "evidence": [
+        {
+          "id": "demo-a",
+          "text": "Loops repeat tasks."
+        }
+      ]
+    },
+    "expected": "This claim is evidence-backed by demo-a; a claim about exam outcomes is unsupported. Never manufacture a citation.",
+    "edgeCases": "Create an evaluation set with supported, inferred, contradictory, absent and injection-bearing cases. Report observed category errors separately from interpretation.",
+    "firstStep": "Write the output schema and hand-label synthetic evaluation cases before building the answer workflow. Mock inference is acceptable.",
+    "starterContract": "Return evidence, inference or unsupported with source IDs and a reason.",
+    "runtime": "Python 3.12+ and its standard library"
   },
   {
     "id": "A05",
@@ -418,7 +788,22 @@
     ],
     "status": "Open",
     "author": "Silentium Labs",
-    "path": "blob/main/challenges/advanced/a05-challenge-catalog-compiler/challenge.md"
+    "path": "blob/main/challenges/advanced/a05-challenge-catalog-compiler/challenge.md",
+    "startPath": "blob/main/challenges/advanced/a05-challenge-catalog-compiler/README.md",
+    "starterPath": "blob/main/challenges/advanced/a05-challenge-catalog-compiler/starter/main.py",
+    "validationPath": "blob/main/challenges/advanced/a05-challenge-catalog-compiler/VALIDATION.md",
+    "kit": "blob/main/starter-kits/python/README.md",
+    "example": {
+      "id": "DEMO-1",
+      "title": "Synthetic challenge",
+      "difficulty": "Beginner",
+      "path": "demo/challenge.md"
+    },
+    "expected": "A valid manifest can render escaped text; two copies of DEMO-1 produce a duplicate-ID error and nonzero validation status.",
+    "edgeCases": "Test missing field, unknown difficulty, duplicate IDs, traversal, hostile HTML and input ordering. Two identical builds must be byte-for-byte equal.",
+    "firstStep": "Write a schema and invalid fixtures first. Sort by stable IDs; use a text serializer without evaluating templates.",
+    "starterContract": "Validate a manifest before deterministic catalog rendering; collect file-scoped errors.",
+    "runtime": "Python 3.12+ and its standard library"
   },
   {
     "id": "A06",
@@ -438,7 +823,28 @@
     ],
     "status": "Open",
     "author": "Silentium Labs",
-    "path": "blob/main/challenges/advanced/a06-learning-telemetry-dashboard/challenge.md"
+    "path": "blob/main/challenges/advanced/a06-learning-telemetry-dashboard/challenge.md",
+    "startPath": "blob/main/challenges/advanced/a06-learning-telemetry-dashboard/README.md",
+    "starterPath": "blob/main/challenges/advanced/a06-learning-telemetry-dashboard/starter/main.py",
+    "validationPath": "blob/main/challenges/advanced/a06-learning-telemetry-dashboard/VALIDATION.md",
+    "kit": "blob/main/starter-kits/python/README.md",
+    "example": [
+      {
+        "type": "session_completed",
+        "day": "2026-01-01",
+        "minutes": 20
+      },
+      {
+        "type": "session_completed",
+        "day": "2026-01-01",
+        "minutes": 10
+      }
+    ],
+    "expected": "The synthetic daily total is 30 minutes. Export contains only the documented fields; deletion removes stored events and derived data.",
+    "edgeCases": "Test duplicate-event policy, negative durations, timezone boundary, empty store, retention cutoff, export and deletion. Verify no third-party requests.",
+    "firstStep": "Define a minimal versioned event schema and retention policy. Aggregate local synthetic events before building charts.",
+    "starterContract": "Return local duration summaries without note content or identity fields.",
+    "runtime": "Python 3.12+ and its standard library"
   },
   {
     "id": "A07",
@@ -458,7 +864,36 @@
     ],
     "status": "Open",
     "author": "Silentium Labs",
-    "path": "blob/main/challenges/advanced/a07-contribution-reputation-engine/challenge.md"
+    "path": "blob/main/challenges/advanced/a07-contribution-reputation-engine/challenge.md",
+    "startPath": "blob/main/challenges/advanced/a07-contribution-reputation-engine/README.md",
+    "starterPath": "blob/main/challenges/advanced/a07-contribution-reputation-engine/starter/main.py",
+    "validationPath": "blob/main/challenges/advanced/a07-contribution-reputation-engine/VALIDATION.md",
+    "kit": "blob/main/starter-kits/python/README.md",
+    "example": {
+      "records": [
+        {
+          "id": "demo-pr-1",
+          "merged": true,
+          "reviewed": true,
+          "kind": "documentation"
+        },
+        {
+          "id": "demo-pr-2",
+          "merged": false,
+          "reviewed": false,
+          "kind": "code"
+        }
+      ],
+      "weights": {
+        "documentation": 2,
+        "code": 2
+      }
+    },
+    "expected": "Only demo-pr-1 qualifies under the stated merged-and-reviewed rule. Label every displayed score as a synthetic prototype.",
+    "edgeCases": "Test duplicates, reverted contributions, missing review evidence and changed weights. Document gaming, bias and appeals; exclude stars, followers and commit volume.",
+    "firstStep": "Keep the first prototype offline. Show raw inputs and a per-record explanation; this challenge does not ship a Forge leaderboard.",
+    "starterContract": "Return explainable contribution scores with provenance; no production ranking.",
+    "runtime": "Python 3.12+ and its standard library"
   },
   {
     "id": "A08",
@@ -478,6 +913,21 @@
     ],
     "status": "Open",
     "author": "Silentium Labs",
-    "path": "blob/main/challenges/advanced/a08-sandbox-design-challenge/challenge.md"
+    "path": "blob/main/challenges/advanced/a08-sandbox-design-challenge/challenge.md",
+    "startPath": "blob/main/challenges/advanced/a08-sandbox-design-challenge/README.md",
+    "starterPath": "blob/main/challenges/advanced/a08-sandbox-design-challenge/starter/THREAT_MODEL.md",
+    "validationPath": "blob/main/challenges/advanced/a08-sandbox-design-challenge/VALIDATION.md",
+    "kit": null,
+    "example": {
+      "request": "evaluate an unknown repository",
+      "default_action": "do not execute",
+      "secrets": [],
+      "network": "denied"
+    },
+    "expected": "The default decision is non-execution. A tabletop walk-through records reject/quarantine decisions and unanswered operational risks.",
+    "edgeCases": "Walk through a secret request, fork bomb scenario, oversized upload, dependency download, symlink escape and cleanup failure as text only. Do not deploy an evaluator.",
+    "firstStep": "Copy the local threat-model template. Compare metadata-only review with a hypothetical disposable evaluator; justify whether execution should exist at all.",
+    "starterContract": "Write a decision record and non-executing lifecycle diagram; code is optional.",
+    "runtime": "A Markdown editor; no runtime or container required"
   }
 ]
