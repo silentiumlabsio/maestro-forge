@@ -1,21 +1,173 @@
 [
-  {"id":"challenges","title":"Challenges","pillar":"Build","description":"24 official launch briefs across three difficulty tracks.","state":"available","action":"Explore challenges","route":"challenges"},
-  {"id":"learning-paths","title":"Learning Paths","pillar":"Learn","description":"Five structured journeys tied to stable challenge IDs.","state":"available","action":"Choose a path","route":"learn"},
-  {"id":"built-in-forge","title":"Built in the Forge","pillar":"Share","description":"Curated metadata for reviewed community projects; no submissions are featured yet.","state":"accepting submissions","action":"Submit a project","issue":"project-submission.yml"},
-  {"id":"incubator","title":"Project Incubator","pillar":"Collaborate","description":"Propose a scoped community project and recruit by role.","state":"available via GitHub","action":"Propose a project","issue":"community-project.yml"},
-  {"id":"ideas","title":"Idea Marketplace","pillar":"Collaborate","description":"Share a useful idea without committing to lead its build.","state":"available via GitHub","action":"Propose an idea","issue":"idea-proposal.yml"},
-  {"id":"builders","title":"Find a Builder","pillar":"Collaborate","description":"Opt-in profiles list handles, interests, roles, and availability without unnecessary personal data.","state":"accepting opt-ins","action":"Create a profile","issue":"builder-profile.yml"},
-  {"id":"reviews","title":"Review Exchange","pillar":"Collaborate","description":"Request code, docs, UI, accessibility, testing, security, or architecture feedback.","state":"available via GitHub","action":"Request a review","issue":"review-request.yml"},
-  {"id":"help-center","title":"Help Center","pillar":"Learn","description":"Ask public, non-sensitive questions about challenges, Git/GitHub, contributions, projects, reviews, or Passport.","state":"available via GitHub","action":"Ask a question","issue":"help.yml"},
-  {"id":"open-roles","title":"Open Roles","pillar":"Collaborate","description":"Recruit for a scoped role without requesting credentials, personal contact details, or unauthorized access.","state":"available via GitHub","action":"Post a role","issue":"open-role.yml"},
-  {"id":"community-requests","title":"Community Requests","pillar":"Collaborate","description":"Request a public-safe tool, guide, improvement, design, accessibility change, or resource.","state":"available via GitHub","action":"Make a request","issue":"community-request.yml"},
-  {"id":"resources","title":"Resource Vault","pillar":"Learn","description":"Annotated first-party guides, cheat sheets, patterns, and planning material.","state":"available","action":"Open the vault","route":"resources"},
-  {"id":"prompt-lab","title":"Prompt Lab","pillar":"Experiment","description":"Provider-neutral prompt entries with goals, limitations, failures, and safety notes.","state":"contribution-ready","action":"Read the standard","href":"../prompt-lab/"},
-  {"id":"experiment-lab","title":"AI Experiment Lab","pillar":"Experiment","description":"Reproducible hypothesis, method, result, limitation, and conclusion records.","state":"contribution-ready","action":"Read the standard","href":"../experiments/"},
-  {"id":"failure-lab","title":"Failure Lab","pillar":"Experiment","description":"Blameless writeups of failed approaches and what changed next.","state":"contribution-ready","action":"Read the standard","href":"../failure-lab/"},
-  {"id":"patterns","title":"Code Patterns","pillar":"Learn","description":"Reviewed, dependency-light examples for recurring engineering decisions.","state":"available","action":"Browse patterns","href":"../patterns/"},
-  {"id":"first-pr","title":"First PR Sandbox","pillar":"Build","description":"A non-executable practice area for learning fork, branch, PR, review, and merge.","state":"available","action":"Make a first PR","href":"../first-pr-sandbox/"},
-  {"id":"passport","title":"Forge Passport","pillar":"Grow","description":"Static opt-in portfolios derived only from reviewed evidence and exact-commit verification.","state":"schema ready","action":"See the model","route":"builders"},
-  {"id":"trials","title":"Forge Trials","pillar":"Grow","description":"Larger synthesis builds; achievement levels, not professional certification.","state":"framework ready","action":"Read the framework","href":"../trials/"},
-  {"id":"security","title":"Security & Trust","pillar":"Protect","description":"Zero-trust contribution handling, provenance, quarantine, privacy, and revocation.","state":"implemented foundation","action":"Inspect the model","route":"security"}
+  {
+    "id": "challenges",
+    "title": "Challenges",
+    "pillar": "Build",
+    "description": "24 start packages with incomplete starters, synthetic fixtures and validation checks.",
+    "state": "available",
+    "action": "Explore challenges",
+    "route": "challenges"
+  },
+  {
+    "id": "learning-paths",
+    "title": "Learning Paths",
+    "pillar": "Learn",
+    "description": "Five structured journeys tied to stable challenge IDs.",
+    "state": "available",
+    "action": "Choose a path",
+    "route": "learn"
+  },
+  {
+    "id": "built-in-forge",
+    "title": "Built in the Forge",
+    "pillar": "Share",
+    "description": "Curated metadata for reviewed community projects; no submissions are featured yet.",
+    "state": "accepting submissions",
+    "action": "Submit a project",
+    "issue": "project-submission.yml"
+  },
+  {
+    "id": "incubator",
+    "title": "Project Incubator",
+    "pillar": "Collaborate",
+    "description": "Propose a scoped community project and recruit by role.",
+    "state": "available via GitHub",
+    "action": "Propose a project",
+    "issue": "community-project.yml"
+  },
+  {
+    "id": "ideas",
+    "title": "Idea Marketplace",
+    "pillar": "Collaborate",
+    "description": "Share a useful idea without committing to lead its build.",
+    "state": "available via GitHub",
+    "action": "Propose an idea",
+    "issue": "idea-proposal.yml"
+  },
+  {
+    "id": "builders",
+    "title": "Find a Builder",
+    "pillar": "Collaborate",
+    "description": "Opt-in profiles list handles, interests, roles, and availability without unnecessary personal data.",
+    "state": "accepting opt-ins",
+    "action": "Create a profile",
+    "issue": "builder-profile.yml"
+  },
+  {
+    "id": "reviews",
+    "title": "Review Exchange",
+    "pillar": "Collaborate",
+    "description": "Request code, docs, UI, accessibility, testing, security, or architecture feedback.",
+    "state": "available via GitHub",
+    "action": "Request a review",
+    "issue": "review-request.yml"
+  },
+  {
+    "id": "help-center",
+    "title": "Help Center",
+    "pillar": "Learn",
+    "description": "Ask public, non-sensitive questions about challenges, Git/GitHub, contributions, projects, reviews, or Passport.",
+    "state": "available via GitHub",
+    "action": "Ask a question",
+    "issue": "help.yml"
+  },
+  {
+    "id": "open-roles",
+    "title": "Open Roles",
+    "pillar": "Collaborate",
+    "description": "Recruit for a scoped role without requesting credentials, personal contact details, or unauthorized access.",
+    "state": "available via GitHub",
+    "action": "Post a role",
+    "issue": "open-role.yml"
+  },
+  {
+    "id": "community-requests",
+    "title": "Community Requests",
+    "pillar": "Collaborate",
+    "description": "Request a public-safe tool, guide, improvement, design, accessibility change, or resource.",
+    "state": "available via GitHub",
+    "action": "Make a request",
+    "issue": "community-request.yml"
+  },
+  {
+    "id": "resources",
+    "title": "Resource Vault",
+    "pillar": "Learn",
+    "description": "Annotated first-party guides, cheat sheets, patterns, and planning material.",
+    "state": "available",
+    "action": "Open the vault",
+    "route": "resources"
+  },
+  {
+    "id": "prompt-lab",
+    "title": "Prompt Lab",
+    "pillar": "Experiment",
+    "description": "Provider-neutral prompt entries with goals, limitations, failures, and safety notes.",
+    "state": "exercises and templates",
+    "action": "Open learning material",
+    "href": "../prompt-lab/"
+  },
+  {
+    "id": "experiment-lab",
+    "title": "AI Experiment Lab",
+    "pillar": "Experiment",
+    "description": "Reproducible hypothesis, method, result, limitation, and conclusion records.",
+    "state": "exercises and templates",
+    "action": "Open learning material",
+    "href": "../experiments/"
+  },
+  {
+    "id": "failure-lab",
+    "title": "Failure Lab",
+    "pillar": "Experiment",
+    "description": "Blameless writeups of failed approaches and what changed next.",
+    "state": "exercises and templates",
+    "action": "Open learning material",
+    "href": "../failure-lab/"
+  },
+  {
+    "id": "patterns",
+    "title": "Code Patterns",
+    "pillar": "Learn",
+    "description": "Reviewed, dependency-light examples for recurring engineering decisions.",
+    "state": "available",
+    "action": "Browse patterns",
+    "href": "../patterns/"
+  },
+  {
+    "id": "first-pr",
+    "title": "First PR Sandbox",
+    "pillar": "Build",
+    "description": "A non-executable practice area for learning fork, branch, PR, review, and merge.",
+    "state": "available",
+    "action": "Make a first PR",
+    "route": "sandbox"
+  },
+  {
+    "id": "passport",
+    "title": "Forge Passport",
+    "pillar": "Grow",
+    "description": "Static opt-in portfolios derived only from reviewed evidence and exact-commit verification.",
+    "state": "schema ready",
+    "action": "See the model",
+    "route": "builders"
+  },
+  {
+    "id": "trials",
+    "title": "Forge Trials",
+    "pillar": "Grow",
+    "description": "Larger synthesis builds; achievement levels, not professional certification.",
+    "state": "framework ready",
+    "action": "Read the framework",
+    "href": "../trials/"
+  },
+  {
+    "id": "security",
+    "title": "Security & Trust",
+    "pillar": "Protect",
+    "description": "Zero-trust contribution handling, provenance, quarantine, privacy, and revocation.",
+    "state": "implemented foundation",
+    "action": "Inspect the model",
+    "route": "security"
+  }
 ]

@@ -1,14 +1,18 @@
+# Unpublished template. Fill provenance before schema validation or submission.
+id: example-project
 name: Example Project
 author: "@github-handle"
+repositoryUrl: ""
+commitSha: ""
 status: submitted
+trustState: Untrusted
 languages: [python]
 security:
-  network_access: false
-  filesystem_read: false
-  filesystem_write: false
-  shell_execution: false
-  external_api: false
+  networkAccess: false
+  filesystemRead: false
+  filesystemWrite: false
+  shellExecution: false
   authentication: false
-  stores_user_data: false
-  requires_secrets: false
+  storesUserData: false
+  requiresSecrets: false
 dependencies: []

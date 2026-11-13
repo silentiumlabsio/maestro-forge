@@ -22,9 +22,39 @@ function repoContext() {
   return {published:false, url:'..'};
 }
 const repo = repoContext();
-const issueLink = template => repo.published ? `${repo.url}/issues/new?template=${encodeURIComponent(template)}` : `../.github/ISSUE_TEMPLATE/${template}`;
+const issueLink = template => `${repo.published ? repo.url : 'https://github.com/silentiumlabsio/maestro-forge'}/issues/new?template=${encodeURIComponent(template)}`;
 const repoLink = path => repo.published ? `${repo.url}/${path}` : `../${path.replace(/^blob\/main\//,'')}`;
-const safeLink = href => /^(?:https:\/\/|#|\.\.\/|assets\/)/.test(href) ? href : '#home';
+const safeLink = href => /^(?:https:\/\/|#|\.\.\/|assets\/)/.test(href) ? escapeHTML(href) : '#home';
+const canonicalRepo = 'https://github.com/silentiumlabsio/maestro-forge';
+
+// The Pages deployment contains /docs only. Repository guides live on GitHub.
+function resolveContentLinks(root = document) {
+  $$('a[href]', root).forEach(link => {
+    const href = link.getAttribute('href');
+    if (href.startsWith('../')) {
+      let path = href.slice(3).replace(/^blob\/main\//, '');
+      if (path.startsWith('.github/ISSUE_TEMPLATE/')) {
+        link.href = `${canonicalRepo}/issues/new?template=${encodeURIComponent(path.split('/').pop())}`;
+      } else {
+        if (path.endsWith('/')) path += 'README.md';
+        link.href = `${canonicalRepo}/blob/main/${path}`;
+      }
+    }
+  });
+}
+
+function challengeDetailView() {
+  const id = new URLSearchParams(location.hash.split('?')[1] || '').get('id');
+  const item = state.challenges.find(x => x.id === id);
+  if (!item) return `<div class="route">${pageHero('CHALLENGE','Choose a','Build','That challenge ID was not found.')}<section class="section shell"><a class="button" href="#challenges">Back to catalog</a></section></div>`;
+  return `<div class="route challenge-detail">${pageHero(`${item.id} · ${item.difficulty} · v${item.version}`, item.title, '', item.summary)}
+    <section class="section shell"><a class="section-action" href="#challenges">← All challenges</a>
+      <div class="split-feature"><article class="feature-panel"><h2>Start your build</h2><p>${escapeHTML(item.runtime)}</p><p>${escapeHTML(item.firstStep)}</p><p>${escapeHTML(item.starterContract)}</p><div class="card-actions"><a class="button button-primary" href="${repoLink(item.startPath)}">Start guide →</a><a class="button" href="${repoLink(item.starterPath)}">Unfinished starter →</a><a class="button" href="${repoLink(item.path)}">Full brief →</a></div></article>
+      <article class="feature-panel"><h2>Check your first milestone</h2><pre class="example-data">${escapeHTML(JSON.stringify(item.example,null,2))}</pre><p>${escapeHTML(item.expected)}</p></article></div>
+      <article class="feature-panel"><h2>Test failure cases</h2><p>${escapeHTML(item.edgeCases)}</p><a class="button" href="${repoLink(item.validationPath)}">Validation checklist →</a>${item.kit ? `<a class="button" href="${repoLink(item.kit)}">Starter kit →</a>` : ''}</article>
+      <div class="cta-band"><div><h2>Keep the solution in your repository.</h2><p>Scaffolding and examples are teaching material. Record actual checks, declare behavior and submit an exact commit for review.</p></div><a class="button button-primary" href="../handbook/SUBMITTING.md">How to submit →</a><a class="button" href="${issueLink('claim-challenge.yml')}&title=${encodeURIComponent(`Claim ${item.id} — ${item.title}`)}">Claim ${escapeHTML(item.id)} →</a></div>
+    </section></div>`;
+}
 
 function routeLink(item) {
   if (item.issue) return issueLink(item.issue);
@@ -56,7 +86,7 @@ function homeView() {
     </div></section>
     <section class="section shell"><div class="section-head"><div><span class="eyebrow">THE ECOSYSTEM</span><h2>Seven pillars. One safe path forward.</h2><p>Build practical work, understand it, improve it with others, and preserve trustworthy evidence of what you can do.</p></div><a class="section-action" href="#contribute">START CONTRIBUTING →</a></div>
       <div class="pillar-grid">${pillars.map((p,i)=>`<article class="pillar-card" data-index="0${i+1}"><div class="pillar-icon">${icon(p[0])}</div><h3>${p[1]}</h3><p>${p[2]}</p><a href="#${p[3]}">Explore ${p[1]} →</a></article>`).join('')}</div>
-      <div class="signal-strip"><div class="signal">${icon('code')}<div><strong>${state.challenges.length}</strong><span>official launch challenges</span></div></div><div class="signal">${icon('book')}<div><strong>${state.paths.length}</strong><span>structured learning paths</span></div></div><div class="signal">${icon('shield')}<div><strong>70 + 30</strong><span>build review + skill verification</span></div></div><div class="signal">${icon('lock')}<div><strong>Static first</strong><span>GitHub-native community flows</span></div></div></div>
+      <div class="signal-strip"><div class="signal">${icon('code')}<div><strong>${state.challenges.length}</strong><span>Silentium Labs launch challenges</span></div></div><div class="signal">${icon('book')}<div><strong>${state.paths.length}</strong><span>structured learning paths</span></div></div><div class="signal">${icon('shield')}<div><strong>70 + 30</strong><span>build review + skill verification</span></div></div><div class="signal">${icon('lock')}<div><strong>Static first</strong><span>GitHub-native community flows</span></div></div></div>
     </section>
     <section class="section shell"><div class="section-head"><div><span class="eyebrow">FAIR RECOGNITION</span><h2>We score demonstrated ability.</h2><p>AI assistance is allowed. Tool choice, money, hardware, popularity, and speed do not determine skill recognition.</p></div><a class="section-action" href="../SKILL_VERIFICATION.md">READ THE FULL RUBRIC →</a></div>
       <div class="split-feature"><article class="feature-panel"><span class="eyebrow">100-POINT MODEL</span><h3>Build quality is only the beginning.</h3><div class="scorebar" aria-label="Build Review 70 points, Explain 10, Debug 10, Adapt 10"><span>BUILD REVIEW · 70</span><span>EXPLAIN · 10</span><span>DEBUG · 10</span><span>ADAPT · 10</span></div><p>A working artifact may earn Build Reviewed status. Skill Verified requires the builder to explain, debug, and adapt their own exact submission.</p></article>
@@ -71,12 +101,12 @@ function homeView() {
 
 function challengeCard(item) {
   const claim = issueLink('claim-challenge.yml');
-  return `<article class="catalog-card" data-search="${escapeHTML([item.id,item.title,item.summary,item.category,...item.skills,...item.languages].join(' ').toLowerCase())}"><div class="card-top"><span class="challenge-id">${escapeHTML(item.id)} · v${escapeHTML(item.version)}</span><span class="difficulty ${escapeHTML(item.difficulty)}">● ${escapeHTML(item.difficulty)}</span></div><h3>${escapeHTML(item.title)}</h3><p>${escapeHTML(item.summary)}</p><div class="pills">${item.skills.slice(0,4).map(skill=>`<span class="pill">${escapeHTML(skill)}</span>`).join('')}</div><div class="card-actions"><a class="button" href="${repoLink(item.path)}">Open brief ${icon('external')}</a><a class="button button-primary" href="${claim}">Claim ${icon('arrow')}</a></div></article>`;
+  return `<article class="catalog-card" data-search="${escapeHTML([item.id,item.title,item.summary,item.category,...item.skills,...item.languages].join(' ').toLowerCase())}"><div class="card-top"><span class="challenge-id">${escapeHTML(item.id)} · v${escapeHTML(item.version)}</span><span class="difficulty ${escapeHTML(item.difficulty)}">● ${escapeHTML(item.difficulty)}</span></div><h3>${escapeHTML(item.title)}</h3><p>${escapeHTML(item.summary)}</p><div class="pills">${item.skills.slice(0,4).map(skill=>`<span class="pill">${escapeHTML(skill)}</span>`).join('')}</div><div class="card-actions"><a class="button" href="#challenge?id=${encodeURIComponent(item.id)}">Start challenge ${icon('external')}</a><a class="button button-primary" href="${claim}">Claim ${icon('arrow')}</a></div></article>`;
 }
 
 function challengesView() {
   const categories = [...new Set(state.challenges.map(x=>x.category))].sort();
-  return `<div class="route">${pageHero('OFFICIAL LAUNCH CATALOG','Build','Challenges','Twenty-four practical briefs created and curated by Silentium Labs. Multiple builders may solve the same challenge, using free or common resources.',`<a class="button" href="${issueLink('challenge-proposal.yml')}">Propose a challenge ${icon('arrow')}</a>`)}
+  return `<div class="route">${pageHero('SILENTIUM LABS CATALOG','Build','Challenges','Twenty-four practical briefs created and curated by Silentium Labs. Multiple builders may solve the same challenge, using free or common resources.',`<a class="button" href="${issueLink('challenge-proposal.yml')}">Propose a challenge ${icon('arrow')}</a>`)}
     <div class="toolbar"><div class="shell toolbar-inner"><label class="field">${icon('search')}<span class="sr-only">Search challenges</span><input id="challenge-search" type="search" placeholder="Search ID, title, skill, or language"></label><label class="field"><span class="sr-only">Difficulty</span><select id="challenge-difficulty"><option value="all">All difficulties</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></label><label class="field"><span class="sr-only">Category</span><select id="challenge-category"><option value="all">All categories</option>${categories.map(c=>`<option>${escapeHTML(c)}</option>`).join('')}</select></label><button id="challenge-reset" class="button" type="button">Reset</button></div></div>
     <section class="section-compact shell"><div class="catalog-layout"><div><div class="section-head"><div><span class="eyebrow">CATALOG</span><h2 id="challenge-heading">Choose your next build.</h2></div><span id="challenge-count" class="eyebrow"></span></div><div id="challenge-grid" class="card-grid">${state.challenges.map(challengeCard).join('')}</div></div>
       <aside class="catalog-aside" aria-label="Challenge policies"><article class="aside-card"><h3>Fair scoring</h3><p><strong>70</strong> Build Review points plus <strong>30</strong> skill verification points.</p><a href="../SKILL_VERIFICATION.md">Open the rubric →</a></article><article class="aside-card"><h3>AI allowed</h3><p>AI use is not penalized or rewarded. Builders remain responsible for their work.</p><a href="../AI_ASSISTANCE_POLICY.md">Read the policy →</a></article><article class="aside-card"><h3>Solutions stay yours</h3><p>Keep solution code in your own repository. Submit exact-commit evidence for review.</p><a href="../UNTRUSTED_CODE_POLICY.md">See the boundary →</a></article></aside></div>
@@ -85,9 +115,9 @@ function challengesView() {
 
 function learnView() {
   return `<div class="route">${pageHero('STRUCTURED JOURNEYS','Learning','Paths','Five suggested journeys connect stable challenge IDs into practical skill development. Paths are guidance, not prerequisites or certification.')}
-    <section class="section shell"><div class="path-grid">${state.paths.map((path,i)=>`<article class="path-card"><span class="path-number">0${i+1}</span><h3>${escapeHTML(path.name)}</h3><p>${escapeHTML(path.description)}</p><div class="path-track" style="--progress:${Math.min(100,20+path.challengeIds.length*5)}%"><span></span></div><div class="challenge-sequence">${path.challengeIds.map(id=>`<a href="#challenges" title="Open challenge catalog for ${id}">${escapeHTML(id)}</a>`).join('')}</div><div class="pills">${path.competencies.slice(0,3).map(c=>`<span class="pill">${escapeHTML(c)}</span>`).join('')}</div></article>`).join('')}</div>
+    <section class="section shell"><div class="path-grid">${state.paths.map((path,i)=>`<article class="path-card"><span class="path-number">0${i+1}</span><h3>${escapeHTML(path.name)}</h3><p>${escapeHTML(path.description)}</p><p><a href="${repoLink(path.path)}">Preparation and checkpoints →</a></p><div class="challenge-sequence">${path.challengeIds.map(id=>`<a href="#challenge?id=${encodeURIComponent(id)}" title="Start ${id}">${escapeHTML(id)}</a>`).join('')}</div><div class="pills">${path.competencies.slice(0,3).map(c=>`<span class="pill">${escapeHTML(c)}</span>`).join('')}</div></article>`).join('')}</div>
       <div class="skill-map"><div class="section-head"><div><span class="eyebrow">EVIDENCE-BASED SKILL GRAPH</span><h2>Skills emerge from reviewed evidence.</h2><p>Forge does not infer mastery from page views or course progress. A skill graph can only grow from challenge requirements and exact-commit review records.</p></div></div><div class="skill-stages"><div class="skill-stage"><h3>Foundation</h3><div class="skill-nodes"><span class="skill-node">Git basics</span><span class="skill-node">Input validation</span><span class="skill-node">Documentation</span><span class="skill-node">Testing</span></div></div><div class="skill-stage"><h3>Applied</h3><div class="skill-nodes"><span class="skill-node">APIs</span><span class="skill-node">Persistence</span><span class="skill-node">Accessibility</span><span class="skill-node">Security review</span></div></div><div class="skill-stage"><h3>Synthesis</h3><div class="skill-nodes"><span class="skill-node">Architecture</span><span class="skill-node">Threat modeling</span><span class="skill-node">Evaluation</span><span class="skill-node">Adaptation</span></div></div></div></div>
-    </section><section class="section shell"><div class="cta-band"><div><h2>New to open source?</h2><p>Practice the entire contribution loop without adding executable code.</p></div><a class="button button-primary" href="../first-pr-sandbox/">Open First PR Sandbox ${icon('arrow')}</a></div></section></div>`;
+    </section><section class="section shell"><div class="cta-band"><div><h2>Find your first build</h2><p>Choose a challenge for your experience and interests, or rehearse the contribution loop.</p></div><a class="button button-primary" href="#start">Find a starting point</a><a class="button" href="#review">Prepare a review</a><a class="button" href="#sandbox">Open First PR Sandbox ${icon('arrow')}</a></div></section></div>`;
 }
 
 function emptyState(iconName, title, copy, action, href) {
@@ -120,9 +150,9 @@ function resourcesView() {
 }
 
 function buildersView() {
-  const profiles = state.builders.length ? state.builders.map(b=>`<article class="data-card"><span class="state">Opt-in profile</span><h3>${escapeHTML(b.handle)}</h3><p>${escapeHTML(b.summary)}</p></article>`).join('') : emptyState('users','Builder directory is accepting opt-ins','No fictional people or student details are shown. Public profiles use GitHub handles, optional skills and interests, preferred roles, and availability.','Opt in with a GitHub handle',issueLink('builder-profile.yml'));
+  const profiles = state.builders.length ? state.builders.map(b=>`<article class="data-card"><span class="state">Opt-in profile</span><h3>${escapeHTML(b.handle)}</h3><p>${escapeHTML(b.summary)}</p></article>`).join('') : emptyState('users','Builder directory is accepting opt-ins','Be the first to opt in. Share a public GitHub handle, interests, preferred roles and availability.','Opt in with a GitHub handle',issueLink('builder-profile.yml'));
   return `<div class="route">${pageHero('PORTABLE · EVIDENCE-BASED','Forge','Passport','An opt-in builder profile and export model derived from reviewed contributions and exact-commit verification—not self-claimed scores, popularity, or personal data.',`<a class="button button-primary" href="${issueLink('builder-profile.yml')}">Create a builder profile ${icon('arrow')}</a>`)}
-    <section class="section shell"><div class="passport-layout"><article class="passport-card"><div class="avatar" aria-hidden="true">@</div><div><span class="eyebrow">PROFILE SCHEMA</span><h2>@github-handle</h2><p>Skills · interests · preferred roles · availability</p></div><div class="actions"><span class="pill">Opt-in only</span> <span class="pill">No legal name required</span> <span class="pill">Exact-commit evidence</span></div></article><div class="passport-details"><article class="evidence-panel"><h3>A profile is an evidence index.</h3><p>Portfolio export begins as portable Markdown and JSON. Verification records bind the challenge and rubric versions, repository URL, commit SHA, reviewer, date, and score breakdown.</p><div class="evidence-grid"><div><strong>70</strong><span>Build Review</span></div><div><strong>10</strong><span>Explain</span></div><div><strong>10</strong><span>Debug</span></div><div><strong>10</strong><span>Adapt</span></div></div></article><article class="evidence-panel"><h3>Skill graph inputs</h3><p>Only reviewed challenge competencies and accepted contribution evidence may create graph nodes. GitHub followers, stars, likes, raw commits, and account age are excluded.</p></article></div></div></section>
+    <section class="section shell"><div class="passport-layout"><article class="passport-card"><div class="avatar" aria-hidden="true">@</div><div><span class="eyebrow">PROFILE SCHEMA</span><h2>@github-handle</h2><p>Skills · interests · preferred roles · availability</p></div><div class="actions"><span class="pill">Opt-in only</span> <span class="pill">No legal name required</span> <span class="pill">Exact-commit evidence</span></div></article><div class="passport-details"><article class="evidence-panel"><h3>A profile is an evidence index.</h3><p>Manual Passport templates are available in Markdown and JSON; automated export is planned. Verification records bind the challenge and rubric versions, repository URL, commit SHA, reviewer, date, and score breakdown.</p><div class="evidence-grid"><div><strong>70</strong><span>Build Review</span></div><div><strong>10</strong><span>Explain</span></div><div><strong>10</strong><span>Debug</span></div><div><strong>10</strong><span>Adapt</span></div></div></article><article class="evidence-panel"><h3>Skill graph inputs</h3><p>Only reviewed challenge competencies and accepted contribution evidence may create graph nodes. GitHub followers, stars, likes, raw commits, and account age are excluded.</p></article></div></div></section>
     <section class="section shell"><div class="section-head"><div><span class="eyebrow">BUILDER DIRECTORY</span><h2>Find a builder.</h2><p>Profiles are empty until real community members explicitly opt in.</p></div></div><div class="card-grid">${profiles}</div></section>
     <section class="section shell"><div class="section-head"><div><span class="eyebrow">ACHIEVEMENT RULES</span><h2>Recognition with auditable evidence.</h2><p>Badges describe completed Forge criteria. They are not professional certification, academic credit, or official Maestro accreditation.</p></div></div><div class="badge-grid">${state.achievements.map(a=>`<article class="badge"><div class="hex-icon">${icon(a.category==='Protect'?'shield':a.category==='Learn'?'book':a.category==='Collaborate'?'users':'growth')}</div><strong>${escapeHTML(a.name)}</strong><p>${escapeHTML(a.description)}</p><span class="eyebrow">EVIDENCE: ${escapeHTML(a.evidence)}</span></article>`).join('')}</div></section></div>`;
 }
@@ -153,7 +183,7 @@ function contributeView() {
     <section class="section shell"><div class="cta-band"><div><h2>Major platform changes start with an RFC.</h2><p>Use numbered proposals for architecture and governance decisions. Security controls cannot be weakened by popularity vote.</p></div><a class="button" href="../rfcs/">Read the RFC process ${icon('arrow')}</a></div></section></div>`;
 }
 
-const routes = {home:homeView,challenges:challengesView,learn:learnView,resources:resourcesView,projects:projectsView,community:communityView,builders:buildersView,security:securityView,contribute:contributeView};
+const routes = {start:()=>learningPage('start'),review:()=>learningPage('review'),sandbox:sandboxView,home:homeView,challenges:challengesView,challenge:challengeDetailView,learn:learnView,resources:resourcesView,projects:projectsView,community:communityView,builders:buildersView,security:securityView,contribute:contributeView};
 
 function currentRoute() {
   const raw = location.hash.slice(1).split('?')[0].toLowerCase();
@@ -164,6 +194,10 @@ function renderRoute() {
   const route = currentRoute();
   let markup;
   switch (route) {
+    case 'start': markup = learningPage('start'); break;
+    case 'review': markup = learningPage('review'); break;
+    case 'sandbox': markup = sandboxView(); break;
+    case 'challenge': markup = challengeDetailView(); break;
     case 'challenges': markup = challengesView(); break;
     case 'learn': markup = learnView(); break;
     case 'resources': markup = resourcesView(); break;
@@ -175,19 +209,26 @@ function renderRoute() {
     default: markup = homeView();
   }
   view.innerHTML = markup;
+  resolveContentLinks();
   $$('[data-route]').forEach(link => link.setAttribute('aria-current', link.dataset.route === route ? 'page' : 'false'));
   document.title = route === 'home' ? 'Maestro Forge — Learn. Build. Contribute. Securely.' : `${route[0].toUpperCase()+route.slice(1)} — Maestro Forge`;
   attachRouteEvents(route);
+  mountWorkspace(route, state, view);
+  mountSandbox();
+  mountLearning(route, state);
   $('.primary-nav')?.classList.remove('open');
   $('.menu-button')?.setAttribute('aria-expanded','false');
+  $('.menu-button')?.setAttribute('aria-label','Open navigation');
+  if ($('.menu-button')) $('.menu-button').innerHTML=icon('menu');
   window.scrollTo(0,0);
+  $('#main').focus({preventScroll:true});
 }
 
 function attachRouteEvents(route) {
   if (route === 'challenges') {
     const search=$('#challenge-search'), difficulty=$('#challenge-difficulty'), category=$('#challenge-category'), grid=$('#challenge-grid'), count=$('#challenge-count');
-    const render=()=>{const q=search.value.trim().toLowerCase();const items=state.challenges.filter(x=>(difficulty.value==='all'||x.difficulty===difficulty.value)&&(category.value==='all'||x.category===category.value)&&(!q||[x.id,x.title,x.summary,x.category,...x.skills,...x.languages].join(' ').toLowerCase().includes(q)));grid.innerHTML=items.length?items.map(challengeCard).join(''):emptyState('search','No challenge matches','Try a broader search or reset the filters.','Reset filters','#challenges');count.textContent=`${items.length} OF ${state.challenges.length} BRIEFS`;};
-    [search,difficulty,category].forEach(el=>el.addEventListener('input',render));$('#challenge-reset').addEventListener('click',()=>{search.value='';difficulty.value='all';category.value='all';render();search.focus();});render();
+    const render=()=>{const q=search.value.trim().toLowerCase();const items=state.challenges.filter(x=>(difficulty.value==='all'||x.difficulty===difficulty.value)&&(category.value==='all'||x.category===category.value)&&(!q||[x.id,x.title,x.summary,x.category,...x.skills,...x.languages].join(' ').toLowerCase().includes(q)));grid.innerHTML=items.length?items.map(challengeCard).join(''):emptyState('search','No challenge matches','Try a broader search or reset the filters.','Reset filters','#challenges');count.textContent=`${items.length} OF ${state.challenges.length} BUILDS`;resolveContentLinks(grid);};
+    [search,difficulty,category].forEach(el=>el.addEventListener('input',render));const reset=()=>{search.value='';difficulty.value='all';category.value='all';render();search.focus();};$('#challenge-reset').addEventListener('click',reset);grid.addEventListener('click',event=>{if(event.target.closest('.empty a')){event.preventDefault();reset();}});render();
   }
   if (route === 'community') {
     $$('.tab').forEach(tab=>tab.addEventListener('click',()=>{$$('.tab').forEach(x=>x.setAttribute('aria-selected','false'));tab.setAttribute('aria-selected','true');$$('.ecosystem-card').forEach(card=>card.hidden=tab.dataset.pillar!=='all'&&card.dataset.pillar!==tab.dataset.pillar);tab.focus();}));
@@ -197,18 +238,19 @@ function attachRouteEvents(route) {
 function buildSearchIndex() {
   return [
     ...Object.keys(routes).map(route=>({title:route==='home'?'Maestro Forge home':route[0].toUpperCase()+route.slice(1),type:'Page',href:`#${route}`,text:route})),
-    ...state.challenges.map(x=>({title:`${x.id} — ${x.title}`,type:'Challenge',href:'#challenges',text:[x.summary,x.category,...x.skills,...x.languages].join(' ')})),
+    ...state.challenges.map(x=>({title:`${x.id} — ${x.title}`,type:'Challenge',href:`#challenge?id=${encodeURIComponent(x.id)}`,text:[x.summary,x.category,...x.skills,...x.languages].join(' ')})),
     ...state.ecosystem.map(x=>({title:x.title,type:x.pillar,href:routeLink(x),text:x.description})),
     ...state.resources.map(x=>({title:x.title,type:x.kind,href:x.href,text:`${x.description} ${x.area}`})),
-    ...state.paths.map(x=>({title:x.name,type:'Learning Path',href:'#learn',text:`${x.description} ${x.competencies.join(' ')}`}))
+    ...state.paths.map(x=>({title:x.name,type:'Learning Path',href:repoLink(x.path),text:`${x.description} ${x.competencies.join(' ')}`}))
   ];
 }
 
 function initGlobalSearch() {
   const dialog=$('#search-dialog'), input=$('#global-search'), results=$('#global-results');let index=[];
-  const render=()=>{const q=input.value.trim().toLowerCase();const matches=(q?index.filter(x=>`${x.title} ${x.type} ${x.text}`.toLowerCase().includes(q)):index.slice(0,8)).slice(0,12);results.innerHTML=matches.map(x=>`<a class="global-result" href="${safeLink(x.href)}"><strong>${escapeHTML(x.title)}</strong><span>${escapeHTML(x.type)}</span></a>`).join('')||'<p class="page-deck">No result. Try a broader term.</p>';};
+  const render=()=>{const q=input.value.trim().toLowerCase();const matches=(q?index.filter(x=>`${x.title} ${x.type} ${x.text}`.toLowerCase().includes(q)):index.slice(0,8)).slice(0,12);results.innerHTML=matches.map(x=>`<a class="global-result" href="${safeLink(x.href)}"><strong>${escapeHTML(x.title)}</strong><span>${escapeHTML(x.type)}</span></a>`).join('')||'<p class="page-deck">No result. Try a broader term.</p>';resolveContentLinks(results);};
   const open=()=>{index=buildSearchIndex();dialog.showModal();input.value='';render();setTimeout(()=>input.focus(),0);};
   $('.search-trigger').addEventListener('click',open);$('.close-search').addEventListener('click',()=>dialog.close());input.addEventListener('input',render);results.addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
+  $('.mobile-search')?.addEventListener('click',open);
   document.addEventListener('keydown',e=>{if(e.key==='/'&&!/input|textarea|select/i.test(document.activeElement.tagName)){e.preventDefault();open();}});
 }
 
@@ -217,12 +259,13 @@ function initMenu() {
 }
 
 async function init() {
+  $('.skip-link').addEventListener('click',event=>{event.preventDefault();$('#main').focus();$('#main').scrollIntoView();});
   try {
     const values=await Promise.all(dataFiles.map(([file])=>fetch(`data/${file}.json`).then(response=>{if(!response.ok)throw new Error(`${file}: ${response.status}`);return response.json();})));
     dataFiles.forEach(([,key],i)=>{state[key]=values[i];});
     initMenu();initGlobalSearch();window.addEventListener('hashchange',renderRoute);renderRoute();
   } catch (error) {
-    view.innerHTML=`<div class="error-state"><h1>Catalog unavailable</h1><p>The structured data could not be loaded. Serve the docs folder through GitHub Pages or a local web server.</p></div>`;console.error(error);
+    view.innerHTML=`<div class="error-state"><h1>Catalog unavailable</h1><p>We could not load the learning catalog. Your saved browser notes have not been deleted.</p><button class="button" id="retry-catalog">Try again</button><p><a href="https://github.com/silentiumlabsio/maestro-forge/blob/main/challenges/README.md">Open the GitHub challenge catalog</a></p></div>`;$('#retry-catalog').onclick=()=>location.reload();console.error(error);
   }
 }
 

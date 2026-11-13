@@ -1,0 +1,10 @@
+{
+  "source": "A variable stores a named value.",
+  "mock_output": [
+    {
+      "question": "What stores a named value?",
+      "answer": "A variable",
+      "source": "A variable stores a named value."
+    }
+  ]
+}

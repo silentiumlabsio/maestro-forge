@@ -4,6 +4,25 @@ title: "[Project] "
 labels: ["project-submission"]
 body:
   - type: input
+    id: challenge_version
+    attributes:
+      label: Challenge ID and version (if applicable)
+      description: Use the version shown in the brief; leave blank for an independent project.
+  - type: textarea
+    id: validation
+    attributes:
+      label: Setup, validation and observed results
+      description: Provide runtime, commands, acceptance criteria and actual outcomes. Mark checks not run honestly.
+    validations:
+      required: true
+  - type: textarea
+    id: assistance
+    attributes:
+      label: Attribution, license and AI assistance
+      description: Credit reused work and describe assistance under the Forge policy. Do not include restricted course material.
+    validations:
+      required: true
+  - type: input
     id: name
     attributes:
       label: Project name

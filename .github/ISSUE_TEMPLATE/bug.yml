@@ -24,3 +24,18 @@ body:
   - type: markdown
     attributes:
       value: "If this bug is a security vulnerability, stop and use the private security reporting process in SECURITY.md instead of posting exploit details here."
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Browser, device and affected page
+      description: Include route, browser/version, input method and revision if known. No personal information.
+  - type: dropdown
+    id: impact
+    attributes:
+      label: Impact
+      options:
+        - A task is blocked
+        - Work was lost or could not be saved
+        - Accessibility barrier
+        - Confusing instructions or other issue

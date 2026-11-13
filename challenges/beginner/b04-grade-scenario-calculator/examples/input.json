@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Practice",
+    "weight": 40,
+    "score": 80
+  },
+  {
+    "name": "Project",
+    "weight": 60,
+    "score": 90
+  }
+]

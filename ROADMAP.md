@@ -4,20 +4,20 @@ The launch foundation is static-first. This roadmap distinguishes implemented sy
 
 ## Launch foundation — implemented in repository
 
-- 24 official Silentium Labs challenges and catalog validation
+- 24 Silentium Labs challenge start packages with incomplete starters, synthetic examples, boundary checks and catalog validation
 - five learning paths linked to stable challenge IDs
 - responsive GitHub Pages hub with search, filters, empty states, and GitHub-native actions
 - project, builder, verification, achievement, resource, ecosystem, and trust-state data models
 - challenge claiming, proposals, project submissions, builder opt-in, ideas, resources, reviews, and incubator issue forms
 - metadata-only privileged pull-request gate with no contributor-code checkout or execution
 - public policies for security, privacy, AI assistance, fairness, academic integrity, governance, and untrusted code
-- Resource Vault foundations, Git/GitHub Learning Center, Secure Coding Cookbook, cheat sheets, patterns, planning templates, and First PR Sandbox
+- Resource Vault guides, three concrete engineering patterns, guided learning paths, prompt/evaluation worksheets, planning templates, and a browser-only First PR Sandbox
 - dependency-free Python, JavaScript, and accessible web starter kits
 - Forge Passport/skill graph/achievement schemas and truthful empty states
 
 ## Community activation — GitHub owner and maintainer action
 
-- create the public repository and replace the CODEOWNERS placeholder
+- maintain the existing public repository and designated CODEOWNERS
 - activate Pages, rulesets, required checks, private vulnerability reporting, and available GitHub security features
 - create labels and decide whether maintainable Discussions categories add value
 - review and publish the first real builder profiles, project metadata, resources, prompts, experiments, reviews, ideas, and verification records

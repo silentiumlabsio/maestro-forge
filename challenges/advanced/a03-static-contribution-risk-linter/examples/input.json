@@ -1,0 +1,12 @@
+{
+  "files": [
+    {
+      "path": "notes.md",
+      "text": "Original harmless note."
+    },
+    {
+      "path": "sample.exe",
+      "text": "INERT TEXT ONLY: extension test"
+    }
+  ]
+}

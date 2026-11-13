@@ -1,0 +1,10 @@
+[
+  {
+    "question": "What stores a named value?",
+    "answer": "variable"
+  },
+  {
+    "question": "What repeats a task?",
+    "answer": "loop"
+  }
+]

@@ -6,6 +6,10 @@
 **Created by:** Silentium Labs
 **Status:** Open
 
+## Start package
+
+Open [README.md](README.md) for tools, a first milestone and submission steps; [VALIDATION.md](VALIDATION.md) contains synthetic examples and boundary checks.
+
 ## Mission
 
 Design a modular course dashboard that remains useful offline and syncs only when explicitly configured.

@@ -4,6 +4,8 @@
 
 # Maestro Forge
 
+**Start building:** [24 challenge packages](challenges/README.md) · [First PR walkthrough](first-pr-sandbox/README.md) · [Starter kits](starter-kits/README.md) · [How to submit](handbook/SUBMITTING.md) · [Video demo path](handbook/DEMO.md)
+
 **Learn. Build. Contribute. Securely.**
 
 Maestro Forge is an independent open-source community ecosystem for Maestro students, **created and maintained by Silentium Labs**.

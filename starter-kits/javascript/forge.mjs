@@ -1,3 +1,6 @@
+import { resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
+
 export function normalizeText(value) {
   if (typeof value !== 'string') throw new TypeError('text must be a string');
   const cleaned = value.trim().replace(/\s+/g, ' ');
@@ -6,7 +9,7 @@ export function normalizeText(value) {
   return cleaned;
 }
 
-if (import.meta.url === `file://${process.argv[1].replace(/\\/g, '/')}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   try {
     console.log(normalizeText(process.argv[2] ?? ''));
   } catch (error) {
