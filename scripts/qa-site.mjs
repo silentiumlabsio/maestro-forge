@@ -40,6 +40,7 @@ const sizes = [
   {name:'mobile',width:390,height:844}
 ];
 const routes = ['home','challenges','learn','projects','community','resources','builders','security','contribute'];
+const challenges = JSON.parse(await readFile(new URL('../docs/data/challenges.json', import.meta.url), 'utf8'));
 const results = [];
 
 try {
@@ -57,6 +58,19 @@ try {
       const title = await page.locator('h1').first().textContent();
       assert(title?.trim(), `${size.name}/${route}: missing h1`);
       results.push(`${size.name}/${route}: ok`);
+    }
+    for (const challenge of challenges) {
+      await page.goto(`http://127.0.0.1:${port}/#challenge?id=${challenge.id}`, {waitUntil:'networkidle'});
+      await page.waitForSelector('.example-data');
+      assert((await page.locator('h1').textContent()).includes(challenge.title), `${challenge.id}: wrong detail`);
+      assert(await page.locator('a').filter({hasText:'Unfinished starter'}).count() === 1, `${challenge.id}: no starter`);
+      assert(!await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1), `${size.name}/${challenge.id}: overflow`);
+      assert(await page.locator('a[href^="../"]').count() === 0, `${challenge.id}: link outside Pages deployment`);
+      results.push(`${size.name}/${challenge.id}: ok`);
+    }
+    if (process.env.FORGE_QA_SCREENSHOTS) {
+      await page.goto(`http://127.0.0.1:${port}/#challenge?id=B01`, {waitUntil:'networkidle'});
+      await page.screenshot({path:join(process.env.FORGE_QA_SCREENSHOTS, `forge-${size.name}.png`),fullPage:true});
     }
     assert(consoleErrors.length === 0, `${size.name}: console errors: ${consoleErrors.join(' | ')}`);
     await page.close();
@@ -77,6 +91,17 @@ try {
   assert(await page.locator('.global-result').count() > 0, 'global search returned no first PR result');
   await page.locator('.close-search').click();
   assert(!await page.locator('#search-dialog').evaluate(element => element.open), 'search close button did not close dialog');
+  await page.goto(`http://127.0.0.1:${port}/#learn`, {waitUntil:'networkidle'});
+  await page.locator('a[href="#challenge?id=B01"]').first().click();
+  await page.waitForSelector('.example-data');
+  assert((await page.locator('h1').textContent()).includes('Focus Timer'), 'path link did not open exact challenge');
+  await page.locator('.search-trigger').click();
+  await page.locator('#global-search').fill('B04');
+  await page.locator('.global-result').first().click();
+  await page.waitForSelector('.example-data');
+  assert((await page.locator('h1').textContent()).includes('Grade Scenario'), 'search did not open exact challenge');
+  await page.goto(`http://127.0.0.1:${port}/#challenge?id=missing`, {waitUntil:'networkidle'});
+  assert(await page.locator('a').filter({hasText:'Back to catalog'}).count() === 1, 'unknown challenge lacks recovery');
   await page.setViewportSize({width:390,height:844});
   await page.goto(`http://127.0.0.1:${port}/#home`, {waitUntil:'networkidle'});
   await page.locator('.menu-button').click();
