@@ -35,7 +35,17 @@
       "Prints clear session transitions",
       "Handles invalid input without crashing",
       "Uses no network access"
-    ]
+    ],
+    "practice": {
+      "prerequisite": "Be able to edit a text file and read a simple function. Start with the generic kit if the runtime is unfamiliar.",
+      "mistake": "Sleeping in tests makes failures slow and timing unreliable.",
+      "hints": [
+        "What happens if the user cancels between work and break?",
+        "Separate duration validation, transition planning and display. Start with a fake clock, then connect real time.",
+        "Use a fake clock and record transitions without waiting."
+      ],
+      "path": "blob/main/challenges/beginner/b01-focus-timer-cli/PRACTICE.md"
+    }
   },
   {
     "id": "B02",
@@ -79,7 +89,17 @@
       "Shuffles or cycles through cards",
       "Tracks score for the current session",
       "Handles malformed card data safely"
-    ]
+    ],
+    "practice": {
+      "prerequisite": "Be able to edit a text file and read a simple function. Start with the generic kit if the runtime is unfamiliar.",
+      "mistake": "Mixing deck validation with quiz input makes invalid-file tests difficult.",
+      "hints": [
+        "Can a malformed card reach scoring?",
+        "Validate the deck first, cycle in a fixed order, then add optional seeded shuffling.",
+        "Validate every card before asking the first question; isolate per-session scores."
+      ],
+      "path": "blob/main/challenges/beginner/b02-flashcard-deck-cli/PRACTICE.md"
+    }
   },
   {
     "id": "B03",
@@ -121,7 +141,17 @@
       "Keyboard usable controls",
       "Visible timer state",
       "No framework required"
-    ]
+    ],
+    "practice": {
+      "prerequisite": "Be able to edit a text file and read a simple function. Start with the generic kit if the runtime is unfamiliar.",
+      "mistake": "Starting another interval on every click can accelerate the timer.",
+      "hints": [
+        "What does a tick mean while paused?",
+        "Draw idle/work/break/paused states on paper. Implement pure transitions before adding browser events.",
+        "Write a transition table for idle, work, break and paused; check reset from each state."
+      ],
+      "path": "blob/main/challenges/beginner/b03-pomodoro-web-app/PRACTICE.md"
+    }
   },
   {
     "id": "B04",
@@ -169,7 +199,17 @@
       "Validates totals and numeric ranges",
       "Shows at least one what-if scenario",
       "Explains calculation assumptions"
-    ]
+    ],
+    "practice": {
+      "prerequisite": "Be able to edit a text file and read a simple function. Start with the generic kit if the runtime is unfamiliar.",
+      "mistake": "A weighted average is wrong if percentages are treated as fractions twice.",
+      "hints": [
+        "Do your accepted weights sum to the documented total?",
+        "Use synthetic category names and percentages. Keep parsing, calculation and form rendering separate.",
+        "Hand-calculate the synthetic fixture: 40% of 80 plus 60% of 90 is 86."
+      ],
+      "path": "blob/main/challenges/beginner/b04-grade-scenario-calculator/PRACTICE.md"
+    }
   },
   {
     "id": "B05",
@@ -211,7 +251,17 @@
       "Calculates current streak",
       "Shows recent history",
       "Prevents duplicate day entries"
-    ]
+    ],
+    "practice": {
+      "prerequisite": "Be able to edit a text file and read a simple function. Start with the generic kit if the runtime is unfamiliar.",
+      "mistake": "Duplicate dates must not create extra study days.",
+      "hints": [
+        "Does the streak include yesterday when today has no entry?",
+        "Define a calendar-day policy before coding; deduplicate dates and keep storage separate from counting.",
+        "Choose and document that policy; test a gap, duplicates and month boundaries."
+      ],
+      "path": "blob/main/challenges/beginner/b05-study-streak-tracker/PRACTICE.md"
+    }
   },
   {
     "id": "B06",
@@ -251,7 +301,17 @@
       "Extracts first heading or filename",
       "Outputs a readable index",
       "Handles unreadable files gracefully"
-    ]
+    ],
+    "practice": {
+      "prerequisite": "Be able to edit a text file and read a simple function. Start with the generic kit if the runtime is unfamiliar.",
+      "mistake": "A notes indexer must not follow a path outside the chosen directory.",
+      "hints": [
+        "Can a symlink or traversal escape the root?",
+        "Create the fixture files in a temporary directory. Resolve the allowed root and inventory files before extracting headings.",
+        "Use a disposable directory and check resolved paths before reading; do not modify source notes."
+      ],
+      "path": "blob/main/challenges/beginner/b06-markdown-notes-indexer/PRACTICE.md"
+    }
   },
   {
     "id": "B07",
@@ -289,7 +349,17 @@
       "Includes `.env.example` without a real secret",
       "Fails safely when config is missing",
       "Documents why secrets should not be committed"
-    ]
+    ],
+    "practice": {
+      "prerequisite": "Be able to edit a text file and read a simple function. Start with the generic kit if the runtime is unfamiliar.",
+      "mistake": "Redacting the normal display does not protect exception messages.",
+      "hints": [
+        "Where else could a key appear: logs, errors or object representations?",
+        "Pass a dictionary to the config function for tests; only the entry point reads environment variables.",
+        "Use a fake marker and search captured output for it after success and failure."
+      ],
+      "path": "blob/main/challenges/beginner/b07-secret-safe-config-demo/PRACTICE.md"
+    }
   },
   {
     "id": "B08",
@@ -329,7 +399,17 @@
       "Escapes or safely handles unusual text input",
       "Generates Markdown",
       "Does not overwrite an existing file without confirmation"
-    ]
+    ],
+    "practice": {
+      "prerequisite": "Be able to edit a text file and read a simple function. Start with the generic kit if the runtime is unfamiliar.",
+      "mistake": "An overwrite prompt after opening the file is too late.",
+      "hints": [
+        "Can cancellation still change an existing README?",
+        "Generate text in memory first. Add an explicitly selected output location and a separate overwrite decision.",
+        "Build Markdown in memory first and verify the output decision before writing."
+      ],
+      "path": "blob/main/challenges/beginner/b08-project-readme-builder/PRACTICE.md"
+    }
   },
   {
     "id": "I01",
@@ -385,7 +465,17 @@
       "Tracks correct/incorrect history",
       "Reprioritizes missed concepts",
       "Persists progress locally"
-    ]
+    ],
+    "practice": {
+      "prerequisite": "Be comfortable with small functions, synthetic fixtures and repeatable tests. Complete a related beginner build first.",
+      "mistake": "Repeated wrong answers can starve every other question.",
+      "hints": [
+        "How will ties and unseen concepts be handled?",
+        "Define priority rules, test selection in memory, then add validated JSON persistence.",
+        "Use fixed histories and deterministic selection; explain the priority rule."
+      ],
+      "path": "blob/main/challenges/intermediate/i01-adaptive-quiz-engine/PRACTICE.md"
+    }
   },
   {
     "id": "I02",
@@ -431,7 +521,17 @@
       "Generates structured questions",
       "Has a no-API fallback/demo mode",
       "Validates model output before displaying it"
-    ]
+    ],
+    "practice": {
+      "prerequisite": "Be comfortable with small functions, synthetic fixtures and repeatable tests. Complete a related beginner build first.",
+      "mistake": "Valid JSON can still contain unsupported or unsafe generated content.",
+      "hints": [
+        "Does each generated answer point to its permitted source?",
+        "Start with a deterministic mock provider. Make network use an explicit opt-in with a data disclosure and bounded requests.",
+        "Test a mock provider with missing fields and unsupported claims before any network integration."
+      ],
+      "path": "blob/main/challenges/intermediate/i02-ai-quiz-generator/PRACTICE.md"
+    }
   },
   {
     "id": "I03",
@@ -471,7 +571,17 @@
       "Shows public repository metrics",
       "Handles rate limits and errors",
       "Sanitizes rendered text"
-    ]
+    ],
+    "practice": {
+      "prerequisite": "Be comfortable with small functions, synthetic fixtures and repeatable tests. Complete a related beginner build first.",
+      "mistake": "A failed API response must not look like zero activity.",
+      "hints": [
+        "How are rate limits and stale data represented?",
+        "Render fixtures first. Accept owner/repo identifiers, constrain the API host, then add bounded caching and retry-after handling.",
+        "Use fixtures for success, missing fields and rate limits; show unknown separately from zero."
+      ],
+      "path": "blob/main/challenges/intermediate/i03-repository-activity-dashboard/PRACTICE.md"
+    }
   },
   {
     "id": "I04",
@@ -522,7 +632,17 @@
       "Respects daily availability",
       "Prioritizes near deadlines",
       "Explains why tasks were scheduled"
-    ]
+    ],
+    "practice": {
+      "prerequisite": "Be comfortable with small functions, synthetic fixtures and repeatable tests. Complete a related beginner build first.",
+      "mistake": "Overbooking hides infeasible constraints instead of solving them.",
+      "hints": [
+        "Where does unscheduled work appear?",
+        "Choose whether tasks may split. State that policy, implement one-day capacity checks, then extend to a week.",
+        "Hand-check available minutes before scheduling and explain every deferred block."
+      ],
+      "path": "blob/main/challenges/intermediate/i04-constraint-study-planner/PRACTICE.md"
+    }
   },
   {
     "id": "I05",
@@ -568,7 +688,17 @@
       "Offline deck access",
       "Local add/edit/delete",
       "Accessible keyboard flow"
-    ]
+    ],
+    "practice": {
+      "prerequisite": "Be comfortable with small functions, synthetic fixtures and repeatable tests. Complete a related beginner build first.",
+      "mistake": "Caching the shell does not guarantee that user edits survive offline.",
+      "hints": [
+        "Can a card be edited, reopened offline and recovered?",
+        "Build local CRUD first; add a manifest and scoped service worker after storage works. Use localhost or HTTPS for service-worker testing.",
+        "Test storage independently before adding a service worker; include update and deletion cases."
+      ],
+      "path": "blob/main/challenges/intermediate/i05-offline-flashcard-pwa/PRACTICE.md"
+    }
   },
   {
     "id": "I06",
@@ -615,7 +745,17 @@
       "Returns ranked results",
       "Supports rebuild/update",
       "Shows source file for each hit"
-    ]
+    ],
+    "practice": {
+      "prerequisite": "Be comfortable with small functions, synthetic fixtures and repeatable tests. Complete a related beginner build first.",
+      "mistake": "A ranking demo with one convenient query hides poor retrieval.",
+      "hints": [
+        "How are ties and no-match queries handled?",
+        "Start with token overlap as a baseline. Measure ranking on fixed queries before considering TF-IDF.",
+        "Create fixed relevance judgments for multiple synthetic queries and compare to token overlap."
+      ],
+      "path": "blob/main/challenges/intermediate/i06-local-notes-search/PRACTICE.md"
+    }
   },
   {
     "id": "I07",
@@ -655,7 +795,17 @@
       "Input schema validation",
       "Safe error responses",
       "Security notes in README"
-    ]
+    ],
+    "practice": {
+      "prerequisite": "Be comfortable with small functions, synthetic fixtures and repeatable tests. Complete a related beginner build first.",
+      "mistake": "Client validation cannot protect a request boundary on its own.",
+      "hints": [
+        "What happens when the UI is bypassed?",
+        "Specify the request and response contract, implement validation tests, then choose a minimal local API adapter. Document any listener and dependency.",
+        "Validate a request object directly and reject unexpected types without leaking details."
+      ],
+      "path": "blob/main/challenges/intermediate/i07-secure-starter-app/PRACTICE.md"
+    }
   },
   {
     "id": "I08",
@@ -700,7 +850,17 @@
       "Filters by track/status",
       "Links to challenge briefs",
       "Handles missing fields gracefully"
-    ]
+    ],
+    "practice": {
+      "prerequisite": "Be comfortable with small functions, synthetic fixtures and repeatable tests. Complete a related beginner build first.",
+      "mistake": "Missing completion evidence must not turn into a completed badge.",
+      "hints": [
+        "How do unknown and completed differ?",
+        "Use this synthetic fixture locally; only use published metadata when showing real activity. Separate unknown, open and completed.",
+        "Use explicit states and require evidence for completion; label every synthetic record."
+      ],
+      "path": "blob/main/challenges/intermediate/i08-challenge-progress-board/PRACTICE.md"
+    }
   },
   {
     "id": "A01",
@@ -748,7 +908,17 @@
       "Retrieves relevant passages",
       "Answers with source references",
       "Provides a local/mock mode or clearly documented provider mode"
-    ]
+    ],
+    "practice": {
+      "prerequisite": "Be able to explain architecture, trust boundaries and failure modes, with evidence from smaller builds.",
+      "mistake": "A fluent answer can cite a passage that never supports the claim.",
+      "hints": [
+        "Can each returned passage be traced to a stable source?",
+        "Implement local token retrieval as a baseline. Preserve passage IDs through chunking; a mock answerer is sufficient for the free route.",
+        "Test irrelevant queries and missing evidence; abstain instead of filling the gap."
+      ],
+      "path": "blob/main/challenges/advanced/a01-local-rag-study-assistant/PRACTICE.md"
+    }
   },
   {
     "id": "A02",
@@ -796,7 +966,17 @@
       "Offline operation",
       "Conflict strategy documented",
       "Export/import user data"
-    ]
+    ],
+    "practice": {
+      "prerequisite": "Be able to explain architecture, trust boundaries and failure modes, with evidence from smaller builds.",
+      "mistake": "Last-write-wins can silently discard an offline edit.",
+      "hints": [
+        "What happens when two versions have the same revision but different text?",
+        "Define module and storage boundaries first. Use two local fixture snapshots to simulate sync; a hosted service is unnecessary.",
+        "Keep both snapshots available until a documented conflict decision is made."
+      ],
+      "path": "blob/main/challenges/advanced/a02-offline-first-course-dashboard/PRACTICE.md"
+    }
   },
   {
     "id": "A03",
@@ -842,7 +1022,17 @@
       "Flags blocked extensions and suspicious patterns",
       "Produces human-readable findings",
       "Supports allowlisted false-positive suppressions"
-    ]
+    ],
+    "practice": {
+      "prerequisite": "Be able to explain architecture, trust boundaries and failure modes, with evidence from smaller builds.",
+      "mistake": "A scanner that imports its inputs crosses the trust boundary.",
+      "hints": [
+        "Can a huge or unusual file exhaust scanning resources?",
+        "Start with metadata-only extension checks, then add explained patterns. Bound file sizes and ensure the scanner reads data only.",
+        "Bound input sizes and report explained static findings; never evaluate scanned text."
+      ],
+      "path": "blob/main/challenges/advanced/a03-static-contribution-risk-linter/PRACTICE.md"
+    }
   },
   {
     "id": "A04",
@@ -887,7 +1077,17 @@
       "Shows citations to provided material",
       "Refuses unsupported certainty",
       "Includes an evaluation set"
-    ]
+    ],
+    "practice": {
+      "prerequisite": "Be able to explain architecture, trust boundaries and failure modes, with evidence from smaller builds.",
+      "mistake": "Inference and direct evidence should not receive the same label.",
+      "hints": [
+        "What evidence would justify each output category?",
+        "Write the output schema and hand-label synthetic evaluation cases before building the answer workflow. Mock inference is acceptable.",
+        "Hand-label supported, inferred and unsupported synthetic claims before evaluation."
+      ],
+      "path": "blob/main/challenges/advanced/a04-evidence-aware-study-agent/PRACTICE.md"
+    }
   },
   {
     "id": "A05",
@@ -929,7 +1129,17 @@
       "Duplicate ID detection",
       "Generates deterministic catalog output",
       "Clear errors with file paths"
-    ]
+    ],
+    "practice": {
+      "prerequisite": "Be able to explain architecture, trust boundaries and failure modes, with evidence from smaller builds.",
+      "mistake": "Directory iteration order can make identical catalogs produce different output.",
+      "hints": [
+        "How are duplicate IDs and invalid paths reported?",
+        "Write a schema and invalid fixtures first. Sort by stable IDs; use a text serializer without evaluating templates.",
+        "Sort stable IDs and collect file-scoped errors before writing generated data."
+      ],
+      "path": "blob/main/challenges/advanced/a05-challenge-catalog-compiler/PRACTICE.md"
+    }
   },
   {
     "id": "A06",
@@ -976,7 +1186,17 @@
       "Local event store",
       "Trend visualizations",
       "Data deletion/export"
-    ]
+    ],
+    "practice": {
+      "prerequisite": "Be able to explain architecture, trust boundaries and failure modes, with evidence from smaller builds.",
+      "mistake": "Useful-looking telemetry can still expose note content or identities.",
+      "hints": [
+        "Which fields are necessary for the displayed aggregate?",
+        "Define a minimal versioned event schema and retention policy. Aggregate local synthetic events before building charts.",
+        "Aggregate synthetic durations using a minimal schema and document deletion and retention."
+      ],
+      "path": "blob/main/challenges/advanced/a06-learning-telemetry-dashboard/PRACTICE.md"
+    }
   },
   {
     "id": "A07",
@@ -1031,7 +1251,17 @@
       "Documents scoring weights",
       "Allows raw-data inspection",
       "Explains limitations and gaming risks"
-    ]
+    ],
+    "practice": {
+      "prerequisite": "Be able to explain architecture, trust boundaries and failure modes, with evidence from smaller builds.",
+      "mistake": "A numeric score can imply trust without evidence.",
+      "hints": [
+        "Can a repeated record inflate the score?",
+        "Keep the first prototype offline. Show raw inputs and a per-record explanation; this challenge does not ship a Forge leaderboard.",
+        "Deduplicate provenance and show contribution explanations; do not equate volume with verification."
+      ],
+      "path": "blob/main/challenges/advanced/a07-contribution-reputation-engine/PRACTICE.md"
+    }
   },
   {
     "id": "A08",
@@ -1073,6 +1303,16 @@
       "Proposed execution lifecycle",
       "Abuse and resource-exhaustion controls",
       "Decision on whether execution should be offered at all"
-    ]
+    ],
+    "practice": {
+      "prerequisite": "Be able to explain architecture, trust boundaries and failure modes, with evidence from smaller builds.",
+      "mistake": "A sandbox diagram alone does not establish an isolation guarantee.",
+      "hints": [
+        "What is the safest default if any control fails?",
+        "Copy the local threat-model template. Compare metadata-only review with a hypothetical disposable evaluator; justify whether execution should exist at all.",
+        "Compare a metadata-only design against hypothetical execution, then document denial, teardown and residual risk."
+      ],
+      "path": "blob/main/challenges/advanced/a08-sandbox-design-challenge/PRACTICE.md"
+    }
   }
 ]

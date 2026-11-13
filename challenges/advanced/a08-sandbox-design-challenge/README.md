@@ -25,3 +25,7 @@ Complete the design document and review the text-only scenarios. No execution in
 ## Ready for review
 
 Include setup instructions, checks and observed results, design tradeoffs, all declared data/network/file behavior, AI assistance disclosure, and an exact 40-character solution commit SHA. An issue claim is optional coordination, not exclusive ownership or verification.
+
+## Guided practice
+
+Use [progressive hints and practice cases](PRACTICE.md) to compare predictions with actual observations without copying a solution.

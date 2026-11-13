@@ -29,3 +29,7 @@ The starter function intentionally throws an unfinished error. Import it from yo
 From `starter/`, run `node --test core.test.mjs`. These five tests intentionally fail against the unfinished starter. Implement `calculate` to return a numeric percentage and throw a descriptive error for invalid categories, weights or scores. They cover a small contract, not all brief requirements; add form, accessibility and privacy checks from the validation guide. These are learner tests, separate from Forge's maintainer validation.
 
 Include setup instructions, checks and observed results, design tradeoffs, all declared data/network/file behavior, AI assistance disclosure, and an exact 40-character solution commit SHA. An issue claim is optional coordination, not exclusive ownership or verification.
+
+## Guided practice
+
+Use [progressive hints and practice cases](PRACTICE.md) to compare predictions with actual observations without copying a solution.

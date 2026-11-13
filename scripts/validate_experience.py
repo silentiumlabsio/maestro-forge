@@ -43,6 +43,10 @@ def main():
     for item in challenges:
         cid = item["id"]
         folder = (ROOT / item["path"].removeprefix("blob/main/")).parent
+        practice = item.get("practice", {})
+        require(len(practice.get("hints", [])) == 3 and all(isinstance(h, str) and h.strip() for h in practice.get("hints", [])), f"{cid}: missing progressive hints")
+        require(bool(practice.get("prerequisite")) and bool(practice.get("mistake")), f"{cid}: missing practice guidance")
+        require(practice.get("path") == "blob/main/" + (folder / "PRACTICE.md").relative_to(ROOT).as_posix() and (folder / "PRACTICE.md").is_file(), f"{cid}: missing practice guide")
         brief = (folder / "challenge.md").read_text(encoding="utf-8")
         acceptance = brief.split("## Acceptance criteria", 1)[1].split("## Security requirements", 1)[0]
         criteria = [line[6:].strip() for line in acceptance.splitlines() if line.startswith("- [ ] ")]
